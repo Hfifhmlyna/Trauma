@@ -1,0 +1,1 @@
+Bagaimana mekanisme integrasi sistem AI–Trauma Narrative Detection ke dalam aktivitas membaca dan menulis narasi pada pembelajaran BahasaIndonesia di SMP untuk menghasilkan trauma-informed feedback yang bersifat suportif dan non-diagnostik?
