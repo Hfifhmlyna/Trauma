@@ -36,70 +36,68 @@ with st.sidebar:
     st.markdown("---")
     st.info("Kelompok 4 - Integrasi AI Trauma-Informed")
 
-# --- LOGIKA TAMPILAN SISWA (VERSI SESUAI GAMBAR) ---
+# --- LOGIKA TAMPILAN SISWA (SESUAI JUDUL PENELITIAN) ---
 if role == "Siswa (Menulis)":
     st.markdown("<h1 style='color: #2E86C1;'>📝 Aktivitas Menulis Narasi Inklusif</h1>", unsafe_allow_html=True)
-    st.write("Jawablah pertanyaan di bawah ini berdasarkan pengalaman dan perasaanmu.")
+    st.write("Silakan tuangkan pikiranmu. Sistem AI kami akan memberikan feedback suportif berdasarkan narasimu.")
 
-    # Data Diri Card
+    # Data Diri Siswa
     with st.container():
-        st.markdown("### 👤 Data Diri")
+        st.markdown("### 👤 Identitas Siswa")
         col1, col2, col3 = st.columns(3)
-        nama = col1.text_input("Nama Lengkap / Inisial", placeholder="Contoh: Budi S.")
+        nama = col1.text_input("Nama/Inisial", placeholder="Contoh: Budi S.")
         usia = col2.text_input("Usia", placeholder="Contoh: 14")
         kelas = col3.selectbox("Kelas", ["Pilih Kelas", "7", "8", "9"])
 
     st.markdown("---")
 
-    # PERTANYAAN #1 (Cerita)
-    st.info("CERITA")
-    q1 = st.text_area("**#1** Ceritakan pengalaman paling menyedihkan atau menakutkan yang pernah kamu alami baru-baru ini.", placeholder="Tulis jawabanmu di sini...", height=150)
+    # Bagian Pertanyaan Berbasis Aktivitas Literasi
+    st.info("📖 AKTIVITAS MEMBACA & MENULIS")
+    
+    q1 = st.text_area("**#1** Setelah membaca teks hari ini, bagian mana yang membuatmu teringat pengalaman sulit pribadi?", height=150)
+    
+    q2 = st.text_area("**#2** Bagaimana perasaanmu saat menuliskan kembali kejadian tersebut? (Misal: Sesak, takut, atau sedih)", height=150)
 
-    # PERTANYAAN #2 (Cerita)
-    st.info("CERITA")
-    q2 = st.text_area("**#2** Bagaimana perasaanmu ketika mengingat kejadian tersebut?", placeholder="Tulis jawabanmu di sini...", height=150)
-
-    # PERTANYAAN #3 (Cerita)
-    st.info("CERITA")
-    q3 = st.text_area("**#3** Apa yang biasanya kamu lakukan ketika merasa sedih atau takut?", placeholder="Tulis jawabanmu di sini...", height=150)
+    q3 = st.text_area("**#3** Apa yang kamu lakukan agar tetap tenang saat ingatan itu muncul di kelas?", height=150)
 
     st.markdown("---")
 
-    # PERTANYAAN #4 (Perasaan - Skala)
-    st.warning("PERASAAN")
-    st.write("**#4** Saya sering merasa cemas tanpa alasan yang jelas.")
-    q4 = st.radio("Skala Kecemasan:", [1, 2, 3, 4, 5], horizontal=True, key="q4", help="1: Tidak Pernah, 5: Sering")
+    # Bagian Skala Emosional (Kuantitatif)
+    st.warning("📊 SKALA PERASAAN")
+    
+    st.write("**#4** Seberapa sering ingatan sulit tersebut mengganggu konsentrasi belajarmu?")
+    q4 = st.radio("Skala Gangguan Belajar:", [1, 2, 3, 4, 5], horizontal=True, help="1: Tidak Pernah, 5: Sangat Sering")
 
-    # PERTANYAAN #5 (Cerita)
-    st.info("CERITA")
-    q5 = st.text_area("**#5** Ceritakan tentang hubunganmu dengan orang-orang di sekitarmu (keluarga/teman) akhir-akhir ini.", height=150)
+    st.info("📖 HARAPAN LITERASI")
+    q5 = st.text_area("**#5** Dukungan apa yang kamu harapkan dari Guru melalui tulisan narasi ini?", height=150)
 
-    # PERTANYAAN #6 (Perasaan - Skala)
-    st.warning("PERASAAN")
-    st.write("**#6** Saya merasa sulit tidur atau sering mimpi buruk.")
-    q6 = st.radio("Skala Gangguan Tidur:", [1, 2, 3, 4, 5], horizontal=True, key="q6", help="1: Tidak Pernah, 5: Sering")
+    st.warning("📊 SKALA SOSIAL")
+    st.write("**#6** Seberapa sering kamu merasa harus memendam beban cerita ini sendirian?")
+    q6 = st.radio("Skala Memendam Cerita:", [1, 2, 3, 4, 5], horizontal=True, help="1: Tidak Pernah, 5: Sangat Sering")
 
-    if st.button("Kirim Laporan Narasi"):
+    # Tombol Kirim & Logika AI
+    if st.button("Kirim Narasi"):
         if nama and q1 and q2:
-            # Gabungkan input teks untuk deteksi AI
-            teks_gabungan = f"{q1} {q2} {q3} {q5} (Skala Cemas: {q4}, Skala Tidur: {q6})"
+            # Gabungkan teks dan angka skala untuk deteksi AI
+            teks_lengkap = f"{q1} {q2} {q3} {q5} [Skala Gangguan: {q4}, Skala Sendiri: {q6}]"
             
-            # Analisis AI sederhana (Keyword Matching)
-            found = [w for w in keywords_trauma if w in teks_gabungan.lower()]
-            # Tambahan logika: Jika skala 4 atau 5, otomatis dianggap sensitif
-            is_sensitif = len(found) >= 1 or q4 >= 4 or q6 >= 4
+            # Deteksi AI: Gabungan Kata Kunci + Ambang Batas Skala
+            found = [w for w in keywords_trauma if w in teks_lengkap.lower()]
+            # Sistem AI menganggap sensitif jika ada kata trauma ATAU skala perasaan di atas 3
+            is_sensitif = len(found) >= 1 or q4 > 3 or q6 > 3
+            
             label = "1 (Sensitif)" if is_sensitif else "0 (Normal)"
             
             # Simpan ke CSV
-            new_data = pd.DataFrame([[nama, teks_gabungan, label, ", ".join(found)]], 
+            new_data = pd.DataFrame([[nama, teks_lengkap, label, ", ".join(found)]], 
                                     columns=["Nama", "Teks", "Label", "Keywords"])
             new_data.to_csv('data_tugas.csv', mode='a', index=False, header=not os.path.exists('data_tugas.csv'))
             
-            st.success("✅ Data berhasil dikirim. Terima kasih sudah berbagi cerita dengan jujur.")
+            st.success("✅ Narasi berhasil terkirim.")
             if is_sensitif:
-                st.info("❤️ Kamu adalah siswa yang berani. Jangan ragu untuk berbicara dengan guru jika merasa berat.")
+                st.info("❤️ **Feedback Suportif:** Terima kasih sudah berani menulis. Kamu sangat hebat dan kami menghargai setiap ceritamu.")
         else:
-            st.error("Mohon isi Nama dan minimal pertanyaan cerita #1 dan #2.")
+            st.error("Mohon isi Nama dan pertanyaan narasi inti (#1 dan #2).")
 
 # --- LOGIKA TAMPILAN GURU ---
 elif role == "Guru (Administrator)":
@@ -153,4 +151,5 @@ elif role == "Guru (Administrator)":
         st.error("Password salah!")
 
 st.markdown("<div class='footer'>Sistem Monitoring Literasi Inklusif © 2026 Kelompok 4</div>", unsafe_allow_html=True)
+
 
