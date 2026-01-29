@@ -32,19 +32,19 @@ if role == "Siswa (Menulis)":
 
     # Pertanyaan Narasi (Kualitatif)
     st.info("📖 BAGIAN CERITA (NARASI)")
-    q1 = st.text_area("#1 Ceritakan sebuah peristiwa yang paling membekas di hatimu dan sulit untuk kamu lupakan.", placeholder="Tulis ceritamu di sini...")
-    q2 = st.text_area("#2 Bagaimana perasaanmu saat ini ketika kembali menceritakan kejadian tersebut?", placeholder="Contoh: Saya merasa sesak/sedih...")
-    q3 = st.text_area("#3 Menurutmu, apakah kejadian tersebut masih mempengaruhi caramu belajar atau berteman hari ini?", placeholder="Jelaskan sedikit alasannya...")
+    q1 = st.text_area("1 Ceritakan sebuah peristiwa yang paling membekas di hatimu dan sulit untuk kamu lupakan.", placeholder="Tulis ceritamu di sini...")
+    q2 = st.text_area("2 Bagaimana perasaanmu saat ini ketika kembali menceritakan kejadian tersebut?", placeholder="Contoh: Saya merasa sesak/sedih...")
+    q3 = st.text_area("3 Menurutmu, apakah kejadian tersebut masih mempengaruhi caramu belajar atau berteman hari ini?", placeholder="Jelaskan sedikit alasannya...")
 
     # Pertanyaan Skala (Kuantitatif) sesuai Gambar slider
     st.warning("📊 BAGIAN PERASAAN (SKALA)")
     
-    st.write("#4 Seberapa sering kamu merasa cemas atau takut secara tiba-tiba?")
+    st.write("4 Seberapa sering kamu merasa cemas atau takut secara tiba-tiba?")
     q4 = st.select_slider("Pilih Skala:", options=[1, 2, 3, 4, 5], help="1: Tidak Pernah, 5: Sangat Sering")
     st.caption("*(1: Tidak Pernah ---------- 5: Sangat Sering)*")
 
     st.markdown("---")
-    q5 = st.text_area("#5 Jika kamu bisa memberikan pesan kepada dirimu sendiri di masa lalu saat kejadian itu terjadi, apa yang ingin kamu katakan?", placeholder="Tulis pesan penyemangatmu...")
+    q5 = st.text_area("5 Jika kamu bisa memberikan pesan kepada dirimu sendiri di masa lalu saat kejadian itu terjadi, apa yang ingin kamu katakan?", placeholder="Tulis pesan penyemangatmu...")
 
     st.write("#6 Seberapa sering kamu merasa beban cerita ini sulit untuk dibagikan kepada orang lain?")
     q6 = st.select_slider("Pilih Tingkat Kesulitan:", options=[1, 2, 3, 4, 5])
@@ -155,6 +155,7 @@ elif role == "Guru (Administrator)":
                     st.rerun()
         else:
             st.info("Belum ada data masuk dari siswa.")
+
 
 
 
