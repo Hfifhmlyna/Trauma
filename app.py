@@ -36,35 +36,70 @@ with st.sidebar:
     st.markdown("---")
     st.info("Kelompok 4 - Integrasi AI Trauma-Informed")
 
-# --- LOGIKA TAMPILAN SISWA ---
+# --- LOGIKA TAMPILAN SISWA (VERSI SESUAI GAMBAR) ---
 if role == "Siswa (Menulis)":
-    st.markdown("<h1 style='color: #2E86C1;'>📝 Ruang Ekspresi Siswa</h1>", unsafe_allow_html=True)
-    st.write("Silakan tuangkan ceritamu. AI akan memberikan apresiasi untuk setiap karyamu.")
+    st.markdown("<h1 style='color: #2E86C1;'>📝 Aktivitas Menulis Narasi Inklusif</h1>", unsafe_allow_html=True)
+    st.write("Jawablah pertanyaan di bawah ini berdasarkan pengalaman dan perasaanmu.")
 
-    nama = st.text_input("Nama Lengkap:")
-    teks = st.text_area("Ceritakan perasaan atau pengalamanmu hari ini:", height=200)
-    
-    if st.button("Kirim Tulisan"):
-        if nama and teks:
-            found = [w for w in keywords_trauma if w in teks.lower()]
-            is_sensitif = len(found) >= 1
+    # Data Diri Card
+    with st.container():
+        st.markdown("### 👤 Data Diri")
+        col1, col2, col3 = st.columns(3)
+        nama = col1.text_input("Nama Lengkap / Inisial", placeholder="Contoh: Budi S.")
+        usia = col2.text_input("Usia", placeholder="Contoh: 14")
+        kelas = col3.selectbox("Kelas", ["Pilih Kelas", "7", "8", "9"])
+
+    st.markdown("---")
+
+    # PERTANYAAN #1 (Cerita)
+    st.info("CERITA")
+    q1 = st.text_area("**#1** Ceritakan pengalaman paling menyedihkan atau menakutkan yang pernah kamu alami baru-baru ini.", placeholder="Tulis jawabanmu di sini...", height=150)
+
+    # PERTANYAAN #2 (Cerita)
+    st.info("CERITA")
+    q2 = st.text_area("**#2** Bagaimana perasaanmu ketika mengingat kejadian tersebut?", placeholder="Tulis jawabanmu di sini...", height=150)
+
+    # PERTANYAAN #3 (Cerita)
+    st.info("CERITA")
+    q3 = st.text_area("**#3** Apa yang biasanya kamu lakukan ketika merasa sedih atau takut?", placeholder="Tulis jawabanmu di sini...", height=150)
+
+    st.markdown("---")
+
+    # PERTANYAAN #4 (Perasaan - Skala)
+    st.warning("PERASAAN")
+    st.write("**#4** Saya sering merasa cemas tanpa alasan yang jelas.")
+    q4 = st.radio("Skala Kecemasan:", [1, 2, 3, 4, 5], horizontal=True, key="q4", help="1: Tidak Pernah, 5: Sering")
+
+    # PERTANYAAN #5 (Cerita)
+    st.info("CERITA")
+    q5 = st.text_area("**#5** Ceritakan tentang hubunganmu dengan orang-orang di sekitarmu (keluarga/teman) akhir-akhir ini.", height=150)
+
+    # PERTANYAAN #6 (Perasaan - Skala)
+    st.warning("PERASAAN")
+    st.write("**#6** Saya merasa sulit tidur atau sering mimpi buruk.")
+    q6 = st.radio("Skala Gangguan Tidur:", [1, 2, 3, 4, 5], horizontal=True, key="q6", help="1: Tidak Pernah, 5: Sering")
+
+    if st.button("Kirim Laporan Narasi"):
+        if nama and q1 and q2:
+            # Gabungkan input teks untuk deteksi AI
+            teks_gabungan = f"{q1} {q2} {q3} {q5} (Skala Cemas: {q4}, Skala Tidur: {q6})"
+            
+            # Analisis AI sederhana (Keyword Matching)
+            found = [w for w in keywords_trauma if w in teks_gabungan.lower()]
+            # Tambahan logika: Jika skala 4 atau 5, otomatis dianggap sensitif
+            is_sensitif = len(found) >= 1 or q4 >= 4 or q6 >= 4
             label = "1 (Sensitif)" if is_sensitif else "0 (Normal)"
-            rekomendasi = "Suportif & Validatif" if is_sensitif else "Apresiasi Literasi"
-
-            st.subheader("📊 Analisis Hasil Tulisan")
-            df_siswa = pd.DataFrame({"Nama": [nama], "Status": [label], "Rekomendasi": [rekomendasi]})
-            st.table(df_siswa)
-
-            if is_sensitif:
-                st.info(f"❤️ **Pesan Suportif:** Terima kasih sudah berbagi, {nama}. Tulisanmu sangat kuat dan berani!")
-            else:
-                st.success(f"✨ **Pesan Apresiasi:** Luar biasa, {nama}! Teruslah berkarya.")
-
-            new_data = pd.DataFrame([[nama, teks, label, ", ".join(found)]], 
+            
+            # Simpan ke CSV
+            new_data = pd.DataFrame([[nama, teks_gabungan, label, ", ".join(found)]], 
                                     columns=["Nama", "Teks", "Label", "Keywords"])
             new_data.to_csv('data_tugas.csv', mode='a', index=False, header=not os.path.exists('data_tugas.csv'))
+            
+            st.success("✅ Data berhasil dikirim. Terima kasih sudah berbagi cerita dengan jujur.")
+            if is_sensitif:
+                st.info("❤️ Kamu adalah siswa yang berani. Jangan ragu untuk berbicara dengan guru jika merasa berat.")
         else:
-            st.error("Nama dan teks tidak boleh kosong.")
+            st.error("Mohon isi Nama dan minimal pertanyaan cerita #1 dan #2.")
 
 # --- LOGIKA TAMPILAN GURU ---
 elif role == "Guru (Administrator)":
@@ -118,3 +153,4 @@ elif role == "Guru (Administrator)":
         st.error("Password salah!")
 
 st.markdown("<div class='footer'>Sistem Monitoring Literasi Inklusif © 2026 Kelompok 4</div>", unsafe_allow_html=True)
+
