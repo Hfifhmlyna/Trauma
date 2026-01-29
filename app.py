@@ -98,9 +98,11 @@ elif role == "Guru (Administrator)":
             c4.metric("Trauma Rendah 🟢", counts.get("Rendah", 0))
 
             # --- OUTPUT 2: GRAFIK SEBARAN ---
+            # --- OUTPUT 2: GRAFIK SEBARAN ---
             st.markdown("---")
             st.write("**Visualisasi Sebaran Trauma:**")
             st.bar_chart(counts)
+            
 
             # --- OUTPUT 3: TABEL EVALUASI (SUDAH DIPERBAIKI TIDAK DOUBLE) ---
             st.markdown("---")
@@ -112,6 +114,7 @@ elif role == "Guru (Administrator)":
                 "Keterangan": ["Ketepatan Klasifikasi", "Keakuratan Label Sensitif", "Kemampuan Menjaring Kasus"]
             }
             st.table(pd.DataFrame(data_evaluasi))
+            
 
             with st.expander("📚 Penjelasan Teknis untuk Dosen"):
                 st.write(f"""
@@ -121,18 +124,6 @@ elif role == "Guru (Administrator)":
                 
                 - **Presisi (0.90)**: 90% siswa yang dilabeli 'Tinggi' oleh AI tervalidasi memiliki indikasi kuat.
                 - **Recall (0.82)**: Sistem mampu menjaring 82% indikasi trauma dari seluruh data.
-            
-            df_eval = pd.DataFrame(data_evaluasi)
-            
-            # Menampilkan tabel metrik
-            st.table(df_eval)
-            
-            with st.expander("💡 Penjelasan Metrik untuk Dosen"):
-                st.write("""
-                - **Accuracy**: Menunjukkan seberapa tepat sistem menebak label secara keseluruhan.
-                - **Precision**: Menunjukkan keakuratan sistem dalam mendeteksi kasus sensitif tanpa salah sasaran.
-                - **Recall**: Menunjukkan seberapa banyak kasus sensitif yang berhasil dijaring oleh sistem.
-                - **Nilai 1.0**: Menunjukkan integrasi sistem pada tahap final pengujian sudah berjalan sempurna.
                 """)
                 
             # --- OUTPUT 3: TABEL DETAIL ---
@@ -156,6 +147,7 @@ elif role == "Guru (Administrator)":
                     st.rerun()
         else:
             st.info("Belum ada data masuk dari siswa.")
+
 
 
 
