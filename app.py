@@ -125,15 +125,23 @@ elif role == "Guru (Administrator)":
             
             st.dataframe(df.style.applymap(color_level, subset=['Level_Trauma']), use_container_width=True)
 
-            # Tombol Download & Hapus
+          # --- BAGIAN DOWNLOAD DAN RESET (PERBAIKAN INDENTASI) ---
             st.markdown("---")
             col_a, col_b = st.columns(2)
+            
             with col_a:
-                st.download_button("📥 Download Laporan", df.to_csv(index=False).encode('utf-8'), "laporan_trauma.csv")
-           with col_b:
+                st.download_button(
+                    label="📥 Download Laporan",
+                    data=df.to_csv(index=False).encode('utf-8'),
+                    file_name="laporan_trauma.csv",
+                    mime="text/csv"
+                )
+                
+            with col_b:
                 if st.button("🗑️ Reset Database"):
                     if os.path.exists('data_tugas.csv'):
                         os.remove('data_tugas.csv')
+                    # Reset status login agar kembali ke halaman awal
                     st.session_state['authenticated'] = False
                     st.rerun()
         else:
