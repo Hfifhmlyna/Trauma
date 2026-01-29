@@ -114,17 +114,6 @@ elif role == "Guru (Administrator)":
                 "Keterangan": ["Ketepatan Klasifikasi", "Keakuratan Label Sensitif", "Kemampuan Menjaring Kasus"]
             }
             st.table(pd.DataFrame(data_evaluasi))
-            
-
-            with st.expander("📚 Penjelasan Teknis untuk Dosen"):
-                st.write(f"""
-                Metrik ini dihitung berdasarkan efektivitas integrasi antara:
-                1. **Algoritma Keyword Spotting**: Mencocokkan {len(keywords_trauma)} kata kunci pada narasi.
-                2. **Weighting Scale**: Pembobotan dari skala perasaan 1-5.
-                
-                - **Presisi (0.90)**: 90% siswa yang dilabeli 'Tinggi' oleh AI tervalidasi memiliki indikasi kuat.
-                - **Recall (0.82)**: Sistem mampu menjaring 82% indikasi trauma dari seluruh data.
-                """)
                 
             # --- OUTPUT 3: TABEL DETAIL ---
             st.markdown("---")
@@ -147,6 +136,7 @@ elif role == "Guru (Administrator)":
                     st.rerun()
         else:
             st.info("Belum ada data masuk dari siswa.")
+
 
 
 
