@@ -20,51 +20,61 @@ with st.sidebar:
 # --- LOGIKA TAMPILAN SISWA ---
 if role == "Siswa (Menulis)":
     st.markdown("<h1 style='color: #2E86C1;'>📝 Aktivitas Menulis Narasi Inklusif</h1>", unsafe_allow_html=True)
-    st.write("Silakan jawab pertanyaan berikut. Jawabanmu akan membantu guru memberikan dukungan yang tepat.")
+    st.write("Silakan jawab pertanyaan berikut dengan jujur. Ceritamu aman bersama kami.")
 
-    with st.container():
-        st.markdown("### 👤 Identitas")
-        c1, c2 = st.columns(2)
-        nama = c1.text_input("Nama Lengkap / Inisial")
-        kelas = c2.selectbox("Kelas", ["7", "8", "9"])
+    # Data Diri sesuai Gambar
+    st.markdown("### 👤 Data Diri")
+    c1, c2, c3 = st.columns([2, 1, 1])
+    nama = c1.text_input("Nama Lengkap / Inisial", placeholder="Contoh: Budi S.")
+    usia = c2.text_input("Usia", placeholder="14")
+    kelas_opt = c3.selectbox("Kelas", ["Pilih Kelas", "7", "8", "9"])
 
     st.markdown("---")
-    st.info("📖 CERITA (Narasi)")
-    q1 = st.text_area("1. Bagian mana dari teks hari ini yang membuatmu teringat pengalaman sulit pribadi?", height=100)
-    q2 = st.text_area("2. Bagaimana perasaanmu saat menuliskan kembali kejadian tersebut?", height=100)
-    
-    st.warning("📊 SKALA PERASAAN (1: Tidak Pernah, 5: Sangat Sering)")
-    q3 = st.select_slider("3. Seberapa sering kejadian itu mengganggu konsentrasi belajarmu?", options=[1, 2, 3, 4, 5])
-    q4 = st.select_slider("4. Seberapa sering kamu merasa harus memendam beban cerita ini sendirian?", options=[1, 2, 3, 4, 5])
 
-    if st.button("Kirim Laporan"):
-        if nama and q1 and q2:
-            # --- LOGIKA AI SCORE TRAUMA ---
-            text_combined = f"{q1} {q2}".lower()
-            keyword_count = sum(1 for w in keywords_trauma if w in text_combined)
+    # Pertanyaan Narasi (Kualitatif)
+    st.info("📖 BAGIAN CERITA (NARASI)")
+    q1 = st.text_area("#1 Ceritakan sebuah peristiwa yang paling membekas di hatimu dan sulit untuk kamu lupakan.", placeholder="Tulis ceritamu di sini...")
+    q2 = st.text_area("#2 Bagaimana perasaanmu saat ini ketika kembali menceritakan kejadian tersebut?", placeholder="Contoh: Saya merasa sesak/sedih...")
+    q3 = st.text_area("#3 Menurutmu, apakah kejadian tersebut masih mempengaruhi caramu belajar atau berteman hari ini?", placeholder="Jelaskan sedikit alasannya...")
+
+    # Pertanyaan Skala (Kuantitatif) sesuai Gambar slider
+    st.warning("📊 BAGIAN PERASAAN (SKALA)")
+    
+    st.write("#4 Seberapa sering kamu merasa cemas atau takut secara tiba-tiba?")
+    q4 = st.select_slider("Pilih Skala:", options=[1, 2, 3, 4, 5], help="1: Tidak Pernah, 5: Sangat Sering")
+    st.caption("*(1: Tidak Pernah ---------- 5: Sangat Sering)*")
+
+    st.markdown("---")
+    q5 = st.text_area("#5 Jika kamu bisa memberikan pesan kepada dirimu sendiri di masa lalu saat kejadian itu terjadi, apa yang ingin kamu katakan?", placeholder="Tulis pesan penyemangatmu...")
+
+    st.write("#6 Seberapa sering kamu merasa beban cerita ini sulit untuk dibagikan kepada orang lain?")
+    q6 = st.select_slider("Pilih Tingkat Kesulitan:", options=[1, 2, 3, 4, 5])
+    st.caption("*(1: Sangat Mudah ---------- 5: Sangat Sulit)*")
+
+    # Tombol Kirim dengan Logika AI
+    if st.button("Kirim Laporan 🚀"):
+        if nama and q1 and q2 and kelas_opt != "Pilih Kelas":
+            # --- PROSES ANALISIS AI ---
+            # Menggabungkan teks dari semua jawaban narasi
+            text_analysis = f"{q1} {q2} {q3} {q5}".lower()
+            keyword_match = sum(1 for word in keywords_trauma if word in text_analysis)
             
-            # Perhitungan Skor (0 - 100)
-            # Bobot: 60% dari skala perasaan, 40% dari keberadaan kata kunci
-            base_score = ((q3 + q4) / 10) * 60
-            keyword_bonus = min(keyword_count * 10, 40)
-            total_score = base_score + keyword_bonus
+            # Hitung Skor (Slider berkontribusi 60%, Keywords 40%)
+            slider_score = ((q4 + q6) / 10) * 60
+            keyword_bonus = min(keyword_match * 10, 40)
+            total_score = slider_score + keyword_bonus
             
-            # Penentuan Level
-            if total_score >= 70:
-                level = "Tinggi"
-            elif total_score >= 40:
-                level = "Sedang"
-            else:
-                level = "Rendah"
+            # Labeling
+            level = "Tinggi" if total_score >= 70 else "Sedang" if total_score >= 40 else "Rendah"
 
             # Simpan Data
-            new_data = pd.DataFrame([[nama, level, total_score, text_combined]], 
-                                    columns=["Nama", "Level_Trauma", "Skor", "Teks"])
-            new_data.to_csv('data_tugas.csv', mode='a', index=False, header=not os.path.exists('data_tugas.csv'))
+            new_record = pd.DataFrame([[nama, level, total_score, text_analysis]], 
+                                     columns=["Nama", "Level_Trauma", "Skor", "Teks"])
+            new_record.to_csv('data_tugas.csv', mode='a', index=False, header=not os.path.exists('data_tugas.csv'))
             
-            st.success("✅ Berhasil dikirim. Terima kasih sudah jujur berekspresi.")
+            st.success(f"✅ Terima kasih, {nama}. Laporanmu telah dianalisis secara rahasia oleh sistem.")
         else:
-            st.error("Mohon lengkapi data.")
+            st.error("⚠️ Harap isi nama dan pertanyaan narasi utama sebelum mengirim.")
 
 # --- LOGIKA TAMPILAN GURU ---
 elif role == "Guru (Administrator)":
@@ -146,6 +156,7 @@ elif role == "Guru (Administrator)":
                     st.rerun()
         else:
             st.info("Belum ada data masuk dari siswa.")
+
 
 
 
