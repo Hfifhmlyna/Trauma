@@ -132,10 +132,7 @@ elif role == "Guru (Administrator)":
                 st.download_button("📥 Download Laporan", df.to_csv(index=False).encode('utf-8'), "laporan_trauma.csv")
            with col_b:
                 if st.button("🗑️ Reset Database"):
-                    if os.path.exists('data_tugas.csv'):
-                        os.remove('data_tugas.csv')
-                    st.session_state['authenticated'] = False # Logout otomatis setelah hapus agar aman
-                    st.success("Database berhasil dibersihkan!")
+                    os.remove('data_tugas.csv')
                     st.rerun()
         else:
             st.info("Belum ada data masuk dari siswa.")
