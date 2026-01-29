@@ -69,9 +69,21 @@ if role == "Siswa (Menulis)":
 # --- LOGIKA TAMPILAN GURU ---
 elif role == "Guru (Administrator)":
     st.markdown("<h1 style='color: #117A65;'>🔐 Dashboard Analisis Trauma Siswa</h1>", unsafe_allow_html=True)
+    
+    # Input Password
     password = st.text_input("Password Admin:", type="password")
     
-    if password == "kelompok4":
+    # Tombol Enter/Masuk
+    if st.button("Buka Dashboard 🔓"):
+        if password == "kelompok4":
+            st.session_state['authenticated'] = True
+            st.success("Akses Diterima. Halo Bapak/Ibu Guru.")
+        else:
+            st.error("Password salah atau kosong!")
+            st.session_state['authenticated'] = False
+
+    # Logika menampilkan data hanya jika sudah "Enter" (Authenticated)
+    if st.session_state.get('authenticated', False):
         if os.path.exists('data_tugas.csv'):
             df = pd.read_csv('data_tugas.csv')
             
@@ -111,3 +123,4 @@ elif role == "Guru (Administrator)":
                     st.rerun()
         else:
             st.info("Belum ada data masuk dari siswa.")
+
