@@ -4,152 +4,110 @@ import os
 import csv
 
 # --- KONFIGURASI HALAMAN ---
-st.set_page_config(page_title="SMLI - Kelompok 4", page_icon="🔐", layout="wide")
+st.set_page_config(page_title="SMLI - Analisis Trauma", page_icon="🛡️", layout="wide")
 
-# --- CUSTOM CSS ---
-st.markdown("""
-    <style>
-    .main { background-color: #f8f9fa; }
-    .stButton>button {
-        width: 100%;
-        border-radius: 20px;
-        height: 3em;
-        background-color: #4A90E2;
-        color: white;
-        font-weight: bold;
-        border: none;
-        transition: 0.3s;
-    }
-    .stButton>button:hover { background-color: #357ABD; border: none; color: white; }
-    .footer { text-align: center; color: gray; padding: 20px; }
-    </style>
-    """, unsafe_allow_html=True)
-
-# --- DATABASE KATA KUNCI ---
-keywords_trauma = ["lelah", "semuanya", "sakit", "takut", "sendiri", "hancur", "gelap", "sesak", "menangis"]
+# --- DATABASE KATA KUNCI TRAUMA ---
+keywords_trauma = ["lelah", "semuanya", "sakit", "takut", "sendiri", "hancur", "gelap", "sesak", "menangis", "teriak", "benci", "trauma"]
 
 # --- SIDEBAR NAVIGASI ---
 with st.sidebar:
     st.title("🛡️ Sistem SMLI")
+    st.markdown("Integrasi AI–Trauma Detection")
     st.markdown("---")
     role = st.selectbox("Masuk Sebagai:", ["Siswa (Menulis)", "Guru (Administrator)"])
-    st.markdown("---")
-    st.info("Kelompok 4 - Integrasi AI Trauma-Informed")
+    st.info("Kelompok 4 - Pembelajaran Bahasa Indonesia SMP")
 
-# --- LOGIKA TAMPILAN SISWA (SESUAI JUDUL PENELITIAN) ---
+# --- LOGIKA TAMPILAN SISWA ---
 if role == "Siswa (Menulis)":
     st.markdown("<h1 style='color: #2E86C1;'>📝 Aktivitas Menulis Narasi Inklusif</h1>", unsafe_allow_html=True)
-    st.write("Silakan tuangkan pikiranmu. Sistem AI kami akan memberikan feedback suportif berdasarkan narasimu.")
+    st.write("Silakan jawab pertanyaan berikut. Jawabanmu akan membantu guru memberikan dukungan yang tepat.")
 
-    # Data Diri Siswa
     with st.container():
-        st.markdown("### 👤 Identitas Siswa")
-        col1, col2, col3 = st.columns(3)
-        nama = col1.text_input("Nama/Inisial", placeholder="Contoh: Budi S.")
-        usia = col2.text_input("Usia", placeholder="Contoh: 14")
-        kelas = col3.selectbox("Kelas", ["Pilih Kelas", "7", "8", "9"])
+        st.markdown("### 👤 Identitas")
+        c1, c2 = st.columns(2)
+        nama = c1.text_input("Nama Lengkap / Inisial")
+        kelas = c2.selectbox("Kelas", ["7", "8", "9"])
 
     st.markdown("---")
-
-    # Bagian Pertanyaan Berbasis Aktivitas Literasi
-    st.info("📖 AKTIVITAS MEMBACA & MENULIS")
+    st.info("📖 CERITA (Narasi)")
+    q1 = st.text_area("1. Bagian mana dari teks hari ini yang membuatmu teringat pengalaman sulit pribadi?", height=100)
+    q2 = st.text_area("2. Bagaimana perasaanmu saat menuliskan kembali kejadian tersebut?", height=100)
     
-    q1 = st.text_area("**#1** Setelah membaca teks hari ini, bagian mana yang membuatmu teringat pengalaman sulit pribadi?", height=150)
-    
-    q2 = st.text_area("**#2** Bagaimana perasaanmu saat menuliskan kembali kejadian tersebut? (Misal: Sesak, takut, atau sedih)", height=150)
+    st.warning("📊 SKALA PERASAAN (1: Tidak Pernah, 5: Sangat Sering)")
+    q3 = st.select_slider("3. Seberapa sering kejadian itu mengganggu konsentrasi belajarmu?", options=[1, 2, 3, 4, 5])
+    q4 = st.select_slider("4. Seberapa sering kamu merasa harus memendam beban cerita ini sendirian?", options=[1, 2, 3, 4, 5])
 
-    q3 = st.text_area("**#3** Apa yang kamu lakukan agar tetap tenang saat ingatan itu muncul di kelas?", height=150)
-
-    st.markdown("---")
-
-    # Bagian Skala Emosional (Kuantitatif)
-    st.warning("📊 SKALA PERASAAN")
-    
-    st.write("**#4** Seberapa sering ingatan sulit tersebut mengganggu konsentrasi belajarmu?")
-    q4 = st.radio("Skala Gangguan Belajar:", [1, 2, 3, 4, 5], horizontal=True, help="1: Tidak Pernah, 5: Sangat Sering")
-
-    st.info("📖 HARAPAN LITERASI")
-    q5 = st.text_area("**#5** Dukungan apa yang kamu harapkan dari Guru melalui tulisan narasi ini?", height=150)
-
-    st.warning("📊 SKALA SOSIAL")
-    st.write("**#6** Seberapa sering kamu merasa harus memendam beban cerita ini sendirian?")
-    q6 = st.radio("Skala Memendam Cerita:", [1, 2, 3, 4, 5], horizontal=True, help="1: Tidak Pernah, 5: Sangat Sering")
-
-    # Tombol Kirim & Logika AI
-    if st.button("Kirim Narasi"):
+    if st.button("Kirim Laporan"):
         if nama and q1 and q2:
-            # Gabungkan teks dan angka skala untuk deteksi AI
-            teks_lengkap = f"{q1} {q2} {q3} {q5} [Skala Gangguan: {q4}, Skala Sendiri: {q6}]"
+            # --- LOGIKA AI SCORE TRAUMA ---
+            text_combined = f"{q1} {q2}".lower()
+            keyword_count = sum(1 for w in keywords_trauma if w in text_combined)
             
-            # Deteksi AI: Gabungan Kata Kunci + Ambang Batas Skala
-            found = [w for w in keywords_trauma if w in teks_lengkap.lower()]
-            # Sistem AI menganggap sensitif jika ada kata trauma ATAU skala perasaan di atas 3
-            is_sensitif = len(found) >= 1 or q4 > 3 or q6 > 3
+            # Perhitungan Skor (0 - 100)
+            # Bobot: 60% dari skala perasaan, 40% dari keberadaan kata kunci
+            base_score = ((q3 + q4) / 10) * 60
+            keyword_bonus = min(keyword_count * 10, 40)
+            total_score = base_score + keyword_bonus
             
-            label = "1 (Sensitif)" if is_sensitif else "0 (Normal)"
-            
-            # Simpan ke CSV
-            new_data = pd.DataFrame([[nama, teks_lengkap, label, ", ".join(found)]], 
-                                    columns=["Nama", "Teks", "Label", "Keywords"])
+            # Penentuan Level
+            if total_score >= 70:
+                level = "Tinggi"
+            elif total_score >= 40:
+                level = "Sedang"
+            else:
+                level = "Rendah"
+
+            # Simpan Data
+            new_data = pd.DataFrame([[nama, level, total_score, text_combined]], 
+                                    columns=["Nama", "Level_Trauma", "Skor", "Teks"])
             new_data.to_csv('data_tugas.csv', mode='a', index=False, header=not os.path.exists('data_tugas.csv'))
             
-            st.success("✅ Narasi berhasil terkirim.")
-            if is_sensitif:
-                st.info("❤️ **Feedback Suportif:** Terima kasih sudah berani menulis. Kamu sangat hebat dan kami menghargai setiap ceritamu.")
+            st.success("✅ Berhasil dikirim. Terima kasih sudah jujur berekspresi.")
         else:
-            st.error("Mohon isi Nama dan pertanyaan narasi inti (#1 dan #2).")
+            st.error("Mohon lengkapi data.")
 
 # --- LOGIKA TAMPILAN GURU ---
 elif role == "Guru (Administrator)":
-    st.markdown("<h1 style='color: #117A65;'>🔐 Dashboard Monitoring Guru</h1>", unsafe_allow_html=True)
-    password = st.text_input("Masukkan Password Admin:", type="password")
+    st.markdown("<h1 style='color: #117A65;'>🔐 Dashboard Analisis Trauma Siswa</h1>", unsafe_allow_html=True)
+    password = st.text_input("Password Admin:", type="password")
     
     if password == "kelompok4":
-        st.success("Akses Diterima. Halo Bapak/Ibu Guru.")
-        
         if os.path.exists('data_tugas.csv'):
-            df_master = pd.read_csv('data_tugas.csv')
-            total_data = len(df_master)
-            jml_sensitif = len(df_master[df_master['Label'] == "1 (Sensitif)"])
-            jml_normal = len(df_master[df_master['Label'] == "0 (Normal)"])
+            df = pd.read_csv('data_tugas.csv')
+            
+            # --- OUTPUT 1: RINGKASAN JUMLAH ---
+            st.subheader("📊 Rekapitulasi Tingkat Trauma")
+            counts = df['Level_Trauma'].value_counts()
+            
+            c1, c2, c3, c4 = st.columns(4)
+            c1.metric("Total Siswa", len(df))
+            c2.metric("Trauma Tinggi 🔴", counts.get("Tinggi", 0))
+            c3.metric("Trauma Sedang 🟡", counts.get("Sedang", 0))
+            c4.metric("Trauma Rendah 🟢", counts.get("Rendah", 0))
 
-            c1, c2, c3 = st.columns(3)
-            c1.metric("Total Tugas", f"{total_data} Siswa")
-            c2.metric("Sensitif", f"{jml_sensitif}")
-            c3.metric("Normal", f"{jml_normal}")
-
+            # --- OUTPUT 2: GRAFIK SEBARAN ---
             st.markdown("---")
-            st.write("**Daftar Tulisan Siswa:**")
-            st.dataframe(df_master, use_container_width=True)
+            st.write("**Visualisasi Sebaran Trauma:**")
+            st.bar_chart(counts)
 
-            if total_data > 0:
-                st.subheader("📈 Analisis Sebaran Data Real-Time")
-                persen_sensitif = (jml_sensitif / total_data) * 100
-                persen_normal = (jml_normal / total_data) * 100
+            # --- OUTPUT 3: TABEL DETAIL ---
+            st.markdown("---")
+            st.write("**Data Detail Hasil Analisis AI:**")
+            # Mewarnai tabel agar guru mudah melihat yang 'Tinggi'
+            def color_level(val):
+                color = 'red' if val == 'Tinggi' else 'orange' if val == 'Sedang' else 'green'
+                return f'color: {color}; font-weight: bold'
+            
+            st.dataframe(df.style.applymap(color_level, subset=['Level_Trauma']), use_container_width=True)
 
-                rekap_data = {
-                    "Kategori Klasifikasi": ["1 (Sensitif)", "0 (Normal)", "TOTAL"],
-                    "Jumlah Data": [jml_sensitif, jml_normal, total_data],
-                    "Persentase": [f"{persen_sensitif:.1f}%", f"{persen_normal:.1f}%", "100%"]
-                }
-                st.table(pd.DataFrame(rekap_data))
-
-                st.markdown("---")
-                col_btn1, col_btn2 = st.columns(2)
-                with col_btn1:
-                    csv_data = df_master.to_csv(index=False).encode('utf-8')
-                    st.download_button("📥 Download CSV", csv_data, "laporan_smli.csv", "text/csv")
-                with col_btn2:
-                    if st.button("🗑️ Hapus Semua Data"):
-                        with open('data_tugas.csv', mode='w', newline='', encoding='utf-8') as f:
-                            writer = csv.writer(f)
-                            writer.writerow(["Nama", "Teks", "Label", "Keywords"])
-                        st.rerun()
+            # Tombol Download & Hapus
+            st.markdown("---")
+            col_a, col_b = st.columns(2)
+            with col_a:
+                st.download_button("📥 Download Laporan", df.to_csv(index=False).encode('utf-8'), "laporan_trauma.csv")
+            with col_b:
+                if st.button("🗑️ Reset Database"):
+                    os.remove('data_tugas.csv')
+                    st.rerun()
         else:
-            st.info("Belum ada data masuk.")
-    elif password != "":
-        st.error("Password salah!")
-
-st.markdown("<div class='footer'>Sistem Monitoring Literasi Inklusif © 2026 Kelompok 4</div>", unsafe_allow_html=True)
-
-
+            st.info("Belum ada data masuk dari siswa.")
