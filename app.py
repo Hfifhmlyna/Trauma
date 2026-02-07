@@ -31,8 +31,7 @@ if role == "Siswa (Menulis)":
     st.markdown("---")
 
     # Pertanyaan Narasi (Kualitatif)
-  st.info("📖 BAGIAN CERITA (NARASI)")
-    q1 = st.text_area("1. Ceritakan sebuah peristiwa yang paling membekas di hatimu dan sulit untuk kamu lupakan.", placeholder="Tulis ceritamu di sini...")
+     q1 = st.text_area("1. Ceritakan sebuah peristiwa yang paling membekas di hatimu dan sulit untuk kamu lupakan.", placeholder="Tulis ceritamu di sini...")
     q2 = st.text_area("2. Bagaimana perasaanmu saat ini ketika kembali menceritakan kejadian tersebut?", placeholder="Contoh: Saya merasa sesak/sedih...")
     q3 = st.text_area("3. Menurutmu, apakah kejadian tersebut masih mempengaruhi caramu belajar atau berteman hari ini?", placeholder="Jelaskan sedikit alasannya...")
 
@@ -49,7 +48,6 @@ if role == "Siswa (Menulis)":
     st.write("6. Seberapa sering kamu merasa beban cerita ini sulit untuk dibagikan kepada orang lain?")
     q6 = st.select_slider("Pilih Tingkat Kesulitan:", options=[1, 2, 3, 4, 5], key="skala_6")
     st.caption("*(1: Sangat Mudah ---------- 5: Sangat Sulit)*")
-
     # Tombol Kirim dengan Logika AI
     if st.button("Kirim Laporan 🚀"):
         if nama and q1 and q2 and kelas_opt != "Pilih Kelas":
@@ -155,6 +153,7 @@ elif role == "Guru (Administrator)":
                     st.rerun()
         else:
             st.info("Belum ada data masuk dari siswa.")
+
 
 
 
