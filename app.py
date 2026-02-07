@@ -34,7 +34,7 @@ if role == "Siswa (Menulis)":
     st.info("🛡️ **Trauma Narrative Assessment**")
     st.write("Silakan pilih angka yang paling menggambarkan kondisi Anda (1: Tidak Pernah, 5: Sangat Sering)")
 
-    # --- 2. 10 PERTANYAAN SKALA (p1 sampai p10) ---
+    # --- 10 PERTANYAAN SKALA ---
     col1, col2 = st.columns(2)
     with col1:
         p1 = st.select_slider("1. Munculnya potongan ingatan buruk tiba-tiba.", options=[1, 2, 3, 4, 5], key="t1")
@@ -50,42 +50,28 @@ if role == "Siswa (Menulis)":
         p9 = st.select_slider("9. Mudah marah atau sulit tidur.", options=[1, 2, 3, 4, 5], key="t9")
         p10 = st.select_slider("10. Merasa asing dengan diri sendiri.", options=[1, 2, 3, 4, 5], key="t10")
 
-    # --- 3. LOGIKA ANALISIS (BARIS 98+) ---
-    if st.button("Analisis Laporan 🚀"):
-        # Pastikan nama variabel di sini SAMA dengan yang di atas
+    # --- TOMBOL KIRIM ---
+    if st.button("Kirim 🚀", key="btn_kirim_siswa"):
         if nama and kelas_opt != "Pilih Kelas":
+            # Perhitungan AI di latar belakang
             total_skor = p1+p2+p3+p4+p5+p6+p7+p8+p9+p10
             
-            # Tentukan Hasil
             if total_skor >= 38:
-                hasil = "Indikasi Trauma Tinggi"
-                label_warna = "error"
+                hasil = "Tinggi"
             elif total_skor >= 22:
-                hasil = "Indikasi Trauma Sedang"
-                label_warna = "warning"
+                hasil = "Sedang"
             else:
-                hasil = "Indikasi Trauma Rendah"
-                label_warna = "success"
+                hasil = "Rendah"
 
             # Simpan Data
-            new_data = pd.DataFrame([[nama, hasil, total_skor, "Analisis 10 Dimensi Trauma"]], 
+            new_data = pd.DataFrame([[nama, hasil, total_skor, "Data Analisis 10 Dimensi"]], 
                                     columns=["Nama", "Level_Trauma", "Skor", "Teks"])
+            new_data.to_csv('data_tugas.csv', mode='a', index=False, header=False)
             
-            # Simpan ke CSV
-            path_file = 'data_tugas.csv'
-            new_data.to_csv(path_file, mode='a', index=False, header=not os.path.exists(path_file))
-            
-            # Tampilkan Hasil
-            st.markdown("---")
-            if label_warna == "success":
-                st.success(f"Hasil {nama}: **{hasil}** (Skor: {total_skor})")
-            elif label_warna == "warning":
-                st.warning(f"Hasil {nama}: **{hasil}** (Skor: {total_skor})")
-            else:
-                st.error(f"Hasil {nama}: **{hasil}** (Skor: {total_skor})")
+            st.balloons()
+            st.success(f"✅ Terima kasih {nama}, data kamu sudah terkirim ke Guru.")
         else:
-            st.error("⚠️ Mohon isi Nama dan Kelas terlebih dahulu!")
-            
+            st.error("⚠️ Harap isi Nama dan pilih Kelas terlebih dahulu.")
     # --- LOGIKA PENENTUAN OUTPUT AI (SKOR MAKSIMAL 50) ---
     if st.button("Analisis Laporan 🚀"):
         if nama_mhs and kelas_mhs != "Pilih Kelas":
@@ -121,31 +107,6 @@ if role == "Siswa (Menulis)":
         else:
             st.error("⚠️ Isi identitas terlebih dahulu!")
     
-    # Tombol Kirim dengan Logika AI
-    if st.button("Kirim Laporan 🚀"):
-        if nama and q1 and q2 and kelas_opt != "Pilih Kelas":
-            # --- PROSES ANALISIS AI ---
-            # Menggabungkan teks dari semua jawaban narasi
-            text_analysis = f"{q1} {q2} {q3} {q5}".lower()
-            keyword_match = sum(1 for word in keywords_trauma if word in text_analysis)
-            
-            # Hitung Skor (Slider berkontribusi 60%, Keywords 40%)
-            slider_score = ((q4 + q6) / 10) * 60
-            keyword_bonus = min(keyword_match * 10, 40)
-            total_score = slider_score + keyword_bonus
-            
-            # Labeling
-            level = "Tinggi" if total_score >= 70 else "Sedang" if total_score >= 40 else "Rendah"
-
-            # Simpan Data
-            new_record = pd.DataFrame([[nama, level, total_score, text_analysis]], 
-                                     columns=["Nama", "Level_Trauma", "Skor", "Teks"])
-            new_record.to_csv('data_tugas.csv', mode='a', index=False, header=not os.path.exists('data_tugas.csv'))
-            
-            st.success(f"✅ Terima kasih, {nama}. Laporanmu telah dianalisis secara rahasia oleh sistem.")
-        else:
-            st.error("⚠️ Harap isi nama dan pertanyaan narasi utama sebelum mengirim.")
-
 # --- LOGIKA TAMPILAN GURU ---
 elif role == "Guru (Administrator)":
     st.markdown("<h1 style='color: #117A65;'>🔐 Dashboard Analisis Trauma Siswa</h1>", unsafe_allow_html=True)
@@ -226,6 +187,7 @@ elif role == "Guru (Administrator)":
                     st.rerun()
         else:
             st.info("Belum ada data masuk dari siswa.")
+
 
 
 
