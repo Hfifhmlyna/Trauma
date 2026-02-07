@@ -21,43 +21,71 @@ with st.sidebar:
 if role == "Siswa (Menulis)":
     st.markdown("<h1 style='color: #2E86C1;'>📝 Aktivitas Literasi Narasi</h1>", unsafe_allow_html=True)
 
-    # --- 1. DEFINISIKAN DATA DIRI (WAJIB DI ATAS) ---
-    st.markdown("### 👤 Identitas Penulis (Siswa)")
+    # --- 1. DATA DIRI (Pastikan nama variabel ini konsisten) ---
+    st.markdown("### 👤 Identitas Penulis")
     c1, c2, c3 = st.columns([2, 1, 1])
     
-    # Variabel nama_mhs dibuat di sini
-    nama_mhs = c1.text_input("Nama Lengkap / Inisial", key="input_nama") 
-    usia_mhs = c2.text_input("Usia", key="input_usia")
-    kelas_mhs = c3.selectbox("Kelas", ["Pilih Kelas", "7", "8", "9"], key="select_kelas")
+    # Kita gunakan variabel 'nama' agar sesuai dengan baris 98 milikmu
+    nama = c1.text_input("Nama Lengkap / Inisial", key="input_nama") 
+    usia = c2.text_input("Usia", key="input_usia")
+    kelas_opt = c3.selectbox("Kelas", ["Pilih Kelas", "7", "8", "9"], key="select_kelas")
 
-    # Pertanyaan Narasi (Kualitatif)
-    # --- PERTANYAAN DETEKSI TRAUMA (10 POIN) ---
+    st.markdown("---")
+    st.info("🛡️ **Trauma Narrative Assessment**")
+    st.write("Silakan pilih angka yang paling menggambarkan kondisi Anda (1: Tidak Pernah, 5: Sangat Sering)")
+
+    # --- 2. 10 PERTANYAAN SKALA (p1 sampai p10) ---
     col1, col2 = st.columns(2)
-
     with col1:
-        st.write("**Aspek Intrusi (Ingatan):**")
-        p1 = st.select_slider("1. Munculnya potongan ingatan buruk secara tiba-tiba.", options=[1, 2, 3, 4, 5], key="tn1")
-        p2 = st.select_slider("2. Mengalami mimpi buruk yang berkaitan dengan kejadian lampau.", options=[1, 2, 3, 4, 5], key="tn2")
-        
-        st.write("**Aspek Penghindaran:**")
-        p3 = st.select_slider("3. Berusaha keras tidak memikirkan atau membicarakan kejadian tersebut.", options=[1, 2, 3, 4, 5], key="tn3")
-        p4 = st.select_slider("4. Menghindari tempat atau orang yang mengingatkan pada kejadian itu.", options=[1, 2, 3, 4, 5], key="tn4")
-        
-        st.write("**Aspek Kognitif:**")
-        p5 = st.select_slider("5. Sulit mengingat bagian penting dari peristiwa buruk yang dialami.", options=[1, 2, 3, 4, 5], key="tn5")
+        p1 = st.select_slider("1. Munculnya potongan ingatan buruk tiba-tiba.", options=[1, 2, 3, 4, 5], key="t1")
+        p2 = st.select_slider("2. Mengalami mimpi buruk kejadian lampau.", options=[1, 2, 3, 4, 5], key="t2")
+        p3 = st.select_slider("3. Menghindari pembicaraan tentang kejadian itu.", options=[1, 2, 3, 4, 5], key="t3")
+        p4 = st.select_slider("4. Menghindari tempat yang mengingatkan kejadian itu.", options=[1, 2, 3, 4, 5], key="t4")
+        p5 = st.select_slider("5. Sulit mengingat bagian penting kejadian buruk.", options=[1, 2, 3, 4, 5], key="t5")
 
     with col2:
-        st.write("**Aspek Perasaan Negatif:**")
-        p6 = st.select_slider("6. Merasa bahwa dunia ini sepenuhnya tidak aman.", options=[1, 2, 3, 4, 5], key="tn6")
-        p7 = st.select_slider("7. Menyalahkan diri sendiri atas apa yang telah terjadi.", options=[1, 2, 3, 4, 5], key="tn7")
-        
-        st.write("**Aspek Reaktivitas:**")
-        p8 = st.select_slider("8. Merasa sangat waspada, seolah bahaya mengintai kapan saja.", options=[1, 2, 3, 4, 5], key="tn8")
-        p9 = st.select_slider("9. Menjadi mudah marah, tersinggung, atau sulit tidur.", options=[1, 2, 3, 4, 5], key="tn9")
-        
-        st.write("**Aspek Disosiasi:**")
-        p10 = st.select_slider("10. Merasa asing dengan diri sendiri atau lingkungan sekitar.", options=[1, 2, 3, 4, 5], key="tn10")
-        
+        p6 = st.select_slider("6. Merasa dunia sepenuhnya tidak aman.", options=[1, 2, 3, 4, 5], key="t6")
+        p7 = st.select_slider("7. Sering menyalahkan diri sendiri.", options=[1, 2, 3, 4, 5], key="t7")
+        p8 = st.select_slider("8. Merasa sangat waspada/siaga terus-menerus.", options=[1, 2, 3, 4, 5], key="t8")
+        p9 = st.select_slider("9. Mudah marah atau sulit tidur.", options=[1, 2, 3, 4, 5], key="t9")
+        p10 = st.select_slider("10. Merasa asing dengan diri sendiri.", options=[1, 2, 3, 4, 5], key="t10")
+
+    # --- 3. LOGIKA ANALISIS (BARIS 98+) ---
+    if st.button("Analisis Laporan 🚀"):
+        # Pastikan nama variabel di sini SAMA dengan yang di atas
+        if nama and kelas_opt != "Pilih Kelas":
+            total_skor = p1+p2+p3+p4+p5+p6+p7+p8+p9+p10
+            
+            # Tentukan Hasil
+            if total_skor >= 38:
+                hasil = "Indikasi Trauma Tinggi"
+                label_warna = "error"
+            elif total_skor >= 22:
+                hasil = "Indikasi Trauma Sedang"
+                label_warna = "warning"
+            else:
+                hasil = "Indikasi Trauma Rendah"
+                label_warna = "success"
+
+            # Simpan Data
+            new_data = pd.DataFrame([[nama, hasil, total_skor, "Analisis 10 Dimensi Trauma"]], 
+                                    columns=["Nama", "Level_Trauma", "Skor", "Teks"])
+            
+            # Simpan ke CSV
+            path_file = 'data_tugas.csv'
+            new_data.to_csv(path_file, mode='a', index=False, header=not os.path.exists(path_file))
+            
+            # Tampilkan Hasil
+            st.markdown("---")
+            if label_warna == "success":
+                st.success(f"Hasil {nama}: **{hasil}** (Skor: {total_skor})")
+            elif label_warna == "warning":
+                st.warning(f"Hasil {nama}: **{hasil}** (Skor: {total_skor})")
+            else:
+                st.error(f"Hasil {nama}: **{hasil}** (Skor: {total_skor})")
+        else:
+            st.error("⚠️ Mohon isi Nama dan Kelas terlebih dahulu!")
+            
     # --- LOGIKA PENENTUAN OUTPUT AI (SKOR MAKSIMAL 50) ---
     if st.button("Analisis Laporan 🚀"):
         if nama_mhs and kelas_mhs != "Pilih Kelas":
@@ -198,6 +226,7 @@ elif role == "Guru (Administrator)":
                     st.rerun()
         else:
             st.info("Belum ada data masuk dari siswa.")
+
 
 
 
