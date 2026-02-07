@@ -31,23 +31,49 @@ if role == "Siswa (Menulis)":
     st.markdown("---")
 
     # Pertanyaan Narasi (Kualitatif)
-    q1 = st.text_area("1. Ceritakan sebuah peristiwa yang paling membekas di hatimu dan sulit untuk kamu lupakan.", placeholder="Tulis ceritamu di sini...")
-    q2 = st.text_area("2. Bagaimana perasaanmu saat ini ketika kembali menceritakan kejadian tersebut?", placeholder="Contoh: Saya merasa sesak/sedih...")
-    q3 = st.text_area("3. Menurutmu, apakah kejadian tersebut masih mempengaruhi caramu belajar atau berteman hari ini?", placeholder="Jelaskan sedikit alasannya...")
+    # --- PERTANYAAN DETEKSI TRAUMA (10 POIN) ---
+    col1, col2 = st.columns(2)
 
-    # --- BAGIAN PERASAAN (SKALA) ---
-    st.warning("📊 BAGIAN PERASAAN (SKALA)")
+    with col1:
+        st.write("**Aspek Intrusi (Ingatan):**")
+        p1 = st.select_slider("1. Munculnya potongan ingatan buruk secara tiba-tiba.", options=[1, 2, 3, 4, 5], key="tn1")
+        p2 = st.select_slider("2. Mengalami mimpi buruk yang berkaitan dengan kejadian lampau.", options=[1, 2, 3, 4, 5], key="tn2")
+        
+        st.write("**Aspek Penghindaran:**")
+        p3 = st.select_slider("3. Berusaha keras tidak memikirkan atau membicarakan kejadian tersebut.", options=[1, 2, 3, 4, 5], key="tn3")
+        p4 = st.select_slider("4. Menghindari tempat atau orang yang mengingatkan pada kejadian itu.", options=[1, 2, 3, 4, 5], key="tn4")
+        
+        st.write("**Aspek Kognitif:**")
+        p5 = st.select_slider("5. Sulit mengingat bagian penting dari peristiwa buruk yang dialami.", options=[1, 2, 3, 4, 5], key="tn5")
+
+    with col2:
+        st.write("**Aspek Perasaan Negatif:**")
+        p6 = st.select_slider("6. Merasa bahwa dunia ini sepenuhnya tidak aman.", options=[1, 2, 3, 4, 5], key="tn6")
+        p7 = st.select_slider("7. Menyalahkan diri sendiri atas apa yang telah terjadi.", options=[1, 2, 3, 4, 5], key="tn7")
+        
+        st.write("**Aspek Reaktivitas:**")
+        p8 = st.select_slider("8. Merasa sangat waspada, seolah bahaya mengintai kapan saja.", options=[1, 2, 3, 4, 5], key="tn8")
+        p9 = st.select_slider("9. Menjadi mudah marah, tersinggung, atau sulit tidur.", options=[1, 2, 3, 4, 5], key="tn9")
+        
+        st.write("**Aspek Disosiasi:**")
+        p10 = st.select_slider("10. Merasa asing dengan diri sendiri atau lingkungan sekitar.", options=[1, 2, 3, 4, 5], key="tn10")
+
+    # --- LOGIKA PENENTUAN OUTPUT AI (SKOR MAKSIMAL 50) ---
+    if st.button("Analisis Laporan 🚀"):
+        if nama_mhs and kelas_mhs != "Pilih Kelas":
+            total_skor = p1+p2+p3+p4+p5+p6+p7+p8+p9+p10
+            
+            # Kategorisasi (Rentang 10-50)
+            if total_skor >= 38:
+                hasil = "Indikasi Trauma Tinggi"
+                label_warna = "error"
+            elif total_skor >= 22:
+                hasil = "Indikasi Trauma Sedang"
+                label_warna = "warning"
+            else:
+                hasil = "Indikasi Trauma Rendah"
+                label_warna = "success"
     
-    st.write("4. Seberapa sering kamu merasa cemas atau takut secara tiba-tiba?")
-    q4 = st.select_slider("Pilih Skala Cemas:", options=[1, 2, 3, 4, 5], key="skala_4")
-    st.caption("*(1: Tidak Pernah ---------- 5: Sangat Sering)*")
-
-    st.markdown("---")
-    q5 = st.text_area("5. Jika kamu bisa memberikan pesan kepada dirimu sendiri di masa lalu saat kejadian itu terjadi, apa yang ingin kamu katakan?", placeholder="Tulis pesan penyemangatmu...")
-
-    st.write("6. Seberapa sering kamu merasa beban cerita ini sulit untuk dibagikan kepada orang lain?")
-    q6 = st.select_slider("Pilih Tingkat Kesulitan:", options=[1, 2, 3, 4, 5], key="skala_6")
-    st.caption("*(1: Sangat Mudah ---------- 5: Sangat Sulit)*")
     # Tombol Kirim dengan Logika AI
     if st.button("Kirim Laporan 🚀"):
         if nama and q1 and q2 and kelas_opt != "Pilih Kelas":
@@ -153,6 +179,7 @@ elif role == "Guru (Administrator)":
                     st.rerun()
         else:
             st.info("Belum ada data masuk dari siswa.")
+
 
 
 
