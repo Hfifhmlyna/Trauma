@@ -19,16 +19,16 @@ with st.sidebar:
 
 # --- LOGIKA TAMPILAN SISWA ---
 if role == "Siswa (Menulis)":
-    st.markdown("<h1 style='color: #2E86C1;'>📝 Aktivitas Menulis Narasi Inklusif</h1>", unsafe_allow_html=True)
-    st.write("Silakan jawab pertanyaan berikut dengan jujur. Ceritamu aman bersama kami.")
+    st.markdown("<h1 style='color: #2E86C1;'>📝 Aktivitas Literasi Narasi</h1>", unsafe_allow_html=True)
 
-    # Data Diri sesuai Gambar
-    st.markdown("### 👤 Data Diri")
+    # --- 1. DEFINISIKAN DATA DIRI (WAJIB DI ATAS) ---
+    st.markdown("### 👤 Identitas Penulis (Siswa)")
     c1, c2, c3 = st.columns([2, 1, 1])
-    nama = c1.text_input("Nama Lengkap / Inisial", placeholder="Contoh: Budi S.")
-    kelas_opt = c3.selectbox("Kelas", ["Pilih Kelas", "7", "8", "9"])
-
-    st.markdown("---")
+    
+    # Variabel nama_mhs dibuat di sini
+    nama_mhs = c1.text_input("Nama Lengkap / Inisial", key="input_nama") 
+    usia_mhs = c2.text_input("Usia", key="input_usia")
+    kelas_mhs = c3.selectbox("Kelas", ["Pilih Kelas", "7", "8", "9"], key="select_kelas")
 
     # Pertanyaan Narasi (Kualitatif)
     # --- PERTANYAAN DETEKSI TRAUMA (10 POIN) ---
@@ -198,6 +198,7 @@ elif role == "Guru (Administrator)":
                     st.rerun()
         else:
             st.info("Belum ada data masuk dari siswa.")
+
 
 
 
