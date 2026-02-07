@@ -60,8 +60,8 @@ if role == "Siswa (Menulis)":
         
     # Simpan Data
     new_data = pd.DataFrame([[nama_mhs, hasil, total_skor, "Analisis 10 Dimensi Trauma"]], 
-                                    columns=["Nama", "Level_Trauma", "Skor", "Teks"])
-            new_data.to_csv('data_tugas.csv', mode='a', index=False, header=not os.path.exists('data_tugas.csv'))
+                            columns=["Nama", "Level_Trauma", "Skor", "Teks"])
+    new_data.to_csv('data_tugas.csv', mode='a', index=False, header=not os.path.exists('data_tugas.csv'))
             
             st.markdown("---")
             if label_warna == "success":
@@ -193,6 +193,7 @@ elif role == "Guru (Administrator)":
                     st.rerun()
         else:
             st.info("Belum ada data masuk dari siswa.")
+
 
 
 
