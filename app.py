@@ -74,7 +74,7 @@ if role == "Siswa (Menulis)":
             st.error("⚠️ Harap isi Nama dan pilih Kelas terlebih dahulu.")
     # --- LOGIKA PENENTUAN OUTPUT AI (SKOR MAKSIMAL 50) ---
     if st.button("Analisis Laporan 🚀"):
-        if nama_mhs and kelas_mhs != "Pilih Kelas":
+        if nama and kelas != "Pilih Kelas":
             # 1. Hitung Total Skor
             total_skor = p1+p2+p3+p4+p5+p6+p7+p8+p9+p10
             
@@ -187,6 +187,7 @@ elif role == "Guru (Administrator)":
                     st.rerun()
         else:
             st.info("Belum ada data masuk dari siswa.")
+
 
 
 
