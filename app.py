@@ -31,7 +31,7 @@ if role == "Siswa (Menulis)":
     st.markdown("---")
 
     # Pertanyaan Narasi (Kualitatif)
-     q1 = st.text_area("1. Ceritakan sebuah peristiwa yang paling membekas di hatimu dan sulit untuk kamu lupakan.", placeholder="Tulis ceritamu di sini...")
+    q1 = st.text_area("1. Ceritakan sebuah peristiwa yang paling membekas di hatimu dan sulit untuk kamu lupakan.", placeholder="Tulis ceritamu di sini...")
     q2 = st.text_area("2. Bagaimana perasaanmu saat ini ketika kembali menceritakan kejadian tersebut?", placeholder="Contoh: Saya merasa sesak/sedih...")
     q3 = st.text_area("3. Menurutmu, apakah kejadian tersebut masih mempengaruhi caramu belajar atau berteman hari ini?", placeholder="Jelaskan sedikit alasannya...")
 
@@ -153,6 +153,7 @@ elif role == "Guru (Administrator)":
                     st.rerun()
         else:
             st.info("Belum ada data masuk dari siswa.")
+
 
 
 
