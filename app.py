@@ -57,7 +57,21 @@ if role == "Siswa (Menulis)":
         
         st.write("**Aspek Disosiasi:**")
         p10 = st.select_slider("10. Merasa asing dengan diri sendiri atau lingkungan sekitar.", options=[1, 2, 3, 4, 5], key="tn10")
-
+        
+     # Simpan Data
+            new_data = pd.DataFrame([[nama_mhs, hasil, total_skor, "Analisis 10 Dimensi Trauma"]], 
+                                    columns=["Nama", "Level_Trauma", "Skor", "Teks"])
+            new_data.to_csv('data_tugas.csv', mode='a', index=False, header=not os.path.exists('data_tugas.csv'))
+            
+            st.markdown("---")
+            if label_warna == "success":
+                st.success(f"Hasil {nama_mhs}: **{hasil}** (Skor: {total_skor})")
+            elif label_warna == "warning":
+                st.warning(f"Hasil {nama_mhs}: **{hasil}** (Skor: {total_skor})")
+            else:
+                st.error(f"Hasil {nama_mhs}: **{hasil}** (Skor: {total_skor})")
+        else:
+            st.error("⚠️ Isi identitas terlebih dahulu!")
     # --- LOGIKA PENENTUAN OUTPUT AI (SKOR MAKSIMAL 50) ---
     if st.button("Analisis Laporan 🚀"):
         if nama_mhs and kelas_mhs != "Pilih Kelas":
@@ -179,6 +193,7 @@ elif role == "Guru (Administrator)":
                     st.rerun()
         else:
             st.info("Belum ada data masuk dari siswa.")
+
 
 
 
