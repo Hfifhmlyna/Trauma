@@ -27,7 +27,7 @@ if role == "Siswa (Menulis)":
     st.info("🛡️ **Trauma Narrative Assessment**")
     st.write("Silakan pilih angka yang paling menggambarkan kondisi Anda (1: Tidak Pernah, 5: Sangat Sering)")
 
-     col1, col2 = st.columns(2)
+    col1, col2 = st.columns(2)
     with col1:
         p1 = st.select_slider("1.Seberapa sering kamu merasa sedih atau terganggu secara emosional ketika membaca cerita yang mengandung konflik atau peristiwa sedih?", options=[1, 2, 3, 4, 5], key="t1")
         p2 = st.select_slider("2.Seberapa sering kamu merasakan gejolak emosi yang kuat setelah menulis narasi berdasarkan pengalaman pribadi?", options=[1, 2, 3, 4, 5], key="t2")
@@ -127,6 +127,7 @@ elif role == "Guru (Administrator)":
             st.info("Belum ada data masuk dari siswa.")
     else:
         st.info("Masukkan password dan klik 'Buka Dashboard' untuk mengakses data.")
+
 
 
 
