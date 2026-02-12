@@ -95,13 +95,14 @@ elif role == "Guru (Administrator)":
             st.error("Password salah!")
             st.session_state['authenticated'] = False
 
-    if st.session_state.get('authenticated', False):
-        if os.path.exists('data_tugas.csv'):
-            df = pd.read_csv('data_tugas.csv')
-            
-            # Statistik
-            st.subheader("📊 Rekapitulasi")
-            counts = df['Level_Trauma'].value_counts()
+   if st.session_state.get('authenticated', False):
+       if os.path.exists('data_tugas.csv'):
+          df = pd.read_csv('data_tugas.csv')
+          
+          # Pastikan kolom 'Level_Trauma' ada sebelum dihitung
+          if 'Level_Trauma' in df.columns:
+              st.subheader("📊 Rekapitulasi")
+              counts = df['Level_Trauma'].value_counts()
             c1, c2, c3, c4 = st.columns(4)
             c1.metric("Total Siswa", len(df))
             c2.metric("Tinggi 🔴", counts.get("Tinggi", 0))
@@ -127,4 +128,5 @@ elif role == "Guru (Administrator)":
                     st.rerun()
         else:
             st.info("Belum ada data dari siswa.")
+
 
