@@ -95,15 +95,20 @@ elif role == "Guru (Administrator)":
                 m3.metric("Sedang 🟡", counts.get("Sedang", 0))
                 m4.metric("Rendah 🟢", counts.get("Rendah", 0))
 
-                # Bagian Grafik
-                st.markdown("### 📈 Visualisasi Data")
-                ga, gb = st.columns(2)
-                with ga:
+                # 2. GRAFIK (Batang & Kurva Halus)
+                col_kiri, col_kanan = st.columns(2)
+                with col_kiri:
                     st.write("**Grafik Batang:**")
                     st.bar_chart(counts)
-                with gb:
-                    st.write("**Grafik Area (Distribusi):**")
-                    st.area_chart(counts)
+                
+                with col_kanan:
+                    st.write("**Kurva Sebaran Halus (Trend):**")
+                    if len(df) > 1: # Kurva hanya muncul jika data lebih dari 1
+                        # Membuat kurva distribusi (Smooth Curve)
+                        fig = ff.create_distplot([df['Skor']], ['Skor Siswa'], bin_size=2, show_hist=False)
+                        st.plotly_chart(fig, use_container_width=True)
+                    else:
+                        st.info("Butuh minimal 2 data siswa untuk membentuk kurva.")
 
                 # Tabel
                 st.write("**Data Detail:**")
@@ -120,3 +125,4 @@ elif role == "Guru (Administrator)":
             st.info("Belum ada data masuk dari siswa.")
     else:
         st.info("Masukkan password dan klik 'Buka Dashboard' untuk mengakses data.")
+
