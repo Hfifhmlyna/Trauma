@@ -117,7 +117,7 @@ elif role == "Guru (Administrator)":
                 c3.metric("Sedang 🟡", counts.get("Sedang", 0))
                 c4.metric("Rendah 🟢", counts.get("Rendah", 0))
 
-                # 2. GRAFIK & KURVA
+                # 2. GRAFIK (Perubahan pada Label)
                 col_kiri, col_kanan = st.columns(2)
                 with col_kiri:
                     st.write("**Grafik Batang:**")
@@ -125,7 +125,7 @@ elif role == "Guru (Administrator)":
                 with col_kanan:
                     st.write("**Grafik Area (Distribusi):**")
                     st.area_chart(counts)
-                    
+               
                 # 3. TABEL DETAIL
                 st.write("**Data Detail:**")
                 def color_level(val):
@@ -153,6 +153,7 @@ elif role == "Guru (Administrator)":
             st.info("Belum ada data masuk dari siswa.")
     else:
         st.info("Silakan masukkan password untuk melihat Dashboard.")
+
 
 
 
