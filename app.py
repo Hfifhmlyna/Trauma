@@ -109,8 +109,8 @@ elif role == "Guru (Administrator)":
               c3.metric("Sedang 🟡", counts.get("Sedang", 0))
               c4.metric("Rendah 🟢", counts.get("Rendah", 0))
 
-            st.markdown("---")
-            st.write("**Data Detail:**")
+              st.markdown("---")
+              st.write("**Data Detail:**")
             
             def color_level(val):
                 color = 'red' if val == 'Tinggi' else 'orange' if val == 'Sedang' else 'green'
@@ -128,6 +128,7 @@ elif role == "Guru (Administrator)":
                     st.rerun()
         else:
             st.info("Belum ada data dari siswa.")
+
 
 
 
