@@ -24,25 +24,18 @@ if role == "Siswa (Menulis)":
     kelas = c3.selectbox("Kelas", ["Pilih Kelas", "7", "8", "9"], key="select_kelas")
 
     st.markdown("---")
-    st.info("🛡️ **Trauma Narrative Assessment**")
-    st.write("Silakan pilih angka yang paling menggambarkan kondisi Anda (1: Tidak Pernah, 5: Sangat Sering)")
     
-        p1 = st.select_slider("1.Seberapa sering kamu merasa sedih atau terganggu secara emosional ketika membaca cerita yang mengandung konflik?", options=[1, 2, 3, 4, 5], key="t1")
-        p2 = st.select_slider("2.Seberapa sering kamu merasakan gejolak emosi yang kuat setelah menulis narasi?", options=[1, 2, 3, 4, 5], key="t2")
-        p3 = st.select_slider("3.Seberapa sering isi cerita memberikan pengaruh buruk atau mengubah suasana hati?", options=[1, 2, 3, 4, 5], key="t3")
-        p4 = st.select_slider("4.Seberapa sering kamu merasa terbebani saat menghadapi tugas menulis tema sensitif?", options=[1, 2, 3, 4, 5], key="t4")
-        p5 = st.select_slider("5.Seberapa sering pikiranmu merasa tidak tenang setelah tugas membaca?", options=[1, 2, 3, 4, 5], key="t5")
-
-    # --- BAGIAN 1: SOAL NARASI (NLP ANALYSIS) ---
+    # BAGIAN A: SOAL NARASI (NLP)
+    st.markdown("### ✍️ Bagian A: Narasi Bebas (Analisis AI)")
     st.info("Tuliskan jawabanmu dalam bentuk kalimat. AI akan menganalisis kata kunci perasaanmu.")
     
-    q_nlp1 = st.text_area("1. Ceritakan satu bagian dari sebuah cerita yang pernah kamu baca yang membuatmu merasa sangat tidak nyaman. Apa yang kamu rasakan?", key="nlp1")
-    q_nlp2 = st.text_area("2. Bagaimana perasaanmu setelah menulis tentang pengalaman pribadi yang menyedihkan dalam tugas sekolah?", key="nlp2")
-    q_nlp3 = st.text_area("3. Jika kamu adalah tokoh dalam cerita yang mengalami masalah berat, kata-kata apa yang paling tepat menggambarkan rasa sakitmu?", key="nlp3")
-    q_nlp4 = st.text_area("4. Saat diminta menulis tema keluarga atau masa lalu, pikiran atau kenangan apa yang pertama kali muncul?", key="nlp4")
-    q_nlp5 = st.text_area("5. Tuliskan curahan hatimu secara bebas terkait kegiatan membaca atau menulis di kelas saat ini.", key="nlp5")
+    q_nlp1 = st.text_area("1. Ceritakan bagian cerita yang membuatmu tidak nyaman. Apa yang kamu rasakan?", key="nlp1")
+    q_nlp2 = st.text_area("2. Bagaimana perasaanmu setelah menulis tentang pengalaman pribadi yang menyedihkan?", key="nlp2")
+    q_nlp3 = st.text_area("3. Jika kamu tokoh cerita yang bermasalah berat, kata apa yang menggambarkan rasa sakitmu?", key="nlp3")
+    q_nlp4 = st.text_area("4. Saat diminta menulis tema keluarga, pikiran apa yang muncul?", key="nlp4")
+    q_nlp5 = st.text_area("5. Tuliskan curahan hatimu secara bebas tentang kegiatan di kelas saat ini.", key="nlp5")
 
-    # --- BAGIAN 2: SOAL OPSI (SKALA STATISTIK) ---
+    # BAGIAN B: SOAL OPSI (STATISTIK)
     st.markdown("---")
     st.markdown("### 🛡️ Bagian B: Penilaian Mandiri (Skala 1-5)")
     st.write("1: Tidak Pernah, 5: Sangat Sering")
@@ -50,56 +43,44 @@ if role == "Siswa (Menulis)":
     col_kiri, col_kanan = st.columns(2)
     with col_kiri:
         o1 = st.select_slider("1. Ingin berhenti membaca saat cerita mulai menyakitkan?", options=[1, 2, 3, 4, 5], key="o1")
-        o2 = st.select_slider("2. Detak jantung bertambah cepat saat menulis tentang diri sendiri?", options=[1, 2, 3, 4, 5], key="o2")
+        o2 = st.select_slider("2. Detak jantung bertambah cepat saat menulis diri sendiri?", options=[1, 2, 3, 4, 5], key="o2")
         o3 = st.select_slider("3. Pikiran mendadak 'kosong' karena teringat hal sedih?", options=[1, 2, 3, 4, 5], key="o3")
     
     with col_kanan:
         o4 = st.select_slider("4. Merasa tokoh cerita sedih adalah cerminan dirimu?", options=[1, 2, 3, 4, 5], key="o4")
-        o5 = st.select_slider("5. Merasa lelah fisik setelah tugas menulis yang emosional?", options=[1, 2, 3, 4, 5], key="o5")
+        o5 = st.select_slider("5. Merasa lelah fisik setelah tugas menulis emosional?", options=[1, 2, 3, 4, 5], key="o5")
 
-    # --- PROSES GABUNGAN ---
+    # --- PROSES GABUNGAN (Hanya 1 Tombol Utama) ---
     if st.button("Analisis & Kirim Laporan 🚀"):
-        # Gabungkan semua narasi untuk dianalisis NLP
-        teks_lengkap = f"{q_nlp1} {q_nlp2} {q_nlp3} {q_nlp4} {q_nlp5}"
-        
-        # Logika NLP: Mencari kata kunci trauma
-        kata_terdeteksi = [k for k in keywords_trauma if k in teks_lengkap.lower()]
-        bonus_skor_nlp = len(kata_terdeteksi) * 2 # Setiap kata trauma menambah 2 poin
-        
-        # Hitung skor total dari slider
-        skor_slider = o1 + o2 + o3 + o4 + o5
-        total_akhir = skor_slider + bonus_skor_nlp
-        
-        # Penentuan Level
-        if total_akhir >= 25: hasil = "Tinggi"
-        elif total_akhir >= 15: hasil = "Sedang"
-        else: hasil = "Rendah"
-        
-        # Simpan ke CSV
-        new_row = pd.DataFrame([[nama, hasil, total_akhir, teks_lengkap, ", ".join(kata_terdeteksi)]], 
-                                columns=["Nama", "Level_Trauma", "Skor", "Narasi", "Keywords_NLP"])
-        new_row.to_csv('data_tugas.csv', mode='a', index=False, header=not os.path.exists('data_tugas.csv'))
-        
-        st.success("Data berhasil dianalisis dengan teknologi NLP dan disimpan!")
-        st.balloons()
-        
-    if st.button("Analisis & Kirim Laporan 🚀"):
-        if nama and kelas != "Pilih Kelas":
-            total_skor = p1+p2+p3+p4+p5+p6+p7+p8+p9+p10
-            if total_skor >= 38: hasil = "Tinggi"
-            elif total_skor >= 22: hasil = "Sedang"
-            else: hasil = "Rendah"
-
-            new_data = pd.DataFrame([[nama, hasil, total_skor, "Analisis 10 Dimensi"]], 
-                        columns=["Nama", "Level_Trauma", "Skor", "Teks"])
-            header_status = not os.path.exists('data_tugas.csv')
-            new_data.to_csv('data_tugas.csv', mode='a', index=False, header=header_status)
+        if nama and kelas != "Pilih Kelas" and q_nlp1:
+            # 1. Gabungkan semua narasi untuk dianalisis NLP
+            teks_lengkap = f"{q_nlp1} {q_nlp2} {q_nlp3} {q_nlp4} {q_nlp5}".lower()
             
-            st.success(f"Berhasil dikirim! Skor: {total_skor} ({hasil})")
+            # 2. Logika NLP: Mencari kata kunci
+            kata_terdeteksi = [k for k in keywords_trauma if k in teks_lengkap]
+            bonus_nlp = len(kata_terdeteksi) * 2 
+            
+            # 3. Hitung skor total
+            skor_slider = o1 + o2 + o3 + o4 + o5
+            total_akhir = skor_slider + bonus_nlp
+            
+            # 4. Penentuan Level
+            if total_akhir >= 25: hasil = "Tinggi"
+            elif total_akhir >= 15: hasil = "Sedang"
+            else: hasil = "Rendah"
+            
+            # 5. Simpan ke CSV
+            new_row = pd.DataFrame([[nama, kelas, hasil, total_akhir, teks_lengkap, ", ".join(kata_terdeteksi)]], 
+                                    columns=["Nama", "Kelas", "Level_Trauma", "Skor", "Narasi", "Keywords_NLP"])
+            
+            new_row.to_csv('data_tugas.csv', mode='a', index=False, header=not os.path.exists('data_tugas.csv'))
+            
+            st.success(f"Analisis Selesai! Skor Total: {total_akhir} ({hasil})")
+            if kata_terdeteksi:
+                st.warning(f"AI Mendeteksi emosi: {', '.join(kata_terdeteksi)}")
             st.balloons()
         else:
-            st.warning("Mohon isi nama dan pilih kelas!")
-
+            st.error("Mohon lengkapi Nama, Kelas, dan minimal soal narasi nomor 1.")
 # --- LOGIKA TAMPILAN GURU ---
 elif role == "Guru (Administrator)":
     st.markdown("<h1 style='color: #117A65;'>🔐 Dashboard Analisis Trauma Siswa</h1>", unsafe_allow_html=True)
@@ -188,6 +169,7 @@ elif role == "Guru (Administrator)":
             st.info("Belum ada data masuk dari siswa.")
     else:
         st.info("Masukkan password dan klik 'Buka Dashboard' untuk mengakses data.")
+
 
 
 
