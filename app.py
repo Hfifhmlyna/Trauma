@@ -104,7 +104,7 @@ elif role == "Guru (Administrator)":
                 
                 with col_kanan:
                     st.write("**Kurva Sebaran Halus (Trend):**")
-                    if len(df) > 1: # Kurva hanya muncul jika data lebih dari 1
+                    if len(df) > 1: 
                         # Membuat kurva distribusi (Smooth Curve)
                         fig = ff.create_distplot([df['Skor']], ['Skor Siswa'], bin_size=2, show_hist=False)
                         st.plotly_chart(fig, use_container_width=True)
@@ -126,5 +126,6 @@ elif role == "Guru (Administrator)":
             st.info("Belum ada data masuk dari siswa.")
     else:
         st.info("Masukkan password dan klik 'Buka Dashboard' untuk mengakses data.")
+
 
 
