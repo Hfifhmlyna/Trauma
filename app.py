@@ -73,7 +73,8 @@ if role == "Siswa (Menulis)":
                                     columns=["Nama", "Level_Trauma", "Skor", "Teks"])
             
             header_status = not os.path.exists('data_tugas.csv')
-            new_data.to_csv('data_tugas.csv', mode='a', index=False, header=header_status)
+            new_data = pd.DataFrame([[nama, hasil, total_skor, "Analisis 10 Dimensi"]], 
+                        columns=["Nama", "Level_Trauma", "Skor", "Teks"])
             
             st.balloons()
             st.info("✅ Data Anda telah berhasil dikirim ke Dashboard Guru.")
@@ -126,3 +127,4 @@ elif role == "Guru (Administrator)":
                     st.rerun()
         else:
             st.info("Belum ada data dari siswa.")
+
