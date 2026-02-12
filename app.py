@@ -78,31 +78,8 @@ if role == "Siswa (Menulis)":
             st.success(f"✅ Terima kasih {nama}, data berhasil dikirim.")
         else:
             st.error("⚠️ Harap isi Nama dan pilih Kelas dengan benar.")
-    # --- LOGIKA PENENTUAN OUTPUT AI (SKOR MAKSIMAL 50) ---
-    if st.button("Analisis Laporan 🚀"):
-        if nama and kelas != "Pilih kelas":
-            # 1. Hitung Total Skor
-            total_skor = p1+p2+p3+p4+p5+p6+p7+p8+p9+p10
-            
-            # 2. Tentukan Kategori
-            if total_skor >= 38:
-                hasil = "Indikasi Trauma Tinggi"
-                label_warna = "error"
-            elif total_skor >= 22:
-                hasil = "Indikasi Trauma Sedang"
-                label_warna = "warning"
-            else:
-                hasil = "Indikasi Trauma Rendah"
-                label_warna = "success"
-
-            # 3. Buat Data Baru
-            new_data = pd.DataFrame([[nama, hasil, total_skor, "Analisis 10 Dimensi Trauma"]], 
-                                    columns=["Nama", "Level_Trauma", "Skor", "Teks"])
-            
-            # 4. Simpan ke CSV
-            new_data.to_csv('data_tugas.csv', mode='a', index=False, header=not os.path.exists('data_tugas.csv'))
-            
-            # 5. Tampilkan Output ke Layar
+              
+            # Tampilkan Output ke Layar
             st.markdown("---")
             if label_warna == "success":
                 st.success(f"Hasil {nama}: **{hasil}** (Skor: {total_skor})")
@@ -193,6 +170,7 @@ elif role == "Guru (Administrator)":
                     st.rerun()
         else:
             st.info("Belum ada data masuk dari siswa.")
+
 
 
 
