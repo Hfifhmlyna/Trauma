@@ -50,7 +50,7 @@ if role == "Siswa (Menulis)":
         p9 = st.select_slider("9.  Apakah setelah membaca atau menulis cerita tertentu kamu menjadi mudah sedih, marah, atau sulit fokus?", options=[1, 2, 3, 4, 5], key="t9")
         p10 = st.select_slider("10. Apakah kegiatan menulis narasi pernah membuatmu merasa jauh atau asing dengan perasaan diri sendiri?", options=[1, 2, 3, 4, 5], key="t10")
 
-    # --- TOMBOL ANALISIS & KIRIM ---
+    # --- TOMBOL ANALISIS & KIRIM (VERSI PERBAIKAN) ---
     if st.button("Analisis & Kirim Laporan 🚀", key="btn_final"):
         if nama and kelas != "Pilih Kelas":
             # 1. Hitung Total Skor
@@ -75,10 +75,12 @@ if role == "Siswa (Menulis)":
             new_data.to_csv('data_tugas.csv', mode='a', index=False, header=header_status)
             
             st.balloons()
-            st.success(f"✅ Terima kasih {nama}, data berhasil dikirim ke guru.")
+            st.success(f"✅ Terima kasih {nama}, data berhasil dikirim.")
         else:
-            # Else ini harus sejajar dengan "if nama and kelas"
+            # Else ini harus sejajar lurus dengan 'if nama and kelas'
             st.error("⚠️ Harap isi Nama dan pilih Kelas dengan benar.")
+
+# --- LANJUT KE GURU (PASTIKAN TIDAK ADA KODE SISWA LAGI DI SINI) ---
 
 # --- BATAS AKHIR TAMPILAN SISWA (Langsung lanjut ke Guru) ---
               
@@ -173,6 +175,7 @@ elif role == "Guru (Administrator)":
                     st.rerun()
         else:
             st.info("Belum ada data masuk dari siswa.")
+
 
 
 
