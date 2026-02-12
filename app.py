@@ -26,8 +26,8 @@ if role == "Siswa (Menulis)":
     st.markdown("---")
     
     # BAGIAN A: SOAL NARASI (NLP)
-    st.markdown("### ✍️ Bagian A: Narasi Bebas (Analisis AI)")
-    st.info("Tuliskan jawabanmu dalam bentuk kalimat. AI akan menganalisis kata kunci perasaanmu.")
+    st.markdown("### ✍️ Menulis Narasi Sesuai Perasaan")
+    st.info("Tuliskan jawabanmu dalam bentuk kalimat.")
     
     q_nlp1 = st.text_area("1. Ceritakan bagian cerita yang membuatmu tidak nyaman. Apa yang kamu rasakan?", key="nlp1")
     q_nlp2 = st.text_area("2. Bagaimana perasaanmu setelah menulis tentang pengalaman pribadi yang menyedihkan?", key="nlp2")
@@ -37,7 +37,7 @@ if role == "Siswa (Menulis)":
 
     # BAGIAN B: SOAL OPSI (STATISTIK)
     st.markdown("---")
-    st.markdown("### 🛡️ Bagian B: Penilaian Mandiri (Skala 1-5)")
+    st.markdown("### 🛡️ Penilaian Mandiri (Skala 1-5)")
     st.write("1: Tidak Pernah, 5: Sangat Sering")
     
     col_kiri, col_kanan = st.columns(2)
@@ -169,6 +169,7 @@ elif role == "Guru (Administrator)":
             st.info("Belum ada data masuk dari siswa.")
     else:
         st.info("Masukkan password dan klik 'Buka Dashboard' untuk mengakses data.")
+
 
 
 
