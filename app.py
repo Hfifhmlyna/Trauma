@@ -76,7 +76,7 @@ if role == "Siswa (Menulis)":
             
             st.balloons()
             st.success(f"✅ Terima kasih {nama}, data berhasil dikirim.")
-        else:
+            else:
             st.error("⚠️ Harap isi Nama dan pilih Kelas dengan benar.")
               
             # Tampilkan Output ke Layar
@@ -170,6 +170,7 @@ elif role == "Guru (Administrator)":
                     st.rerun()
         else:
             st.info("Belum ada data masuk dari siswa.")
+
 
 
 
