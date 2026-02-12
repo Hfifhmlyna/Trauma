@@ -37,18 +37,18 @@ if role == "Siswa (Menulis)":
     # --- 10 PERTANYAAN SKALA ---
     col1, col2 = st.columns(2)
     with col1:
-        p1 = st.select_slider("1. Munculnya potongan ingatan buruk tiba-tiba.", options=[1, 2, 3, 4, 5], key="t1")
-        p2 = st.select_slider("2. Mengalami mimpi buruk kejadian lampau.", options=[1, 2, 3, 4, 5], key="t2")
-        p3 = st.select_slider("3. Menghindari pembicaraan tentang kejadian itu.", options=[1, 2, 3, 4, 5], key="t3")
-        p4 = st.select_slider("4. Menghindari tempat yang mengingatkan kejadian itu.", options=[1, 2, 3, 4, 5], key="t4")
-        p5 = st.select_slider("5. Sulit mengingat bagian penting kejadian buruk.", options=[1, 2, 3, 4, 5], key="t5")
+        p1 = st.select_slider("1. Bagaimana perasaanmu ketika membaca cerita yang mengandung konflik atau peristiwa sedih?", options=[1, 2, 3, 4, 5], key="t1")
+        p2 = st.select_slider("2. Bagaimana reaksi emosimu setelah menulis narasi berdasarkan pengalaman pribadi?", options=[1, 2, 3, 4, 5], key="t2")
+        p3 = st.select_slider("3. Bagaimana pengaruh isi cerita yang kamu baca terhadap suasana hatimu di kelas?", options=[1, 2, 3, 4, 5], key="t3")
+        p4 = st.select_slider("4. Bagaimana caramu menghadapi tugas menulis narasi dengan tema yang sensitif?", options=[1, 2, 3, 4, 5], key="t4")
+        p5 = st.select_slider("5. Bagaimana kondisi pikiran dan perasaanmu setelah menyelesaikan tugas membaca narasi?", options=[1, 2, 3, 4, 5], key="t5")
 
     with col2:
-        p6 = st.select_slider("6. Merasa dunia sepenuhnya tidak aman.", options=[1, 2, 3, 4, 5], key="t6")
-        p7 = st.select_slider("7. Sering menyalahkan diri sendiri.", options=[1, 2, 3, 4, 5], key="t7")
-        p8 = st.select_slider("8. Merasa sangat waspada/siaga terus-menerus.", options=[1, 2, 3, 4, 5], key="t8")
-        p9 = st.select_slider("9. Mudah marah atau sulit tidur.", options=[1, 2, 3, 4, 5], key="t9")
-        p10 = st.select_slider("10. Merasa asing dengan diri sendiri.", options=[1, 2, 3, 4, 5], key="t10")
+        p6 = st.select_slider("6.  Apakah kegiatan membaca atau menulis narasi pernah membuatmu merasa tidak aman atau gelisah?", options=[1, 2, 3, 4, 5], key="t6")
+        p7 = st.select_slider("7.  Apakah kamu sering menyalahkan diri sendiri ketika tulisan narasimu menggambarkan perasaan negatif?", options=[1, 2, 3, 4, 5], key="t7")
+        p8 = st.select_slider("8.  Apakah kamu merasa terlalu tegang atau waspada saat mengikuti kegiatan menulis narasi di kelas?", options=[1, 2, 3, 4, 5], key="t8")
+        p9 = st.select_slider("9.  Apakah setelah membaca atau menulis cerita tertentu kamu menjadi mudah sedih, marah, atau sulit fokus?", options=[1, 2, 3, 4, 5], key="t9")
+        p10 = st.select_slider("10. Apakah kegiatan menulis narasi pernah membuatmu merasa jauh atau asing dengan perasaan diri sendiri?", options=[1, 2, 3, 4, 5], key="t10")
 
     # --- TOMBOL KIRIM ---
     if st.button("Kirim 🚀", key="btn_kirim_siswa"):
@@ -187,6 +187,7 @@ elif role == "Guru (Administrator)":
                     st.rerun()
         else:
             st.info("Belum ada data masuk dari siswa.")
+
 
 
 
