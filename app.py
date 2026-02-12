@@ -45,18 +45,18 @@ if role == "Siswa (Menulis)":
     
     col_kiri, col_kanan = st.columns(2)
     with col_kiri:
-        o1 = st.select_slider("1. Apakah kamu merasa ingin berhenti menulis atau membaca saat alur ceritanya mulai mengingatkanmu pada kejadian yang menyakitkan di hidupmu?", options=[1, 2, 3, 4, 5], key="o1")
-        o2 = st.select_slider("2. Apakah kamu merasa detak jantungmu bertambah cepat atau tanganmu bergetar saat sedang menuliskan bagian narasi yang paling emosional?", options=[1, 2, 3, 4, 5], key="o2")
-        o3 = st.select_slider("3. Apakah kamu merasa pikiranmu mendadak menjadi 'kosong' atau sulit fokus karena teringat kembali pada kejadian sedih di masa lalu?", options=[1, 2, 3, 4, 5], key="o3")
-        o4 = st.select_slider("4. Apakah kamu merasa bahwa penderitaan yang dialami tokoh dalam cerita tersebut merupakan cerminan nyata dari apa yang kamu rasakan sendiri?", options=[1, 2, 3, 4, 5], key="o4")
+        o1 = st.select_slider("1.Apakah kamu merasa ingin berhenti menulis atau membaca saat alur ceritanya mulai mengingatkanmu pada kejadian yang menyakitkan di hidupmu?", options=[1, 2, 3, 4, 5], key="o1")
+        o2 = st.select_slider("2.Apakah kamu merasa detak jantungmu bertambah cepat atau tanganmu bergetar saat sedang menuliskan bagian narasi yang paling emosional?", options=[1, 2, 3, 4, 5], key="o2")
+        o3 = st.select_slider("3.Apakah kamu merasa pikiranmu mendadak menjadi 'kosong' atau sulit fokus karena teringat kembali pada kejadian sedih di masa lalu?", options=[1, 2, 3, 4, 5], key="o3")
+        o4 = st.select_slider("4.Apakah kamu merasa bahwa penderitaan yang dialami tokoh dalam cerita tersebut merupakan cerminan nyata dari apa yang kamu rasakan sendiri?", options=[1, 2, 3, 4, 5], key="o4")
         o5 = st.select_slider("5.Apakah kamu merasa lelah secara fisik atau kehilangan energi setelah menyelesaikan seluruh tugas menulis narasi yang menguras perasaan ini?", options=[1, 2, 3, 4, 5], key="o5")
     
     with col_kanan:
-        o6 = st.select_slider("6. Seberapa sering kamu merasa sedih atau terganggu secara emosional setelah membaca cerita yang mengandung konflik?", options=[1, 2, 3, 4, 5], key="o6")
-        o7 = st.select_slider("7. Seberapa sering kamu merasa gelisah atau tidak aman saat melakukan kegiatan membaca atau menulis narasi?", options=[1, 2, 3, 4, 5], key="o7")
-        o8 = st.select_slider("8. Seberapa sering kamu merasa tegang atau terlalu waspada saat sedang mengerjakan tugas menulis di kelas?", options=[1, 2, 3, 4, 5], key="o8")
-        o9 = st.select_slider("9. Seberapa sering kamu menyalahkan diri sendiri atau merasa menyesal setelah menuliskan perasaan negatif ke dalam narasi?", options=[1, 2, 3, 4, 5], key="o9")
-        o10 = st.select_slider("10. Seberapa sering kamu merasa sulit fokus atau merasa asing dengan perasaanmu sendiri setelah menyelesaikan tugas literasi?", options=[1, 2, 3, 4, 5], key="o10")
+        o6 = st.select_slider("6.Seberapa sering kamu merasa sedih atau terganggu secara emosional setelah membaca cerita yang mengandung konflik?", options=[1, 2, 3, 4, 5], key="o6")
+        o7 = st.select_slider("7.Seberapa sering kamu merasa gelisah atau tidak aman saat melakukan kegiatan membaca atau menulis narasi?", options=[1, 2, 3, 4, 5], key="o7")
+        o8 = st.select_slider("8.Seberapa sering kamu merasa tegang atau terlalu waspada saat sedang mengerjakan tugas menulis di kelas?", options=[1, 2, 3, 4, 5], key="o8")
+        o9 = st.select_slider("9.Seberapa sering kamu menyalahkan diri sendiri atau merasa menyesal setelah menuliskan perasaan negatif ke dalam narasi?", options=[1, 2, 3, 4, 5], key="o9")
+        o10 = st.select_slider("10.Seberapa sering kamu merasa sulit fokus atau merasa asing dengan perasaanmu sendiri setelah menyelesaikan tugas literasi?", options=[1, 2, 3, 4, 5], key="o10")
     
     if st.button("Analisis & Kirim Laporan 🚀"):
         if nama and kelas != "Pilih Kelas" and q_nlp1:
@@ -169,6 +169,7 @@ elif role == "Guru (Administrator)":
                 st.rerun()
         else:
             st.info("Belum ada data masuk.")
+
 
 
 
