@@ -7,7 +7,7 @@ import plotly.figure_factory as ff
 st.set_page_config(page_title="SMLI - Analisis Trauma", page_icon="🛡️", layout="wide")
 
 # --- DATABASE KATA KUNCI TRAUMA (NLP Dasar) ---
-keywords_trauma = ["lelah", "sakit", "takut", "sendiri", "hancur", "gelap", "sesak", "menangis", "teriak", "benci", "trauma", "mati", "putus asa", "cemas"]
+keywords_trauma = ["lelah", "sakit", "takut", "sendiri", "hancur", "gelap", "sesak", "menangis", "teriak", "benci", "trauma", "mati", "putus asa", "cemas", "sedih", "kecewa", "pusing", "stress", "beban"]
 
 # --- SIDEBAR NAVIGASI ---
 with st.sidebar:
@@ -149,5 +149,6 @@ elif role == "Guru (Administrator)":
                 st.rerun()
         else:
             st.info("Belum ada data masuk.")
+
 
 
