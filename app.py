@@ -36,18 +36,18 @@ if role == "Siswa (Menulis)":
     # --- 10 PERTANYAAN SKALA ---
     col1, col2 = st.columns(2)
     with col1:
-        p1 = st.select_slider("1. Bagaimana perasaanmu ketika membaca cerita yang mengandung konflik atau peristiwa sedih?", options=[1, 2, 3, 4, 5], key="t1")
-        p2 = st.select_slider("2. Bagaimana reaksi emosimu setelah menulis narasi berdasarkan pengalaman pribadi?", options=[1, 2, 3, 4, 5], key="t2")
-        p3 = st.select_slider("3. Bagaimana pengaruh isi cerita yang kamu baca terhadap suasana hatimu di kelas?", options=[1, 2, 3, 4, 5], key="t3")
-        p4 = st.select_slider("4. Bagaimana caramu menghadapi tugas menulis narasi dengan tema yang sensitif?", options=[1, 2, 3, 4, 5], key="t4")
-        p5 = st.select_slider("5. Bagaimana kondisi pikiran dan perasaanmu setelah menyelesaikan tugas membaca narasi?", options=[1, 2, 3, 4, 5], key="t5")
+        p1 = st.select_slider("1.Seberapa sering kamu merasa sedih atau terganggu secara emosional ketika membaca cerita yang mengandung konflik atau peristiwa sedih?", options=[1, 2, 3, 4, 5], key="t1")
+        p2 = st.select_slider("2.Seberapa sering kamu merasakan gejolak emosi yang kuat setelah menulis narasi berdasarkan pengalaman pribadi?", options=[1, 2, 3, 4, 5], key="t2")
+        p3 = st.select_slider("3.Seberapa sering isi cerita yang kamu baca memberikan pengaruh buruk atau mengubah suasana hatimu saat di kelas?", options=[1, 2, 3, 4, 5], key="t3")
+        p4 = st.select_slider("4.Seberapa sering kamu merasa terbebani atau kesulitan secara mental saat menghadapi tugas menulis narasi dengan tema yang sensitif?", options=[1, 2, 3, 4, 5], key="t4")
+        p5 = st.select_slider("5.Seberapa sering pikiranmu merasa tidak tenang atau gelisah setelah menyelesaikan tugas membaca narasi?", options=[1, 2, 3, 4, 5], key="t5")
 
     with col2:
-        p6 = st.select_slider("6. Apakah kegiatan membaca atau menulis narasi pernah membuatmu merasa tidak aman atau gelisah?", options=[1, 2, 3, 4, 5], key="t6")
-        p7 = st.select_slider("7. Apakah kamu sering menyalahkan diri sendiri ketika tulisan narasimu menggambarkan perasaan negatif?", options=[1, 2, 3, 4, 5], key="t7")
-        p8 = st.select_slider("8. Apakah kamu merasa terlalu tegang atau waspada saat mengikuti kegiatan menulis narasi di kelas?", options=[1, 2, 3, 4, 5], key="t8")
-        p9 = st.select_slider("9. Apakah setelah membaca atau menulis cerita tertentu kamu menjadi mudah sedih, marah, atau sulit fokus?", options=[1, 2, 3, 4, 5], key="t9")
-        p10 = st.select_slider("10. Apakah kegiatan menulis narasi pernah membuatmu merasa jauh atau asing dengan perasaan diri sendiri?", options=[1, 2, 3, 4, 5], key="t10")
+        p6 = st.select_slider("6.Seberapa sering kegiatan membaca atau menulis narasi membuatmu merasa tidak aman atau cemas?", options=[1, 2, 3, 4, 5], key="t6")
+        p7 = st.select_slider("7.Seberapa sering kamu menyalahkan diri sendiri ketika tulisan narasimu menggambarkan perasaan-perasaan negatif?", options=[1, 2, 3, 4, 5], key="t7")
+        p8 = st.select_slider("8.Seberapa sering kamu merasa terlalu tegang, kaku, atau waspada saat mengikuti kegiatan menulis narasi di kelas?", options=[1, 2, 3, 4, 5], key="t8")
+        p9 = st.select_slider("9.Seberapa sering kamu menjadi mudah sedih, marah, atau sulit fokus setelah membaca atau menulis cerita tertentu?", options=[1, 2, 3, 4, 5], key="t9")
+        p10 = st.select_slider("10.Seberapa sering kegiatan menulis narasi membuatmu merasa asing atau jauh dari perasaanmu sendiri?", options=[1, 2, 3, 4, 5], key="t10")
 
     st.markdown("---")
 
@@ -137,5 +137,21 @@ elif role == "Guru (Administrator)":
                 st.dataframe(df.style.applymap(color_level, subset=['Level_Trauma']), use_container_width=True)
             else:
                 st.error("Format data tidak sesuai.")
+
+               # 4. Tombol Download & Reset
+                col_a, col_b = st.columns(2)
+                with col_a:
+                    st.download_button("📥 Download Laporan", df.to_csv(index=False), "laporan.csv", "text/csv")
+                with col_b:
+                    if st.button("🗑️ Reset Database"):
+                        os.remove('data_tugas.csv')
+                        st.session_state['authenticated'] = False # Logout otomatis setelah reset
+                        st.rerun()
+            else:
+                st.error("Format data rusak. Klik tombol Reset di bawah.")
+                if st.button("Reset Sekarang"):
+                    os.remove('data_tugas.csv')
+                    st.rerun()
         else:
-            st.info("Belum ada data dari siswa.")
+            st.info("Belum ada data masuk dari siswa.")
+
