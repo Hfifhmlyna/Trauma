@@ -83,32 +83,33 @@ if role == "Siswa (Menulis)":
 elif role == "Guru (Administrator)":
     st.markdown("<h1 style='color: #117A65;'>🔐 Dashboard Analisis Trauma Siswa</h1>", unsafe_allow_html=True)
     
-    # 1. CEK STATUS LOGIN
-    if 'authenticated' not in st.session_state:
-        st.session_state['authenticated'] = False
-
-    # 2. TAMPILAN JIKA BELUM LOGIN
-    if not st.session_state['authenticated']:
-        password = st.text_input("Password Admin:", type="password")
+    # Kotak password ditaruh di luar agar tetap terlihat
+    password = st.text_input("Password Admin:", type="password")
+    
+    col_login, col_logout = st.columns([1, 4])
+    with col_login:
         if st.button("Buka Dashboard 🔓"):
             if password == "kelompok4":
                 st.session_state['authenticated'] = True
-                st.rerun() # REFRESH AGAR FORM LOGIN HILANG & DATA MUNCUL
+                st.success("Akses Diterima!")
             else:
                 st.error("Password salah!")
+                st.session_state['authenticated'] = False
     
-    # 3. TAMPILAN JIKA SUDAH LOGIN (TERKUNCI RAPAT)
-    else:
-        # Tambahkan tombol Logout di Sidebar agar aman
-        if st.sidebar.button("Log Out 🔒"):
+    with col_logout:
+        if st.button("Kunci Kembali 🔒"):
             st.session_state['authenticated'] = False
             st.rerun()
 
+    st.markdown("---")
+
+    # --- BAGIAN DATA (Hanya terbuka jika status True) ---
+    if st.session_state.get('authenticated', False):
         if os.path.exists('data_tugas.csv'):
             df = pd.read_csv('data_tugas.csv')
             
             if 'Level_Trauma' in df.columns:
-                # --- BAGIAN PERHITUNGAN ---
+                # 1. PERHITUNGAN
                 st.subheader("📊 Rekapitulasi & Statistik")
                 counts = df['Level_Trauma'].value_counts()
                 
@@ -118,48 +119,23 @@ elif role == "Guru (Administrator)":
                 c3.metric("Sedang 🟡", counts.get("Sedang", 0))
                 c4.metric("Rendah 🟢", counts.get("Rendah", 0))
 
-                st.markdown("---")
-                
-                # --- BAGIAN KURVA & GRAFIK (DIJAMIN MUNCUL) ---
+                # 2. GRAFIK & KURVA
                 col_kiri, col_kanan = st.columns(2)
                 with col_kiri:
-                    st.write("**Grafik Batang (Kategori):**")
-                    st.bar_chart(counts) 
-                
+                    st.write("**Grafik Batang:**")
+                    st.bar_chart(counts)
                 with col_kanan:
-                    st.write("**Kurva Sebaran (Area):**")
-                    st.area_chart(counts) 
-                
-                st.markdown("---")
+                    st.write("**Kurva Sebaran:**")
+                    st.area_chart(counts)
 
-                # --- TABEL DETAIL ---
-                st.write("**Data Detail Hasil Analisis:**")
+                # 3. TABEL DETAIL
+                st.write("**Data Detail:**")
                 def color_level(val):
                     color = 'red' if val == 'Tinggi' else 'orange' if val == 'Sedang' else 'green'
                     return f'color: {color}; font-weight: bold'
                 
                 st.dataframe(df.style.applymap(color_level, subset=['Level_Trauma']), use_container_width=True)
-
-                # --- TOMBOL AKSI ---
-                col_a, col_b = st.columns(2)
-                with col_a:
-                    st.download_button("📥 Download CSV", df.to_csv(index=False), "laporan.csv", "text/csv")
-                with col_b:
-                    if st.button("🗑️ Reset Database"):
-                        os.remove('data_tugas.csv')
-                        st.session_state['authenticated'] = False # Logout setelah reset
-                        st.rerun()
             else:
-                st.error("Format data lama tidak cocok.")
-                if st.button("Hapus Data Lama & Perbaiki"):
-                    os.remove('data_tugas.csv')
-                    st.rerun()
+                st.error("Format data tidak sesuai.")
         else:
-            st.info("Belum ada data masuk dari siswa.")
-
-
-
-
-
-
-
+            st.info("Belum ada data dari siswa.")
