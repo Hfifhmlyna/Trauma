@@ -50,12 +50,13 @@ if role == "Siswa (Menulis)":
         p9 = st.select_slider("9.  Apakah setelah membaca atau menulis cerita tertentu kamu menjadi mudah sedih, marah, atau sulit fokus?", options=[1, 2, 3, 4, 5], key="t9")
         p10 = st.select_slider("10. Apakah kegiatan menulis narasi pernah membuatmu merasa jauh atau asing dengan perasaan diri sendiri?", options=[1, 2, 3, 4, 5], key="t10")
 
-    # GABUNGKAN MENJADI SATU TOMBOL AGAR DATA TIDAK DOUBLE
+    # --- TOMBOL ANALISIS & KIRIM ---
     if st.button("Analisis & Kirim Laporan 🚀", key="btn_final"):
-        # Gunakan "Pilih Kelas" (K besar) agar sesuai dengan baris 30
         if nama and kelas != "Pilih Kelas":
+            # 1. Hitung Total Skor
             total_skor = p1+p2+p3+p4+p5+p6+p7+p8+p9+p10
             
+            # 2. Penentuan Hasil
             if total_skor >= 38:
                 hasil = "Tinggi"
                 st.error(f"Hasil: Indikasi Trauma Tinggi (Skor: {total_skor})")
@@ -66,18 +67,20 @@ if role == "Siswa (Menulis)":
                 hasil = "Rendah"
                 st.success(f"Hasil: Indikasi Trauma Rendah (Skor: {total_skor})")
 
-            # Simpan Data
+            # 3. Simpan Data ke CSV
             new_data = pd.DataFrame([[nama, hasil, total_skor, "Analisis 10 Dimensi"]], 
                                     columns=["Nama", "Level_Trauma", "Skor", "Teks"])
             
-            # Header otomatis muncul jika file belum ada
             header_status = not os.path.exists('data_tugas.csv')
             new_data.to_csv('data_tugas.csv', mode='a', index=False, header=header_status)
             
             st.balloons()
-            st.success(f"✅ Terima kasih {nama}, data berhasil dikirim.")
-            else:
+            st.success(f"✅ Terima kasih {nama}, data berhasil dikirim ke guru.")
+        else:
+            # Else ini harus sejajar dengan "if nama and kelas"
             st.error("⚠️ Harap isi Nama dan pilih Kelas dengan benar.")
+
+# --- BATAS AKHIR TAMPILAN SISWA (Langsung lanjut ke Guru) ---
               
             # Tampilkan Output ke Layar
             st.markdown("---")
@@ -170,6 +173,7 @@ elif role == "Guru (Administrator)":
                     st.rerun()
         else:
             st.info("Belum ada data masuk dari siswa.")
+
 
 
 
