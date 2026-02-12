@@ -126,6 +126,7 @@ elif role == "Guru (Administrator)":
                 if len(df) > 1:
                     fig = ff.create_distplot([df['Skor']], ['Skor'], bin_size=2, show_hist=False)
                     st.plotly_chart(fig, use_container_width=True)
+            
 
             # Fitur NLP Word Analysis
             if 'Keywords_NLP' in df.columns:
@@ -140,6 +141,20 @@ elif role == "Guru (Administrator)":
             st.write("**Data Detail Siswa:**")
             st.dataframe(df, use_container_width=True)
 
+            # --- FITUR HAPUS DATA SATU PER SATU (NEW) ---
+            st.markdown("---")
+            st.subheader("🗑️ Kelola Data (Hapus Salah Satu)")
+            list_siswa = df['Nama'].tolist()
+            pilih_siswa = st.selectbox("Pilih nama siswa yang ingin dihapus:", ["-- Pilih Siswa --"] + list_siswa)
+
+            if pilih_siswa != "-- Pilih Siswa --":
+                index_to_drop = df[df['Nama'] == pilih_siswa].index
+                if st.button(f"Konfirmasi Hapus Data: {pilih_siswa} ❌"):
+                    df = df.drop(index_to_drop)
+                    df.to_csv('data_tugas.csv', index=False)
+                    st.success(f"Data {pilih_siswa} berhasil dihapus!")
+                    st.rerun()
+
             # Download & Reset
             st.markdown("---")
             dl, rs = st.columns(2)
@@ -149,6 +164,7 @@ elif role == "Guru (Administrator)":
                 st.rerun()
         else:
             st.info("Belum ada data masuk.")
+
 
 
 
