@@ -147,11 +147,12 @@ elif role == "Guru (Administrator)":
                         os.remove('data_tugas.csv')
                         st.session_state['authenticated'] = False # Logout otomatis setelah reset
                         st.rerun()
-            else:
+                else:
                 st.error("Format data rusak. Klik tombol Reset di bawah.")
                 if st.button("Reset Sekarang"):
                     os.remove('data_tugas.csv')
                     st.rerun()
         else:
             st.info("Belum ada data masuk dari siswa.")
+
 
