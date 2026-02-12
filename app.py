@@ -95,7 +95,7 @@ elif role == "Guru (Administrator)":
             st.error("Password salah!")
             st.session_state['authenticated'] = False
 
-   if st.session_state.get('authenticated', False):
+    if st.session_state.get('authenticated', False):
        if os.path.exists('data_tugas.csv'):
           df = pd.read_csv('data_tugas.csv')
           
@@ -128,5 +128,6 @@ elif role == "Guru (Administrator)":
                     st.rerun()
         else:
             st.info("Belum ada data dari siswa.")
+
 
 
