@@ -26,7 +26,6 @@ if role == "Siswa (Menulis)":
     c1, c2, c3 = st.columns([2, 1, 1])
     
     nama = c1.text_input("Nama Lengkap / Inisial", key="input_nama") 
-    usia = c2.text_input("Usia", key="input_usia")
     kelas = c3.selectbox("Kelas", ["Pilih Kelas", "7", "8", "9"], key="select_kelas")
 
     st.markdown("---")
@@ -154,5 +153,6 @@ elif role == "Guru (Administrator)":
             st.info("Belum ada data masuk dari siswa.")
     else:
         st.info("Silakan masukkan password untuk melihat Dashboard.")
+
 
 
