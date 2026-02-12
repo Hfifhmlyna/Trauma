@@ -45,13 +45,13 @@ if role == "Siswa (Menulis)":
     
     col_kiri, col_kanan = st.columns(2)
     with col_kiri:
-        o1 = st.select_slider("1. Ingin berhenti membaca saat cerita mulai menyakitkan?", options=[1, 2, 3, 4, 5], key="o1")
-        o2 = st.select_slider("2. Detak jantung bertambah cepat saat menulis diri sendiri?", options=[1, 2, 3, 4, 5], key="o2")
-        o3 = st.select_slider("3. Pikiran mendadak 'kosong' karena teringat hal sedih?", options=[1, 2, 3, 4, 5], key="o3")
+        o1 = st.select_slider("1. Apakah kamu merasa ingin berhenti menulis atau membaca saat alur ceritanya mulai mengingatkanmu pada kejadian yang menyakitkan di hidupmu?", options=[1, 2, 3, 4, 5], key="o1")
+        o2 = st.select_slider("2. Apakah kamu merasa detak jantungmu bertambah cepat atau tanganmu bergetar saat sedang menuliskan bagian narasi yang paling emosional?", options=[1, 2, 3, 4, 5], key="o2")
+        o3 = st.select_slider("3. Apakah kamu merasa pikiranmu mendadak menjadi 'kosong' atau sulit fokus karena teringat kembali pada kejadian sedih di masa lalu?", options=[1, 2, 3, 4, 5], key="o3")
     
     with col_kanan:
-        o4 = st.select_slider("4. Merasa tokoh cerita sedih adalah cerminan dirimu?", options=[1, 2, 3, 4, 5], key="o4")
-        o5 = st.select_slider("5. Merasa lelah fisik setelah tugas menulis emosional?", options=[1, 2, 3, 4, 5], key="o5")
+        o4 = st.select_slider("4. Apakah kamu merasa bahwa penderitaan yang dialami tokoh dalam cerita tersebut merupakan cerminan nyata dari apa yang kamu rasakan sendiri?", options=[1, 2, 3, 4, 5], key="o4")
+        o5 = st.select_slider("5.Apakah kamu merasa lelah secara fisik atau kehilangan energi setelah menyelesaikan seluruh tugas menulis narasi yang menguras perasaan ini?", options=[1, 2, 3, 4, 5], key="o5")
 
     if st.button("Analisis & Kirim Laporan 🚀"):
         if nama and kelas != "Pilih Kelas" and q_nlp1:
@@ -149,4 +149,5 @@ elif role == "Guru (Administrator)":
                 st.rerun()
         else:
             st.info("Belum ada data masuk.")
+
 
