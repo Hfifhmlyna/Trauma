@@ -49,7 +49,8 @@ if role == "Siswa (Menulis)":
             elif total_skor >= 22: hasil = "Sedang"
             else: hasil = "Rendah"
 
-            new_data = pd.DataFrame([[nama, hasil, total_skor]], columns=["Nama", "Level_Trauma", "Skor"])
+           new_data = pd.DataFrame([[nama, hasil, total_skor, "Analisis 10 Dimensi"]], 
+                        columns=["Nama", "Level_Trauma", "Skor", "Teks"])
             header_status = not os.path.exists('data_tugas.csv')
             new_data.to_csv('data_tugas.csv', mode='a', index=False, header=header_status)
             
@@ -146,4 +147,5 @@ elif role == "Guru (Administrator)":
             st.info("Belum ada data masuk dari siswa.")
     else:
         st.info("Masukkan password dan klik 'Buka Dashboard' untuk mengakses data.")
+
 
