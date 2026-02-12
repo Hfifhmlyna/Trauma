@@ -29,18 +29,18 @@ if role == "Siswa (Menulis)":
 
     col1, col2 = st.columns(2)
     with col1:
-        p1 = st.select_slider("1.Seberapa sering kamu merasa sedih atau terganggu secara emosional ketika membaca cerita yang mengandung konflik atau peristiwa sedih?", options=[1, 2, 3, 4, 5], key="t1")
-        p2 = st.select_slider("2.Seberapa sering kamu merasakan gejolak emosi yang kuat setelah menulis narasi berdasarkan pengalaman pribadi?", options=[1, 2, 3, 4, 5], key="t2")
-        p3 = st.select_slider("3.Seberapa sering isi cerita yang kamu baca memberikan pengaruh buruk atau mengubah suasana hatimu saat di kelas?", options=[1, 2, 3, 4, 5], key="t3")
-        p4 = st.select_slider("4.Seberapa sering kamu merasa terbebani atau kesulitan secara mental saat menghadapi tugas menulis narasi dengan tema yang sensitif?", options=[1, 2, 3, 4, 5], key="t4")
-        p5 = st.select_slider("5.Seberapa sering pikiranmu merasa tidak tenang atau gelisah setelah menyelesaikan tugas membaca narasi?", options=[1, 2, 3, 4, 5], key="t5")
+        p1 = st.select_slider("1.Seberapa sering kamu merasa sedih atau terganggu secara emosional ketika membaca cerita yang mengandung konflik?", options=[1, 2, 3, 4, 5], key="t1")
+        p2 = st.select_slider("2.Seberapa sering kamu merasakan gejolak emosi yang kuat setelah menulis narasi?", options=[1, 2, 3, 4, 5], key="t2")
+        p3 = st.select_slider("3.Seberapa sering isi cerita memberikan pengaruh buruk atau mengubah suasana hati?", options=[1, 2, 3, 4, 5], key="t3")
+        p4 = st.select_slider("4.Seberapa sering kamu merasa terbebani saat menghadapi tugas menulis tema sensitif?", options=[1, 2, 3, 4, 5], key="t4")
+        p5 = st.select_slider("5.Seberapa sering pikiranmu merasa tidak tenang setelah tugas membaca?", options=[1, 2, 3, 4, 5], key="t5")
 
     with col2:
-        p6 = st.select_slider("6.Seberapa sering kegiatan membaca atau menulis narasi membuatmu merasa tidak aman atau cemas?", options=[1, 2, 3, 4, 5], key="t6")
-        p7 = st.select_slider("7.Seberapa sering kamu menyalahkan diri sendiri ketika tulisan narasimu menggambarkan perasaan-perasaan negatif?", options=[1, 2, 3, 4, 5], key="t7")
-        p8 = st.select_slider("8.Seberapa sering kamu merasa terlalu tegang, kaku, atau waspada saat mengikuti kegiatan menulis narasi di kelas?", options=[1, 2, 3, 4, 5], key="t8")
-        p9 = st.select_slider("9.Seberapa sering kamu menjadi mudah sedih, marah, atau sulit fokus setelah membaca atau menulis cerita tertentu?", options=[1, 2, 3, 4, 5], key="t9")
-        p10 = st.select_slider("10.Seberapa sering kegiatan menulis narasi membuatmu merasa asing atau jauh dari perasaanmu sendiri?", options=[1, 2, 3, 4, 5], key="t10")
+        p6 = st.select_slider("6.Seberapa sering kegiatan narasi membuatmu merasa tidak aman?", options=[1, 2, 3, 4, 5], key="t6")
+        p7 = st.select_slider("7.Seberapa sering kamu menyalahkan diri sendiri ketika menulis perasaan negatif?", options=[1, 2, 3, 4, 5], key="t7")
+        p8 = st.select_slider("8.Seberapa sering kamu merasa tegang saat kegiatan menulis di kelas?", options=[1, 2, 3, 4, 5], key="t8")
+        p9 = st.select_slider("9.Seberapa sering kamu mudah sedih atau marah setelah menulis?", options=[1, 2, 3, 4, 5], key="t9")
+        p10 = st.select_slider("10.Seberapa sering kegiatan menulis membuatmu merasa asing dari perasaanmu?", options=[1, 2, 3, 4, 5], key="t10")
 
     if st.button("Analisis & Kirim Laporan 🚀"):
         if nama and kelas != "Pilih Kelas":
@@ -53,7 +53,7 @@ if role == "Siswa (Menulis)":
             header_status = not os.path.exists('data_tugas.csv')
             new_data.to_csv('data_tugas.csv', mode='a', index=False, header=header_status)
             
-            st.success(f"Berhasil dikirim! Skor Anda: {total_skor} ({hasil})")
+            st.success(f"Berhasil dikirim! Skor: {total_skor} ({hasil})")
             st.balloons()
         else:
             st.warning("Mohon isi nama dan pilih kelas!")
@@ -81,7 +81,6 @@ elif role == "Guru (Administrator)":
 
     st.markdown("---")
 
-    # Kunci Keamanan: Data HANYA muncul jika password benar DAN tombol login diklik
     if st.session_state.get('authenticated', False) and password == "kelompok4":
         if os.path.exists('data_tugas.csv'):
             df = pd.read_csv('data_tugas.csv')
@@ -90,14 +89,13 @@ elif role == "Guru (Administrator)":
                 st.subheader("📊 Rekapitulasi & Statistik")
                 counts = df['Level_Trauma'].value_counts()
                 
-                # Metric
                 m1, m2, m3, m4 = st.columns(4)
                 m1.metric("Total Siswa", len(df))
                 m2.metric("Tinggi 🔴", counts.get("Tinggi", 0))
                 m3.metric("Sedang 🟡", counts.get("Sedang", 0))
                 m4.metric("Rendah 🟢", counts.get("Rendah", 0))
 
-                # 2. GRAFIK (Batang & Kurva Halus)
+                # 2. GRAFIK
                 col_kiri, col_kanan = st.columns(2)
                 with col_kiri:
                     st.write("**Grafik Batang:**")
@@ -106,21 +104,24 @@ elif role == "Guru (Administrator)":
                 with col_kanan:
                     st.write("**Kurva Sebaran Halus (Trend):**")
                     if len(df) > 1: 
-                        # Membuat kurva distribusi (Smooth Curve)
-                        fig = ff.create_distplot([df['Skor']], ['Skor Siswa'], bin_size=2, show_hist=False)
-                        st.plotly_chart(fig, use_container_width=True)
+                        try:
+                            # Menggunakan fig_factory untuk kurva distribusi
+                            fig = ff.create_distplot([df['Skor']], ['Skor Siswa'], bin_size=2, show_hist=False)
+                            st.plotly_chart(fig, use_container_width=True)
+                        except:
+                            st.warning("Data belum cukup bervariasi untuk membentuk kurva.")
                     else:
                         st.info("Butuh minimal 2 data siswa untuk membentuk kurva.")
 
                 # 3. TABEL DETAIL
-                st.write("*Data Detail:*")
+                st.write("**Data Detail:**")
                 def color_level(val):
                     color = 'red' if val == 'Tinggi' else 'orange' if val == 'Sedang' else 'green'
                     return f'color: {color}; font-weight: bold'
                 
-                st.dataframe(df.style.applymap(color_level, subset=['Level_Trauma']), use_container_width=True)
+                # Menggunakan .map (standar baru Pandas) sebagai pengganti .applymap
+                st.dataframe(df.style.map(color_level, subset=['Level_Trauma']), use_container_width=True)
 
-                # Tombol Reset
                 if st.button("🗑️ Reset Database"):
                     os.remove('data_tugas.csv')
                     st.session_state['authenticated'] = False
@@ -131,9 +132,3 @@ elif role == "Guru (Administrator)":
             st.info("Belum ada data masuk dari siswa.")
     else:
         st.info("Masukkan password dan klik 'Buka Dashboard' untuk mengakses data.")
-
-
-
-
-
-
