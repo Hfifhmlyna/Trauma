@@ -36,12 +36,13 @@ if role == "Siswa (Menulis)":
         p5 = st.select_slider("5.Seberapa sering pikiranmu merasa tidak tenang setelah tugas membaca?", options=[1, 2, 3, 4, 5], key="t5")
 
     with col2:
-        p6 = st.select_slider("6.Seberapa sering kegiatan narasi membuatmu merasa tidak aman?", options=[1, 2, 3, 4, 5], key="t6")
-        p7 = st.select_slider("7.Seberapa sering kamu menyalahkan diri sendiri ketika menulis perasaan negatif?", options=[1, 2, 3, 4, 5], key="t7")
-        p8 = st.select_slider("8.Seberapa sering kamu merasa tegang saat kegiatan menulis di kelas?", options=[1, 2, 3, 4, 5], key="t8")
-        p9 = st.select_slider("9.Seberapa sering kamu mudah sedih atau marah setelah menulis?", options=[1, 2, 3, 4, 5], key="t9")
-        p10 = st.select_slider("10.Seberapa sering kegiatan menulis membuatmu merasa asing dari perasaanmu?", options=[1, 2, 3, 4, 5], key="t10")
-
+         # Copy-paste kode ini ke bagian slider Anda
+         p6 = st.select_slider("11. Seberapa sering kamu merasa ingin berhenti membaca saat cerita mulai membahas hal-hal yang menyakitkan?", options=[1, 2, 3, 4, 5], key="t11")
+         p7 = st.select_slider("12. Seberapa sering kamu merasa detak jantungmu bertambah cepat saat diminta menulis narasi tentang diri sendiri?", options=[1, 2, 3, 4, 5], key="t12")
+         p8 = st.select_slider("13. Seberapa sering kamu merasa pikiranmu 'kosong' atau buntu karena teringat hal sedih saat sedang belajar?", options=[1, 2, 3, 4, 5], key="t13")
+         p9 = st.select_slider("14. Seberapa sering kamu merasa tokoh dalam cerita yang sedih seolah-olah sedang menggambarkan dirimu sendiri?", options=[1, 2, 3, 4, 5], key="t14")
+         p10 = st.select_slider("15. Seberapa sering kamu merasa lelah secara fisik setelah menyelesaikan tugas narasi yang emosional?", options=[1, 2, 3, 4, 5], key="t15")
+        
     if st.button("Analisis & Kirim Laporan 🚀"):
         if nama and kelas != "Pilih Kelas":
             total_skor = p1+p2+p3+p4+p5+p6+p7+p8+p9+p10
@@ -147,6 +148,7 @@ elif role == "Guru (Administrator)":
             st.info("Belum ada data masuk dari siswa.")
     else:
         st.info("Masukkan password dan klik 'Buka Dashboard' untuk mengakses data.")
+
 
 
 
