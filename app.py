@@ -68,18 +68,16 @@ if role == "Siswa (Menulis)":
                 hasil = "Rendah"
                 st.success(f"Hasil Analisis: **Indikasi Trauma Rendah** (Skor: {total_skor})")
 
-            # 3. Simpan Data ke CSV
+            # 3. Siapkan Data
             new_data = pd.DataFrame([[nama, hasil, total_skor, "Analisis 10 Dimensi"]], 
                                     columns=["Nama", "Level_Trauma", "Skor", "Teks"])
             
+            # 4. SIMPAN KE CSV (Baris ini yang WAJIB ada)
             header_status = not os.path.exists('data_tugas.csv')
-            new_data = pd.DataFrame([[nama, hasil, total_skor, "Analisis 10 Dimensi"]], 
-                        columns=["Nama", "Level_Trauma", "Skor", "Teks"])
+            new_data.to_csv('data_tugas.csv', mode='a', index=False, header=header_status)
             
             st.balloons()
             st.info("✅ Data Anda telah berhasil dikirim ke Dashboard Guru.")
-        else:
-            st.error("⚠️ Harap lengkapi Nama dan pilih Kelas sebelum mengirim.")
 
 # --- LOGIKA TAMPILAN GURU ---
 elif role == "Guru (Administrator)":
@@ -129,6 +127,7 @@ elif role == "Guru (Administrator)":
                     st.rerun()
         else:
             st.info("Belum ada data dari siswa.")
+
 
 
 
