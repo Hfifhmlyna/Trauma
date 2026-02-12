@@ -52,11 +52,11 @@ if role == "Siswa (Menulis)":
         o5 = st.select_slider("5.Apakah kamu merasa lelah secara fisik atau kehilangan energi setelah menyelesaikan seluruh tugas menulis narasi yang menguras perasaan ini?", options=[1, 2, 3, 4, 5], key="o5")
     
     with col_kanan:
-        o6 = st.select_slider("6. Seberapa sering kamu merasa sedih atau terganggu secara emosional setelah membaca cerita yang mengandung konflik?", options=[1, 2, 3, 4, 5], key="o1")
-        o7 = st.select_slider("7. Seberapa sering kamu merasa gelisah atau tidak aman saat melakukan kegiatan membaca atau menulis narasi?", options=[1, 2, 3, 4, 5], key="o2")
-        o8 = st.select_slider("8. Seberapa sering kamu merasa tegang atau terlalu waspada saat sedang mengerjakan tugas menulis di kelas?", options=[1, 2, 3, 4, 5], key="o3")
-        o9 = st.select_slider("9. Seberapa sering kamu menyalahkan diri sendiri atau merasa menyesal setelah menuliskan perasaan negatif ke dalam narasi?", options=[1, 2, 3, 4, 5], key="o4")
-        o10 = st.select_slider("10. Seberapa sering kamu merasa sulit fokus atau merasa asing dengan perasaanmu sendiri setelah menyelesaikan tugas literasi?", options=[1, 2, 3, 4, 5], key="o5")
+        o6 = st.select_slider("6. Seberapa sering kamu merasa sedih atau terganggu secara emosional setelah membaca cerita yang mengandung konflik?", options=[1, 2, 3, 4, 5], key="o6")
+        o7 = st.select_slider("7. Seberapa sering kamu merasa gelisah atau tidak aman saat melakukan kegiatan membaca atau menulis narasi?", options=[1, 2, 3, 4, 5], key="o7")
+        o8 = st.select_slider("8. Seberapa sering kamu merasa tegang atau terlalu waspada saat sedang mengerjakan tugas menulis di kelas?", options=[1, 2, 3, 4, 5], key="o8")
+        o9 = st.select_slider("9. Seberapa sering kamu menyalahkan diri sendiri atau merasa menyesal setelah menuliskan perasaan negatif ke dalam narasi?", options=[1, 2, 3, 4, 5], key="o9")
+        o10 = st.select_slider("10. Seberapa sering kamu merasa sulit fokus atau merasa asing dengan perasaanmu sendiri setelah menyelesaikan tugas literasi?", options=[1, 2, 3, 4, 5], key="o10")
     
     if st.button("Analisis & Kirim Laporan 🚀"):
         if nama and kelas != "Pilih Kelas" and q_nlp1:
@@ -169,6 +169,7 @@ elif role == "Guru (Administrator)":
                 st.rerun()
         else:
             st.info("Belum ada data masuk.")
+
 
 
 
