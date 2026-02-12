@@ -88,7 +88,7 @@ if role == "Siswa (Menulis)":
             else:
                 st.error(f"Hasil {nama}: **{hasil}** (Skor: {total_skor})")
             else:
-            st.error("⚠️ Isi identitas terlebih dahulu!")
+                st.error("⚠️ Isi identitas terlebih dahulu!")
     
 # --- LOGIKA TAMPILAN GURU ---
 elif role == "Guru (Administrator)":
@@ -170,6 +170,7 @@ elif role == "Guru (Administrator)":
                     st.rerun()
         else:
             st.info("Belum ada data masuk dari siswa.")
+
 
 
 
