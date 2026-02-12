@@ -69,11 +69,11 @@ if role == "Siswa (Menulis)":
             # Jika kata tidak ada di daftar bobot_kata, nilai defaultnya adalah 2
             bonus_nlp = sum([bobot_kata.get(k, 2) for k in kata_terdeteksi])
             
-            skor_slider = o1 + o2 + o3 + o4 + o5
+            skor_slider = o1 + o2 + o3 + o4 + o5 + o6 + o7 + o8 + o9 + o10
             total_akhir = skor_slider + bonus_nlp
             
-            if total_akhir >= 25: hasil = "Tinggi"
-            elif total_akhir >= 15: hasil = "Sedang"
+            if total_akhir >= 45: hasil = "Tinggi"
+            elif total_akhir >= 25: hasil = "Sedang"
             else: hasil = "Rendah"
             
             new_row = pd.DataFrame([[nama, kelas, hasil, total_akhir, teks_lengkap, ", ".join(kata_terdeteksi)]], 
@@ -95,7 +95,7 @@ elif role == "Guru (Administrator)":
     
     c_log, c_out = st.columns([1, 4])
     if c_log.button("Buka Dashboard 🔓"):
-        if password == "kelompok4":
+        if password == "Kelompok4":
             st.session_state['authenticated'] = True
             st.success("Akses Diterima!")
         else:
@@ -169,6 +169,7 @@ elif role == "Guru (Administrator)":
                 st.rerun()
         else:
             st.info("Belum ada data masuk.")
+
 
 
 
