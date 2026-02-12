@@ -126,7 +126,66 @@ elif role == "Guru (Administrator)":
                     os.remove('data_tugas.csv')
                     st.rerun()
         else:
-            st.info("Belum ada data dari siswa.")
+            st.info("Belum ada data dari siswa.")# --- LOGIKA TAMPILAN GURU ---
+elif role == "Guru (Administrator)":
+    st.markdown("<h1 style='color: #117A65;'>🔐 Dashboard Analisis Trauma Siswa</h1>", unsafe_allow_html=True)
+    
+    password = st.text_input("Password Admin:", type="password")
+    
+    if st.button("Buka Dashboard 🔓"):
+        if password == "kelompok4":
+            st.session_state['authenticated'] = True
+            st.success("Akses Diterima.")
+            st.rerun() # Refresh agar data langsung muncul
+        else:
+            st.error("Password salah!")
+            st.session_state['authenticated'] = False
+
+    # --- SEMUA DI BAWAH INI HARUS MASUK SATU TAB (INDENTASI) ---
+    if st.session_state.get('authenticated', False):
+        if os.path.exists('data_tugas.csv'):
+            df = pd.read_csv('data_tugas.csv')
+            
+            if 'Level_Trauma' in df.columns:
+                # 1. Statistik
+                st.subheader("📊 Rekapitulasi")
+                counts = df['Level_Trauma'].value_counts()
+                
+                c1, c2, c3, c4 = st.columns(4)
+                c1.metric("Total Siswa", len(df))
+                c2.metric("Tinggi 🔴", counts.get("Tinggi", 0))
+                c3.metric("Sedang 🟡", counts.get("Sedang", 0))
+                c4.metric("Rendah 🟢", counts.get("Rendah", 0))
+
+                # 2. MENAMPILKAN KURVA/GRAFIK (BAGIAN INI YANG HILANG)
+                st.markdown("---")
+                st.write("**Grafik Sebaran Tingkat Trauma:**")
+                st.bar_chart(counts) # Perintah memunculkan kurva
+
+                # 3. Tabel Detail
+                st.markdown("---")
+                def color_level(val):
+                    color = 'red' if val == 'Tinggi' else 'orange' if val == 'Sedang' else 'green'
+                    return f'color: {color}; font-weight: bold'
+                
+                st.dataframe(df.style.applymap(color_level, subset=['Level_Trauma']), use_container_width=True)
+
+                # 4. Tombol Download & Reset
+                col_a, col_b = st.columns(2)
+                with col_a:
+                    st.download_button("📥 Download Laporan", df.to_csv(index=False), "laporan.csv", "text/csv")
+                with col_b:
+                    if st.button("🗑️ Reset Database"):
+                        os.remove('data_tugas.csv')
+                        st.session_state['authenticated'] = False # Logout otomatis setelah reset
+                        st.rerun()
+            else:
+                st.error("Format data rusak. Klik tombol Reset di bawah.")
+                if st.button("Reset Sekarang"):
+                    os.remove('data_tugas.csv')
+                    st.rerun()
+        else:
+            st.info("Belum ada data masuk dari siswa.")
 
 
 
