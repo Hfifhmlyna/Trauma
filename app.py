@@ -35,16 +35,7 @@ if role == "Siswa (Menulis)":
         p4 = st.select_slider("4.Seberapa sering kamu merasa terbebani saat menghadapi tugas menulis tema sensitif?", options=[1, 2, 3, 4, 5], key="t4")
         p5 = st.select_slider("5.Seberapa sering pikiranmu merasa tidak tenang setelah tugas membaca?", options=[1, 2, 3, 4, 5], key="t5")
 
-    with col2:
-         p6 = st.select_slider("11. Seberapa sering kamu merasa ingin berhenti membaca saat cerita mulai membahas hal-hal yang menyakitkan?", options=[1, 2, 3, 4, 5], key="t11")
-         p7 = st.select_slider("12. Seberapa sering kamu merasa detak jantungmu bertambah cepat saat diminta menulis narasi tentang diri sendiri?", options=[1, 2, 3, 4, 5], key="t12")
-         p8 = st.select_slider("13. Seberapa sering kamu merasa pikiranmu 'kosong' atau buntu karena teringat hal sedih saat sedang belajar?", options=[1, 2, 3, 4, 5], key="t13")
-         p9 = st.select_slider("14. Seberapa sering kamu merasa tokoh dalam cerita yang sedih seolah-olah sedang menggambarkan dirimu sendiri?", options=[1, 2, 3, 4, 5], key="t14")
-         p10 = st.select_slider("15. Seberapa sering kamu merasa lelah secara fisik setelah menyelesaikan tugas narasi yang emosional?", options=[1, 2, 3, 4, 5], key="t15")
-
     # --- BAGIAN 1: SOAL NARASI (NLP ANALYSIS) ---
-    st.markdown("---")
-    st.markdown("### ✍️ Bagian A: Narasi Bebas (Analisis AI)")
     st.info("Tuliskan jawabanmu dalam bentuk kalimat. AI akan menganalisis kata kunci perasaanmu.")
     
     q_nlp1 = st.text_area("1. Ceritakan satu bagian dari sebuah cerita yang pernah kamu baca yang membuatmu merasa sangat tidak nyaman. Apa yang kamu rasakan?", key="nlp1")
@@ -199,6 +190,7 @@ elif role == "Guru (Administrator)":
             st.info("Belum ada data masuk dari siswa.")
     else:
         st.info("Masukkan password dan klik 'Buka Dashboard' untuk mengakses data.")
+
 
 
 
