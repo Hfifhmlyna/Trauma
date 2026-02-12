@@ -81,10 +81,7 @@ if role == "Siswa (Menulis)":
         else:
             st.error("⚠️ Harap lengkapi Nama dan pilih Kelas sebelum mengirim.")
 
-# --- LOGIKA TAMPILAN GURU ---
-elif role == "Guru (Administrator)":
-    st.markdown("<h1 style='color: #117A65;'>🔐 Dashboard Analisis Trauma Siswa</h1>", unsafe_allow_html=True)
-    
+# --- LOGIKA TAMPILAN GURU (MULAI DARI SINI) ---
     password = st.text_input("Password Admin:", type="password")
     
     if st.button("Buka Dashboard 🔓"):
@@ -96,34 +93,41 @@ elif role == "Guru (Administrator)":
             st.session_state['authenticated'] = False
 
     if st.session_state.get('authenticated', False):
-       if os.path.exists('data_tugas.csv'):
-          df = pd.read_csv('data_tugas.csv')
-          
-          # Pastikan kolom 'Level_Trauma' ada sebelum dihitung
-          if 'Level_Trauma' in df.columns:
-              st.subheader("📊 Rekapitulasi")
-              counts = df['Level_Trauma'].value_counts()
-              c1, c2, c3, c4 = st.columns(4)
-              c1.metric("Total Siswa", len(df))
-              c2.metric("Tinggi 🔴", counts.get("Tinggi", 0))
-              c3.metric("Sedang 🟡", counts.get("Sedang", 0))
-              c4.metric("Rendah 🟢", counts.get("Rendah", 0))
-
-              st.markdown("---")
-              st.write("**Data Detail:**")
+        if os.path.exists('data_tugas.csv'):
+            df = pd.read_csv('data_tugas.csv')
             
-            def color_level(val):
-                color = 'red' if val == 'Tinggi' else 'orange' if val == 'Sedang' else 'green'
-                return f'color: {color}; font-weight: bold'
-            
-            st.dataframe(df.style.applymap(color_level, subset=['Level_Trauma']), use_container_width=True)
+            if 'Level_Trauma' in df.columns:
+                # 1. Statistik
+                st.subheader("📊 Rekapitulasi")
+                counts = df['Level_Trauma'].value_counts()
+                c1, c2, c3, c4 = st.columns(4)
+                c1.metric("Total Siswa", len(df))
+                c2.metric("Tinggi 🔴", counts.get("Tinggi", 0))
+                c3.metric("Sedang 🟡", counts.get("Sedang", 0))
+                c4.metric("Rendah 🟢", counts.get("Rendah", 0))
 
-            # Tombol Aksi
-            col_a, col_b = st.columns(2)
-            with col_a:
-                st.download_button("📥 Download CSV", df.to_csv(index=False), "laporan.csv", "text/csv")
-            with col_b:
-                if st.button("🗑️ Reset Data"):
+                st.markdown("---")
+                st.write("**Data Detail Hasil Analisis:**")
+                
+                # Fungsi perapian warna
+                def color_level(val):
+                    color = 'red' if val == 'Tinggi' else 'orange' if val == 'Sedang' else 'green'
+                    return f'color: {color}; font-weight: bold'
+                
+                st.dataframe(df.style.applymap(color_level, subset=['Level_Trauma']), use_container_width=True)
+
+                # 2. Tombol Aksi
+                st.markdown("---")
+                col_a, col_b = st.columns(2)
+                with col_a:
+                    st.download_button("📥 Download CSV", df.to_csv(index=False), "laporan.csv", "text/csv")
+                with col_b:
+                    if st.button("🗑️ Reset Data"):
+                        os.remove('data_tugas.csv')
+                        st.rerun()
+            else:
+                st.error("Format kolom CSV tidak sesuai. Klik 'Reset Data' untuk memperbaiki.")
+                if st.button("🗑️ Reset Sekarang"):
                     os.remove('data_tugas.csv')
                     st.rerun()
         else:
