@@ -113,22 +113,37 @@ elif role == "Guru (Administrator)":
                     else:
                         st.info("Butuh minimal 2 data siswa untuk membentuk kurva.")
 
-                # 3. TABEL DETAIL
+               # 3. TABEL DETAIL
                 st.write("**Data Detail:**")
                 def color_level(val):
                     color = 'red' if val == 'Tinggi' else 'orange' if val == 'Sedang' else 'green'
                     return f'color: {color}; font-weight: bold'
                 
-                # Menggunakan .map (standar baru Pandas) sebagai pengganti .applymap
                 st.dataframe(df.style.map(color_level, subset=['Level_Trauma']), use_container_width=True)
 
-                if st.button("🗑️ Reset Database"):
-                    os.remove('data_tugas.csv')
-                    st.session_state['authenticated'] = False
-                    st.rerun()
+                # --- TAMBAHKAN BAGIAN DOWNLOAD DI SINI ---
+                st.markdown("---")
+                col_dl, col_rs = st.columns(2)
+                
+                with col_dl:
+                    # Konversi dataframe ke CSV untuk didownload
+                    csv_data = df.to_csv(index=False).encode('utf-8')
+                    st.download_button(
+                        label="📥 Download Laporan (CSV)",
+                        data=csv_data,
+                        file_name='laporan_analisis_trauma.csv',
+                        mime='text/csv',
+                    )
+                
+                with col_rs:
+                    if st.button("🗑️ Reset Database"):
+                        os.remove('data_tugas.csv')
+                        st.session_state['authenticated'] = False
+                        st.rerun()
             else:
                 st.error("Data CSV tidak valid.")
         else:
             st.info("Belum ada data masuk dari siswa.")
     else:
         st.info("Masukkan password dan klik 'Buka Dashboard' untuk mengakses data.")
+
