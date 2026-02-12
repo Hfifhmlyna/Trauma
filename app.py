@@ -83,7 +83,6 @@ if role == "Siswa (Menulis)":
 elif role == "Guru (Administrator)":
     st.markdown("<h1 style='color: #117A65;'>🔐 Dashboard Analisis Trauma Siswa</h1>", unsafe_allow_html=True)
     
-    # Kotak password ditaruh di luar agar tetap terlihat
     password = st.text_input("Password Admin:", type="password")
     
     col_login, col_logout = st.columns([1, 4])
@@ -135,24 +134,25 @@ elif role == "Guru (Administrator)":
                     return f'color: {color}; font-weight: bold'
                 
                 st.dataframe(df.style.applymap(color_level, subset=['Level_Trauma']), use_container_width=True)
-            else:
-                st.error("Format data tidak sesuai.")
 
-               # 4. Tombol Download & Reset
+                # 4. Tombol Download & Reset
+                st.markdown("---")
                 col_a, col_b = st.columns(2)
                 with col_a:
                     st.download_button("📥 Download Laporan", df.to_csv(index=False), "laporan.csv", "text/csv")
                 with col_b:
                     if st.button("🗑️ Reset Database"):
                         os.remove('data_tugas.csv')
-                        st.session_state['authenticated'] = False # Logout otomatis setelah reset
+                        st.session_state['authenticated'] = False
                         st.rerun()
-                else:
-                st.error("Format data rusak. Klik tombol Reset di bawah.")
+            else:
+                st.error("Format data tidak sesuai atau rusak.")
                 if st.button("Reset Sekarang"):
                     os.remove('data_tugas.csv')
                     st.rerun()
         else:
             st.info("Belum ada data masuk dari siswa.")
+    else:
+        st.info("Silakan masukkan password untuk melihat Dashboard.")
 
 
