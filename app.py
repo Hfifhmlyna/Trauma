@@ -21,11 +21,10 @@ with st.sidebar:
 if role == "Siswa (Menulis)":
     st.markdown("<h1 style='color: #2E86C1;'>📝 Aktivitas Literasi Narasi</h1>", unsafe_allow_html=True)
 
-    # --- 1. DATA DIRI (Pastikan nama variabel ini konsisten) ---
+    # --- 1. DATA DIRI ---
     st.markdown("### 👤 Identitas Penulis")
     c1, c2, c3 = st.columns([2, 1, 1])
     
-    # Kita gunakan variabel 'nama' agar sesuai dengan baris 98 milikmu
     nama = c1.text_input("Nama Lengkap / Inisial", key="input_nama") 
     usia = c2.text_input("Usia", key="input_usia")
     kelas = c3.selectbox("Kelas", ["Pilih Kelas", "7", "8", "9"], key="select_kelas")
@@ -44,13 +43,15 @@ if role == "Siswa (Menulis)":
         p5 = st.select_slider("5. Bagaimana kondisi pikiran dan perasaanmu setelah menyelesaikan tugas membaca narasi?", options=[1, 2, 3, 4, 5], key="t5")
 
     with col2:
-        p6 = st.select_slider("6.  Apakah kegiatan membaca atau menulis narasi pernah membuatmu merasa tidak aman atau gelisah?", options=[1, 2, 3, 4, 5], key="t6")
-        p7 = st.select_slider("7.  Apakah kamu sering menyalahkan diri sendiri ketika tulisan narasimu menggambarkan perasaan negatif?", options=[1, 2, 3, 4, 5], key="t7")
-        p8 = st.select_slider("8.  Apakah kamu merasa terlalu tegang atau waspada saat mengikuti kegiatan menulis narasi di kelas?", options=[1, 2, 3, 4, 5], key="t8")
-        p9 = st.select_slider("9.  Apakah setelah membaca atau menulis cerita tertentu kamu menjadi mudah sedih, marah, atau sulit fokus?", options=[1, 2, 3, 4, 5], key="t9")
+        p6 = st.select_slider("6. Apakah kegiatan membaca atau menulis narasi pernah membuatmu merasa tidak aman atau gelisah?", options=[1, 2, 3, 4, 5], key="t6")
+        p7 = st.select_slider("7. Apakah kamu sering menyalahkan diri sendiri ketika tulisan narasimu menggambarkan perasaan negatif?", options=[1, 2, 3, 4, 5], key="t7")
+        p8 = st.select_slider("8. Apakah kamu merasa terlalu tegang atau waspada saat mengikuti kegiatan menulis narasi di kelas?", options=[1, 2, 3, 4, 5], key="t8")
+        p9 = st.select_slider("9. Apakah setelah membaca atau menulis cerita tertentu kamu menjadi mudah sedih, marah, atau sulit fokus?", options=[1, 2, 3, 4, 5], key="t9")
         p10 = st.select_slider("10. Apakah kegiatan menulis narasi pernah membuatmu merasa jauh atau asing dengan perasaan diri sendiri?", options=[1, 2, 3, 4, 5], key="t10")
 
-    # --- TOMBOL ANALISIS & KIRIM (VERSI PERBAIKAN) ---
+    st.markdown("---")
+
+    # --- TOMBOL ANALISIS & KIRIM ---
     if st.button("Analisis & Kirim Laporan 🚀", key="btn_final"):
         if nama and kelas != "Pilih Kelas":
             # 1. Hitung Total Skor
@@ -59,13 +60,13 @@ if role == "Siswa (Menulis)":
             # 2. Penentuan Hasil
             if total_skor >= 38:
                 hasil = "Tinggi"
-                st.error(f"Hasil: Indikasi Trauma Tinggi (Skor: {total_skor})")
+                st.error(f"Hasil Analisis: **Indikasi Trauma Tinggi** (Skor: {total_skor})")
             elif total_skor >= 22:
                 hasil = "Sedang"
-                st.warning(f"Hasil: Indikasi Trauma Sedang (Skor: {total_skor})")
+                st.warning(f"Hasil Analisis: **Indikasi Trauma Sedang** (Skor: {total_skor})")
             else:
                 hasil = "Rendah"
-                st.success(f"Hasil: Indikasi Trauma Rendah (Skor: {total_skor})")
+                st.success(f"Hasil Analisis: **Indikasi Trauma Rendah** (Skor: {total_skor})")
 
             # 3. Simpan Data ke CSV
             new_data = pd.DataFrame([[nama, hasil, total_skor, "Analisis 10 Dimensi"]], 
@@ -75,138 +76,53 @@ if role == "Siswa (Menulis)":
             new_data.to_csv('data_tugas.csv', mode='a', index=False, header=header_status)
             
             st.balloons()
-            st.success(f"✅ Terima kasih {nama}, data berhasil dikirim.")
+            st.info("✅ Data Anda telah berhasil dikirim ke Dashboard Guru.")
         else:
-            # Else ini harus sejajar lurus dengan 'if nama and kelas'
-            st.error("⚠️ Harap isi Nama dan pilih Kelas dengan benar.")
+            st.error("⚠️ Harap lengkapi Nama dan pilih Kelas sebelum mengirim.")
 
-# --- LANJUT KE GURU (PASTIKAN TIDAK ADA KODE SISWA LAGI DI SINI) ---
-
-# --- BATAS AKHIR TAMPILAN SISWA (Langsung lanjut ke Guru) ---
-              
-            # Tampilkan Output ke Layar
-            st.markdown("---")
-            if label_warna == "success":
-                st.success(f"Hasil {nama}: **{hasil}** (Skor: {total_skor})")
-            elif label_warna == "warning":
-                st.warning(f"Hasil {nama}: **{hasil}** (Skor: {total_skor})")
-            else:
-                st.error(f"Hasil {nama}: **{hasil}** (Skor: {total_skor})")
-            else:
-                st.error("⚠️ Isi identitas terlebih dahulu!")
-    
 # --- LOGIKA TAMPILAN GURU ---
 elif role == "Guru (Administrator)":
     st.markdown("<h1 style='color: #117A65;'>🔐 Dashboard Analisis Trauma Siswa</h1>", unsafe_allow_html=True)
     
-    # Input Password
     password = st.text_input("Password Admin:", type="password")
     
-    # Tombol Enter/Masuk
     if st.button("Buka Dashboard 🔓"):
         if password == "kelompok4":
             st.session_state['authenticated'] = True
-            st.success("Akses Diterima. Halo Bapak/Ibu Guru.")
+            st.success("Akses Diterima.")
         else:
-            st.error("Password salah atau kosong!")
+            st.error("Password salah!")
             st.session_state['authenticated'] = False
 
-    # Logika menampilkan data hanya jika sudah "Enter" (Authenticated)
     if st.session_state.get('authenticated', False):
         if os.path.exists('data_tugas.csv'):
             df = pd.read_csv('data_tugas.csv')
             
-            # --- OUTPUT 1: RINGKASAN JUMLAH ---
-            st.subheader("📊 Rekapitulasi Tingkat Trauma")
+            # Statistik
+            st.subheader("📊 Rekapitulasi")
             counts = df['Level_Trauma'].value_counts()
-            
             c1, c2, c3, c4 = st.columns(4)
             c1.metric("Total Siswa", len(df))
-            c2.metric("Trauma Tinggi 🔴", counts.get("Tinggi", 0))
-            c3.metric("Trauma Sedang 🟡", counts.get("Sedang", 0))
-            c4.metric("Trauma Rendah 🟢", counts.get("Rendah", 0))
+            c2.metric("Tinggi 🔴", counts.get("Tinggi", 0))
+            c3.metric("Sedang 🟡", counts.get("Sedang", 0))
+            c4.metric("Rendah 🟢", counts.get("Rendah", 0))
 
-            # --- OUTPUT 2: GRAFIK SEBARAN ---
-            # --- OUTPUT 2: GRAFIK SEBARAN ---
             st.markdown("---")
-            st.write("**Visualisasi Sebaran Trauma:**")
-            st.bar_chart(counts)
+            st.write("**Data Detail:**")
             
-
-            # --- OUTPUT 3: TABEL EVALUASI (SUDAH DIPERBAIKI TIDAK DOUBLE) ---
-            st.markdown("---")
-            st.subheader("📋 Metrik Evaluasi Sistem AI")
-            
-            data_evaluasi = {
-                "Kategori Metrik": ["Akurasi Deteksi", "Presisi Label", "Recall (Daya Jaring)"],
-                "Nilai Skor": [0.85, 0.90, 0.82],
-                "Keterangan": ["Ketepatan Klasifikasi", "Keakuratan Label Sensitif", "Kemampuan Menjaring Kasus"]
-            }
-            st.table(pd.DataFrame(data_evaluasi))
-                
-            # --- OUTPUT 3: TABEL DETAIL ---
-            st.markdown("---")
-            st.write("**Data Detail Hasil Analisis AI:**")
-            # Mewarnai tabel agar guru mudah melihat yang 'Tinggi'
             def color_level(val):
                 color = 'red' if val == 'Tinggi' else 'orange' if val == 'Sedang' else 'green'
                 return f'color: {color}; font-weight: bold'
             
             st.dataframe(df.style.applymap(color_level, subset=['Level_Trauma']), use_container_width=True)
 
-          # --- BAGIAN DOWNLOAD DAN RESET (PERBAIKAN INDENTASI) ---
-            st.markdown("---")
+            # Tombol Aksi
             col_a, col_b = st.columns(2)
-            
             with col_a:
-                st.download_button(
-                    label="📥 Download Laporan",
-                    data=df.to_csv(index=False).encode('utf-8'),
-                    file_name="laporan_trauma.csv",
-                    mime="text/csv"
-                )
-                
+                st.download_button("📥 Download CSV", df.to_csv(index=False), "laporan.csv", "text/csv")
             with col_b:
-                if st.button("🗑️ Reset Database"):
-                    if os.path.exists('data_tugas.csv'):
-                        os.remove('data_tugas.csv')
-                    # Reset status login agar kembali ke halaman awal
-                    st.session_state['authenticated'] = False
+                if st.button("🗑️ Reset Data"):
+                    os.remove('data_tugas.csv')
                     st.rerun()
         else:
-            st.info("Belum ada data masuk dari siswa.")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            st.info("Belum ada data dari siswa.")
