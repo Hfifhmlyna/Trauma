@@ -6,6 +6,10 @@ import plotly.figure_factory as ff
 # --- KONFIGURASI HALAMAN ---
 st.set_page_config(page_title="SMLI - Analisis Trauma", page_icon="🛡️", layout="wide")
 
+# --- DATABASE KATA KUNCI TRAUMA (NLP Dasar) ---
+# Tambahkan kata kunci di sini agar AI bisa mendeteksinya
+keywords_trauma = ["lelah", "sakit", "takut", "sendiri", "hancur", "gelap", "sesak", "menangis", "teriak", "benci", "trauma", "mati", "putus asa", "cemas"]
+
 # --- SIDEBAR NAVIGASI ---
 with st.sidebar:
     st.title("🛡️ Sistem SMLI")
@@ -29,11 +33,11 @@ if role == "Siswa (Menulis)":
     st.markdown("### ✍️ Menulis Narasi Sesuai Perasaan")
     st.info("Tuliskan jawabanmu dalam bentuk kalimat.")
     
-    q_nlp1 = st.text_area("1. Ceritakan bagian cerita yang membuatmu tidak nyaman. Apa yang kamu rasakan?", key="nlp1")
-    q_nlp2 = st.text_area("2. Bagaimana perasaanmu setelah menulis tentang pengalaman pribadi yang menyedihkan?", key="nlp2")
-    q_nlp3 = st.text_area("3. Jika kamu tokoh cerita yang bermasalah berat, kata apa yang menggambarkan rasa sakitmu?", key="nlp3")
-    q_nlp4 = st.text_area("4. Saat diminta menulis tema keluarga, pikiran apa yang muncul?", key="nlp4")
-    q_nlp5 = st.text_area("5. Tuliskan curahan hatimu secara bebas tentang kegiatan di kelas saat ini.", key="nlp5")
+    q_nlp1 = st.text_area("1. Tuliskan secara singkat sebuah pengalaman pribadi atau cerita sedih yang pernah kamu alami.", key="nlp1")
+    q_nlp2 = st.text_area("2. Dari cerita yang baru saja kamu tulis, bagian mana yang paling membuatmu merasa tidak nyaman? Apa yang kamu rasakan saat mengingatnya?", key="nlp2")
+    q_nlp3 = st.text_area("3. Bagaimana perasaanmu sekarang setelah berhasil menuangkan pengalaman sedih tersebut ke dalam bentuk tulisan?", key="nlp3")
+    q_nlp4 = st.text_area("4. Jika kamu adalah tokoh utama dalam cerita yang baru saja kamu tulis, kata apa yang paling tepat untuk menggambarkan rasa sakitmu?", key="nlp4")
+    q_nlp5 = st.text_area("5. Saat menuliskan cerita tadi, jika dihubungkan dengan tema keluarga, pikiran atau kenangan apa yang tiba-tiba muncul di kepalamu?", key="nlp5")
 
     # BAGIAN B: SOAL OPSI (STATISTIK)
     st.markdown("---")
@@ -103,7 +107,11 @@ elif role == "Guru (Administrator)":
             st.rerun()
 
     st.markdown("---")
-
+    if 'Keywords_NLP' in df.columns:
+                st.subheader("🔍 Kata Kunci Dominan (Hasil NLP)")
+                all_keywords = df['Keywords_NLP'].str.cat(sep=', ')
+                st.write(f"Siswa paling banyak menyebutkan: **{all_keywords}**")
+        
     if st.session_state.get('authenticated', False) and password == "kelompok4":
         if os.path.exists('data_tugas.csv'):
             df = pd.read_csv('data_tugas.csv')
@@ -169,6 +177,7 @@ elif role == "Guru (Administrator)":
             st.info("Belum ada data masuk dari siswa.")
     else:
         st.info("Masukkan password dan klik 'Buka Dashboard' untuk mengakses data.")
+
 
 
 
