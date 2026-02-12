@@ -103,11 +103,11 @@ elif role == "Guru (Administrator)":
           if 'Level_Trauma' in df.columns:
               st.subheader("📊 Rekapitulasi")
               counts = df['Level_Trauma'].value_counts()
-            c1, c2, c3, c4 = st.columns(4)
-            c1.metric("Total Siswa", len(df))
-            c2.metric("Tinggi 🔴", counts.get("Tinggi", 0))
-            c3.metric("Sedang 🟡", counts.get("Sedang", 0))
-            c4.metric("Rendah 🟢", counts.get("Rendah", 0))
+              c1, c2, c3, c4 = st.columns(4)
+              c1.metric("Total Siswa", len(df))
+              c2.metric("Tinggi 🔴", counts.get("Tinggi", 0))
+              c3.metric("Sedang 🟡", counts.get("Sedang", 0))
+              c4.metric("Rendah 🟢", counts.get("Rendah", 0))
 
             st.markdown("---")
             st.write("**Data Detail:**")
@@ -128,6 +128,7 @@ elif role == "Guru (Administrator)":
                     st.rerun()
         else:
             st.info("Belum ada data dari siswa.")
+
 
 
 
