@@ -95,7 +95,7 @@ elif role == "Guru (Administrator)":
     
     c_log, c_out = st.columns([1, 4])
     if c_log.button("Buka Dashboard 🔓"):
-        if password == "Kelompok4":
+        if password == "kelompok04":
             st.session_state['authenticated'] = True
             st.success("Akses Diterima!")
         else:
@@ -169,6 +169,7 @@ elif role == "Guru (Administrator)":
                 st.rerun()
         else:
             st.info("Belum ada data masuk.")
+
 
 
 
