@@ -112,9 +112,13 @@ elif role == "Guru (Administrator)":
                     else:
                         st.info("Butuh minimal 2 data siswa untuk membentuk kurva.")
 
-                # Tabel
-                st.write("**Data Detail:**")
-                st.dataframe(df, use_container_width=True)
+                # 3. TABEL DETAIL
+                st.write("*Data Detail:*")
+                def color_level(val):
+                    color = 'red' if val == 'Tinggi' else 'orange' if val == 'Sedang' else 'green'
+                    return f'color: {color}; font-weight: bold'
+                
+                st.dataframe(df.style.applymap(color_level, subset=['Level_Trauma']), use_container_width=True)
 
                 # Tombol Reset
                 if st.button("🗑️ Reset Database"):
@@ -127,6 +131,7 @@ elif role == "Guru (Administrator)":
             st.info("Belum ada data masuk dari siswa.")
     else:
         st.info("Masukkan password dan klik 'Buka Dashboard' untuk mengakses data.")
+
 
 
 
