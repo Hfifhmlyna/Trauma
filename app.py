@@ -123,9 +123,9 @@ elif role == "Guru (Administrator)":
                     st.write("**Grafik Batang:**")
                     st.bar_chart(counts)
                 with col_kanan:
-                    st.write("**Kurva Sebaran:**")
+                    st.write("**Grafik Area (Distribusi):**")
                     st.area_chart(counts)
-
+                    
                 # 3. TABEL DETAIL
                 st.write("**Data Detail:**")
                 def color_level(val):
@@ -153,6 +153,7 @@ elif role == "Guru (Administrator)":
             st.info("Belum ada data masuk dari siswa.")
     else:
         st.info("Silakan masukkan password untuk melihat Dashboard.")
+
 
 
 
