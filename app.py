@@ -28,7 +28,7 @@ if role == "Siswa (Menulis)":
     # Kita gunakan variabel 'nama' agar sesuai dengan baris 98 milikmu
     nama = c1.text_input("Nama Lengkap / Inisial", key="input_nama") 
     usia = c2.text_input("Usia", key="input_usia")
-    kelas_opt = c3.selectbox("Kelas", ["Pilih Kelas", "7", "8", "9"], key="select_kelas")
+    kelas = c3.selectbox("Kelas", ["Pilih Kelas", "7", "8", "9"], key="select_kelas")
 
     st.markdown("---")
     st.info("🛡️ **Trauma Narrative Assessment**")
@@ -50,31 +50,37 @@ if role == "Siswa (Menulis)":
         p9 = st.select_slider("9.  Apakah setelah membaca atau menulis cerita tertentu kamu menjadi mudah sedih, marah, atau sulit fokus?", options=[1, 2, 3, 4, 5], key="t9")
         p10 = st.select_slider("10. Apakah kegiatan menulis narasi pernah membuatmu merasa jauh atau asing dengan perasaan diri sendiri?", options=[1, 2, 3, 4, 5], key="t10")
 
-    # --- TOMBOL KIRIM ---
-    if st.button("Kirim 🚀", key="btn_kirim_siswa"):
-        if nama and kelas_opt != "Pilih Kelas":
-            # Perhitungan AI di latar belakang
+    # GABUNGKAN MENJADI SATU TOMBOL AGAR DATA TIDAK DOUBLE
+    if st.button("Analisis & Kirim Laporan 🚀", key="btn_final"):
+        # Gunakan "Pilih Kelas" (K besar) agar sesuai dengan baris 30
+        if nama and kelas != "Pilih Kelas":
             total_skor = p1+p2+p3+p4+p5+p6+p7+p8+p9+p10
             
             if total_skor >= 38:
                 hasil = "Tinggi"
+                st.error(f"Hasil: Indikasi Trauma Tinggi (Skor: {total_skor})")
             elif total_skor >= 22:
                 hasil = "Sedang"
+                st.warning(f"Hasil: Indikasi Trauma Sedang (Skor: {total_skor})")
             else:
                 hasil = "Rendah"
+                st.success(f"Hasil: Indikasi Trauma Rendah (Skor: {total_skor})")
 
             # Simpan Data
-            new_data = pd.DataFrame([[nama, hasil, total_skor, "Data Analisis 10 Dimensi"]], 
+            new_data = pd.DataFrame([[nama, hasil, total_skor, "Analisis 10 Dimensi"]], 
                                     columns=["Nama", "Level_Trauma", "Skor", "Teks"])
-            new_data.to_csv('data_tugas.csv', mode='a', index=False, header=False)
+            
+            # Header otomatis muncul jika file belum ada
+            header_status = not os.path.exists('data_tugas.csv')
+            new_data.to_csv('data_tugas.csv', mode='a', index=False, header=header_status)
             
             st.balloons()
-            st.success(f"✅ Terima kasih {nama}, data kamu sudah terkirim ke Guru.")
+            st.success(f"✅ Terima kasih {nama}, data berhasil dikirim.")
         else:
-            st.error("⚠️ Harap isi Nama dan pilih Kelas terlebih dahulu.")
+            st.error("⚠️ Harap isi Nama dan pilih Kelas dengan benar.")
     # --- LOGIKA PENENTUAN OUTPUT AI (SKOR MAKSIMAL 50) ---
     if st.button("Analisis Laporan 🚀"):
-        if nama and kelas != "Pilih Kelas":
+        if nama and kelas != "Pilih kelas":
             # 1. Hitung Total Skor
             total_skor = p1+p2+p3+p4+p5+p6+p7+p8+p9+p10
             
@@ -90,7 +96,7 @@ if role == "Siswa (Menulis)":
                 label_warna = "success"
 
             # 3. Buat Data Baru
-            new_data = pd.DataFrame([[nama_mhs, hasil, total_skor, "Analisis 10 Dimensi Trauma"]], 
+            new_data = pd.DataFrame([[nama, hasil, total_skor, "Analisis 10 Dimensi Trauma"]], 
                                     columns=["Nama", "Level_Trauma", "Skor", "Teks"])
             
             # 4. Simpan ke CSV
@@ -99,11 +105,11 @@ if role == "Siswa (Menulis)":
             # 5. Tampilkan Output ke Layar
             st.markdown("---")
             if label_warna == "success":
-                st.success(f"Hasil {nama_mhs}: **{hasil}** (Skor: {total_skor})")
+                st.success(f"Hasil {nama}: **{hasil}** (Skor: {total_skor})")
             elif label_warna == "warning":
-                st.warning(f"Hasil {nama_mhs}: **{hasil}** (Skor: {total_skor})")
+                st.warning(f"Hasil {nama}: **{hasil}** (Skor: {total_skor})")
             else:
-                st.error(f"Hasil {nama_mhs}: **{hasil}** (Skor: {total_skor})")
+                st.error(f"Hasil {nama}: **{hasil}** (Skor: {total_skor})")
         else:
             st.error("⚠️ Isi identitas terlebih dahulu!")
     
@@ -187,6 +193,7 @@ elif role == "Guru (Administrator)":
                     st.rerun()
         else:
             st.info("Belum ada data masuk dari siswa.")
+
 
 
 
