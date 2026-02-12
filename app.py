@@ -58,6 +58,11 @@ if role == "Siswa (Menulis)":
             teks_lengkap = f"{q_nlp1} {q_nlp2} {q_nlp3} {q_nlp4} {q_nlp5}".lower()
             kata_terdeteksi = [k for k in keywords_trauma if k in teks_lengkap]
             bonus_nlp = len(kata_terdeteksi) * 2 
+
+            # Memberi nilai lebih tinggi untuk kata kunci yang sangat berat
+            bobot_kata = {"mati": 5, "hancur": 3, "trauma": 3, "lelah": 1, "putus asa": 4}
+            # Jika kata tidak ada di daftar bobot_kata, nilai defaultnya adalah 2
+            bonus_nlp = sum([bobot_kata.get(k, 2) for k in kata_terdeteksi])
             
             skor_slider = o1 + o2 + o3 + o4 + o5
             total_akhir = skor_slider + bonus_nlp
@@ -144,3 +149,4 @@ elif role == "Guru (Administrator)":
                 st.rerun()
         else:
             st.info("Belum ada data masuk.")
+
