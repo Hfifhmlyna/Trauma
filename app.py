@@ -5,6 +5,41 @@ import plotly.figure_factory as ff
 from github import Github
 import io
 
+
+# --- KONFIGURASI GITHUB (AMBIL DARI SECRETS) ---
+# Jangan tulis token langsung di sini, panggil dari Secrets agar aman
+GITHUB_TOKEN = st.secrets["GITHUB_TOKEN"] 
+REPO_NAME = st.secrets["REPO_NAME"]
+FILE_PATH = "data_tugas.csv"
+
+def save_to_github(new_df):
+    try:
+        g = Github(GITHUB_TOKEN)
+        repo = g.get_repo(REPO_NAME)
+        
+        try:
+            # Ambil file lama dari GitHub
+            contents = repo.get_contents(FILE_PATH)
+            old_data = pd.read_csv(io.StringIO(contents.decoded_content.decode('utf-8')))
+            updated_df = pd.concat([old_data, new_df], ignore_index=True)
+            message = "Update data siswa baru"
+        except:
+            # Jika file belum ada di GitHub, buat baru
+            updated_df = new_df
+            message = "Inisialisasi database data_tugas.csv"
+            contents = None
+
+        # Konversi dataframe ke CSV string
+        csv_string = updated_df.to_csv(index=False)
+        
+        if contents:
+            repo.update_file(FILE_PATH, message, csv_string, contents.sha)
+        else:
+            repo.create_file(FILE_PATH, message, csv_string)
+        return True
+    except Exception as e:
+        st.error(f"Gagal simpan ke GitHub: {e}")
+        return False
 # --- KONFIGURASI HALAMAN ---
 st.set_page_config(page_title="SMLI - Analisis Trauma", page_icon="🛡️", layout="wide")
 
@@ -81,8 +116,12 @@ if role == "Siswa (Menulis)":
             new_row = pd.DataFrame([[nama, kelas, hasil, total_akhir, teks_lengkap, ", ".join(kata_terdeteksi)]], 
                                     columns=["Nama", "Kelas", "Level_Trauma", "Skor", "Narasi", "Keywords_NLP"])
             
-            new_row.to_csv('data_tugas.csv', mode='a', index=False, header=not os.path.exists('data_tugas.csv'))
-            
+            with st.spinner("Mengirim data ke GitHub..."):
+                 if save_to_github(new_row):
+                    st.success(f"Analisis Selesai! Data tersimpan permanen.")
+                 else:
+                    st.error("Gagal mengirim data ke GitHub.")
+                    
             st.success(f"Analisis Selesai! Skor Total: {total_akhir} ({hasil})")
             if kata_terdeteksi:
                 st.warning(f"AI Mendeteksi emosi: {', '.join(kata_terdeteksi)}")
@@ -111,9 +150,16 @@ elif role == "Guru (Administrator)":
     st.markdown("---")
 
     if st.session_state.get('authenticated', False) and password == "kelompok4":
-        if os.path.exists('data_tugas.csv'):
-            df = pd.read_csv('data_tugas.csv')
-            
+        try:
+            g = Github(GITHUB_TOKEN)
+            repo = g.get_repo(REPO_NAME)
+            contents = repo.get_contents(FILE_PATH)
+        
+      
+             df = pd.read_csv(io.StringIO(contents.decoded_content.decode('utf-8')))
+        
+        st.subheader("📊 Rekapitulasi & Statistik (Live dari GitHub)")
+        # ... (lanjutkan dengan kode statistik kalian seperti counts, metrics, dan grafik)
             # Statistik Utama
             st.subheader("📊 Rekapitulasi & Statistik")
             counts = df['Level_Trauma'].value_counts()
@@ -171,6 +217,7 @@ elif role == "Guru (Administrator)":
                 st.rerun()
         else:
             st.info("Belum ada data masuk.")
+
 
 
 
