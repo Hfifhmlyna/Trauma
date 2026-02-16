@@ -1,216 +1,217 @@
 Nama,Kelas,Level_Trauma,Skor,Narasi,Keywords_NLP
-Aditya Pratama,7,Rendah,12,"Saya senang bisa membantu ibu memasak di dapur tadi sore dan bermain bola bersama teman.","-"
-Anisa Putri,8,Sedang,32,"Kadang saya merasa lelah karena tugas sekolah yang terlalu banyak menumpuk di meja belajar.","lelah"
-Daffa Alfarizi,8,Tinggi,48,"Kejadian itu membuat saya trauma dan takut untuk keluar rumah sendirian lagi karena sesak.","trauma, takut, sesak"
-Eka Wahyuni,9,Sedang,28,"Saya merasa sedih karena kehilangan kucing kesayangan saya minggu lalu di depan rumah.","sedih"
-Fajar Ramadhan,7,Rendah,15,"Sekolah hari ini sangat seru karena ada pelajaran olahraga bersama teman sekelas.","-"
+Aditya Pratama,7,Rendah,12,Saya senang bisa membantu ibu memasak di dapur tadi sore dan bermain bola bersama teman.,-
+Anisa Putri,8,Sedang,32,Kadang saya merasa lelah karena tugas sekolah yang terlalu banyak menumpuk di meja belajar.,lelah
+Daffa Alfarizi,8,Tinggi,48,Kejadian itu membuat saya trauma dan takut untuk keluar rumah sendirian lagi karena sesak.,"trauma, takut, sesak"
+Eka Wahyuni,9,Sedang,28,Saya merasa sedih karena kehilangan kucing kesayangan saya minggu lalu di depan rumah.,sedih
+Fajar Ramadhan,7,Rendah,15,Sekolah hari ini sangat seru karena ada pelajaran olahraga bersama teman sekelas.,-
 Gita Permata,8,Tinggi,58,"Hidup ini terasa sangat gelap dan hancur, saya merasa putus asa dengan keadaan keluarga.","gelap, hancur, putus asa"
-Hana Salsa,9,Sedang,30,"Hati saya sesak teringat kenangan pahit bersama teman lama saya saat menulis narasi ini.","sesak"
-Indra Wijaya,7,Rendah,20,"Saya baru saja mendapat nilai bagus dan merasa sangat bangga pada diri sendiri hari ini.","-"
-Joko Susilo,8,Tinggi,52,"Setiap malam saya menangis sendirian karena merasa tidak ada yang peduli pada perasaan saya.","menangis, sendiri"
-Kiki Amelia,9,Sedang,33,"Pikiran saya sering kosong dan sulit fokus karena banyak beban di kepala saat belajar.","beban"
-Naufal Zaki,9,Sedang,26,"Kadang saya merasa cemas jika harus berbicara di depan kelas yang sangat ramai.","cemas"
-Olivia Putri,7,Rendah,13,"Hari ini cerah sekali dan saya merasa sangat bersemangat berangkat ke sekolah pagi ini.","-"
-Panji Asmoro,8,Tinggi,62,"Saya ingin mati saja karena dunia ini sudah tidak adil dan membuat saya hancur total.","mati, hancur"
-Qonita Azzahra,9,Sedang,31,"Ada bagian dalam cerita ini yang membuat saya pusing dan teringat luka lama yang sakit.","pusing, sakit"
-Santi Rahayu,8,Tinggi,47,"Suasana di rumah membuat saya stress dan ingin pergi jauh karena merasa sangat tertekan.","stress"
-Tio Nugroho,9,Sedang,29,"Saya merasa kecewa karena dikhianati oleh orang yang saya percayai di sekolah kemarin.","kecewa"
-Umar Mukhtar,7,Rendah,17,"Belajar bahasa Indonesia hari ini sangat menyenangkan terutama bagian menulis narasi.","-"
-Vina Panduwinata,8,Tinggi,55,"Rasa sakit ini tak tertahankan dan membuat saya ingin berteriak kencang karena trauma.","sakit, teriak, trauma"
-Wawan Setiawan,9,Sedang,34,"Saya merasa lelah secara fisik dan mental menghadapi semua tekanan yang menumpuk.","lelah"
-Xena Alika,7,Rendah,13,"Saya baru saja membeli buku baru dan tidak sabar untuk segera membacanya sampai habis.","-"
-Yuda Baskara,8,Tinggi,51,"Hati saya hancur melihat pertengkaran orang tua setiap hari yang membuat saya takut.","hancur, takut"
-Zaskia Adya,9,Sedang,27,"Kadang saya merasa sendiri meskipun berada di tengah keramaian teman-teman sekolah.","sendiri"
-Ahmad Fauzi,7,Rendah,19,"Saya suka sekali suasana pagi yang tenang sebelum berangkat menuju ke sekolah.","-"
-Bella Shofie,8,Tinggi,54,"Kenangan itu sangat pahit dan membuat saya trauma setiap kali menulis tentang masa lalu.","trauma"
-Candra Kirana,9,Sedang,32,"Saya sering merasa gelisah tanpa alasan yang jelas saat malam mulai tiba di rumah.","gelisah"
-Doni Salmanan,7,Rendah,16,"Makan siang hari ini sangat enak dan membuat saya merasa sangat kenyang dan senang.","-"
-Erlangga Putra,8,Tinggi,49,"Saya merasa putus asa karena tidak ada yang mengerti perasaan sedih saya saat ini.","putus asa, sedih"
-Fitri Carlina,9,Sedang,35,"Tugas ini membuat saya sedikit stress tapi saya tetap berusaha menyelesaikannya.","stress"
-Gilang Dirga,7,Rendah,21,"Saya sangat suka bermain game bersama adik saya di waktu luang sore hari.","-"
-Hesti Purwadinata,8,Tinggi,60,"Dunia saya terasa hancur dan gelap gulita tanpa ada harapan untuk masa depan saya.","hancur, gelap"
-Irfan Hakim,9,Sedang,30,"Saya merasa sedih saat melihat orang lain mengalami kesulitan yang sangat berat.","sedih"
-Jessica Mila,7,Rendah,11,"Pelajaran bahasa Indonesia hari ini sangat mudah dipahami oleh saya dengan baik.","-"
-Kevin Julio,8,Tinggi,46,"Saya merasa sesak napas jika teringat kejadian menakutkan itu lagi saat menulis.","sesak"
-Lesti Kejora,9,Sedang,28,"Hati saya terasa sakit tapi saya harus tetap kuat menjalani hari-hari yang berat.","sakit"
-Mandra Suwandi,7,Rendah,23,"Saya senang sekali karena hari ini saya bisa pulang sekolah lebih awal dari biasanya.","-"
-Nana Mirdad,8,Tinggi,53,"Saya sering merasa takut jika harus sendirian di dalam kamar yang gelap dan sunyi.","takut, sendiri, gelap"
-Onky Alexander,9,Sedang,32,"Beban hidup ini terasa berat tapi saya mencoba untuk bertahan demi masa depan saya.","beban"
-Putri Marino,7,Rendah,14,"Melihat pemandangan hijau di sekolah membuat hati saya merasa sangat damai sekali.","-"
-Raffi Ahmad,8,Tinggi,57,"Saya lelah dengan hidup ini dan ingin semua ini segera berakhir karena sakit hati.","lelah, sakit"
-Sule Sutisna,9,Sedang,31,"Terkadang saya merasa benci melihat orang yang sangat sombong dan merendahkan.","benci"
-Tukul Arwana,7,Rendah,24,"Tertawa bersama teman-teman adalah obat paling ampuh bagi saya saat sedang penat.","-"
-Ussy Sulistiawaty,8,Tinggi,50,"Saya merasa hancur karena gagal memenuhi ekspektasi orang tua yang terlalu tinggi.","hancur"
-Vicky Prasetyo,9,Sedang,29,"Pikiran saya kacau dan saya merasa pusing memikirkannya sendirian di dalam kamar.","pusing, sendiri"
-Wilona Natasha,7,Rendah,15,"Hari ini saya mendapat teman baru yang sangat baik hati dan suka menolong.","-"
-Zulfikar Ali,8,Tinggi,59,"Saya trauma dan sangat takut kejadian itu akan terulang kembali di hidup saya.","trauma, takut"
-Rizky Febian,7,Rendah,18,"Saya sangat senang hari ini bisa latihan menyanyi bersama teman-teman sekolah.","-"
-Najwa Shihab,8,Sedang,32,"Terkadang saya merasa lelah karena harus membaca banyak buku untuk tugas narasi.","lelah"
-Deddy Corbuzier,9,Tinggi,55,"Saya merasa hancur dan stress karena tekanan dari lingkungan sekitar yang terlalu berat.","hancur, stress"
-Maudy Ayunda,7,Rendah,14,"Belajar di perpustakaan hari ini terasa sangat tenang dan menyenangkan sekali.","-"
-Nicholas Saputra,8,Tinggi,48,"Ada kenangan masa lalu yang membuat saya trauma dan takut jika harus sendirian.","trauma, takut, sendiri"
-Dian Sastro,9,Sedang,28,"Saya merasa sedih saat melihat teman saya pindah sekolah ke luar kota kemarin.","sedih"
-Reza Rahadian,7,Rendah,15,"Hari ini saya belajar akting di ekskul teater dan rasanya sangat seru.","-"
+Hana Salsa,9,Sedang,30,Hati saya sesak teringat kenangan pahit bersama teman lama saya saat menulis narasi ini.,sesak
+Indra Wijaya,7,Rendah,20,Saya baru saja mendapat nilai bagus dan merasa sangat bangga pada diri sendiri hari ini.,-
+Joko Susilo,8,Tinggi,52,Setiap malam saya menangis sendirian karena merasa tidak ada yang peduli pada perasaan saya.,"menangis, sendiri"
+Kiki Amelia,9,Sedang,33,Pikiran saya sering kosong dan sulit fokus karena banyak beban di kepala saat belajar.,beban
+Naufal Zaki,9,Sedang,26,Kadang saya merasa cemas jika harus berbicara di depan kelas yang sangat ramai.,cemas
+Olivia Putri,7,Rendah,13,Hari ini cerah sekali dan saya merasa sangat bersemangat berangkat ke sekolah pagi ini.,-
+Panji Asmoro,8,Tinggi,62,Saya ingin mati saja karena dunia ini sudah tidak adil dan membuat saya hancur total.,"mati, hancur"
+Qonita Azzahra,9,Sedang,31,Ada bagian dalam cerita ini yang membuat saya pusing dan teringat luka lama yang sakit.,"pusing, sakit"
+Santi Rahayu,8,Tinggi,47,Suasana di rumah membuat saya stress dan ingin pergi jauh karena merasa sangat tertekan.,stress
+Tio Nugroho,9,Sedang,29,Saya merasa kecewa karena dikhianati oleh orang yang saya percayai di sekolah kemarin.,kecewa
+Umar Mukhtar,7,Rendah,17,Belajar bahasa Indonesia hari ini sangat menyenangkan terutama bagian menulis narasi.,-
+Vina Panduwinata,8,Tinggi,55,Rasa sakit ini tak tertahankan dan membuat saya ingin berteriak kencang karena trauma.,"sakit, teriak, trauma"
+Wawan Setiawan,9,Sedang,34,Saya merasa lelah secara fisik dan mental menghadapi semua tekanan yang menumpuk.,lelah
+Xena Alika,7,Rendah,13,Saya baru saja membeli buku baru dan tidak sabar untuk segera membacanya sampai habis.,-
+Yuda Baskara,8,Tinggi,51,Hati saya hancur melihat pertengkaran orang tua setiap hari yang membuat saya takut.,"hancur, takut"
+Zaskia Adya,9,Sedang,27,Kadang saya merasa sendiri meskipun berada di tengah keramaian teman-teman sekolah.,sendiri
+Ahmad Fauzi,7,Rendah,19,Saya suka sekali suasana pagi yang tenang sebelum berangkat menuju ke sekolah.,-
+Bella Shofie,8,Tinggi,54,Kenangan itu sangat pahit dan membuat saya trauma setiap kali menulis tentang masa lalu.,trauma
+Candra Kirana,9,Sedang,32,Saya sering merasa gelisah tanpa alasan yang jelas saat malam mulai tiba di rumah.,gelisah
+Doni Salmanan,7,Rendah,16,Makan siang hari ini sangat enak dan membuat saya merasa sangat kenyang dan senang.,-
+Erlangga Putra,8,Tinggi,49,Saya merasa putus asa karena tidak ada yang mengerti perasaan sedih saya saat ini.,"putus asa, sedih"
+Fitri Carlina,9,Sedang,35,Tugas ini membuat saya sedikit stress tapi saya tetap berusaha menyelesaikannya.,stress
+Gilang Dirga,7,Rendah,21,Saya sangat suka bermain game bersama adik saya di waktu luang sore hari.,-
+Hesti Purwadinata,8,Tinggi,60,Dunia saya terasa hancur dan gelap gulita tanpa ada harapan untuk masa depan saya.,"hancur, gelap"
+Irfan Hakim,9,Sedang,30,Saya merasa sedih saat melihat orang lain mengalami kesulitan yang sangat berat.,sedih
+Jessica Mila,7,Rendah,11,Pelajaran bahasa Indonesia hari ini sangat mudah dipahami oleh saya dengan baik.,-
+Kevin Julio,8,Tinggi,46,Saya merasa sesak napas jika teringat kejadian menakutkan itu lagi saat menulis.,sesak
+Lesti Kejora,9,Sedang,28,Hati saya terasa sakit tapi saya harus tetap kuat menjalani hari-hari yang berat.,sakit
+Mandra Suwandi,7,Rendah,23,Saya senang sekali karena hari ini saya bisa pulang sekolah lebih awal dari biasanya.,-
+Nana Mirdad,8,Tinggi,53,Saya sering merasa takut jika harus sendirian di dalam kamar yang gelap dan sunyi.,"takut, sendiri, gelap"
+Onky Alexander,9,Sedang,32,Beban hidup ini terasa berat tapi saya mencoba untuk bertahan demi masa depan saya.,beban
+Putri Marino,7,Rendah,14,Melihat pemandangan hijau di sekolah membuat hati saya merasa sangat damai sekali.,-
+Raffi Ahmad,8,Tinggi,57,Saya lelah dengan hidup ini dan ingin semua ini segera berakhir karena sakit hati.,"lelah, sakit"
+Sule Sutisna,9,Sedang,31,Terkadang saya merasa benci melihat orang yang sangat sombong dan merendahkan.,benci
+Tukul Arwana,7,Rendah,24,Tertawa bersama teman-teman adalah obat paling ampuh bagi saya saat sedang penat.,-
+Ussy Sulistiawaty,8,Tinggi,50,Saya merasa hancur karena gagal memenuhi ekspektasi orang tua yang terlalu tinggi.,hancur
+Vicky Prasetyo,9,Sedang,29,Pikiran saya kacau dan saya merasa pusing memikirkannya sendirian di dalam kamar.,"pusing, sendiri"
+Wilona Natasha,7,Rendah,15,Hari ini saya mendapat teman baru yang sangat baik hati dan suka menolong.,-
+Zulfikar Ali,8,Tinggi,59,Saya trauma dan sangat takut kejadian itu akan terulang kembali di hidup saya.,"trauma, takut"
+Rizky Febian,7,Rendah,18,Saya sangat senang hari ini bisa latihan menyanyi bersama teman-teman sekolah.,-
+Najwa Shihab,8,Sedang,32,Terkadang saya merasa lelah karena harus membaca banyak buku untuk tugas narasi.,lelah
+Deddy Corbuzier,9,Tinggi,55,Saya merasa hancur dan stress karena tekanan dari lingkungan sekitar yang terlalu berat.,"hancur, stress"
+Maudy Ayunda,7,Rendah,14,Belajar di perpustakaan hari ini terasa sangat tenang dan menyenangkan sekali.,-
+Nicholas Saputra,8,Tinggi,48,Ada kenangan masa lalu yang membuat saya trauma dan takut jika harus sendirian.,"trauma, takut, sendiri"
+Dian Sastro,9,Sedang,28,Saya merasa sedih saat melihat teman saya pindah sekolah ke luar kota kemarin.,sedih
+Reza Rahadian,7,Rendah,15,Hari ini saya belajar akting di ekskul teater dan rasanya sangat seru.,-
 Pevita Pearce,8,Tinggi,58,"Dunia terasa gelap dan hancur, saya merasa putus asa menghadapi masalah keluarga ini.","gelap, hancur, putus asa"
-Joe Taslim,9,Sedang,30,"Hati saya sesak teringat perjuangan berat yang pernah saya lalui di masa kecil.","sesak"
-Iko Uwais,7,Rendah,20,"Saya baru saja memenangkan pertandingan silat dan merasa sangat bangga.","-"
-Agnez Mo,8,Tinggi,52,"Saya sering menangis di malam hari karena merasa lelah dengan ekspektasi orang lain.","menangis, lelah"
-Tulus Rusydi,9,Sedang,33,"Pikiran saya sering kosong karena terlalu banyak beban tugas yang menumpuk.","beban"
-Raisa Andriana,7,Rendah,12,"Hobi saya adalah menulis lirik lagu yang membuat hati saya merasa damai.","-"
-Ariel Noah,9,Sedang,26,"Kadang saya merasa cemas saat harus tampil di depan orang banyak yang ramai.","cemas"
-Bunga Citra Lestari,7,Rendah,11,"Pagi ini udara sangat segar dan saya bersemangat untuk pergi ke sekolah.","-"
-Gading Marten,8,Tinggi,62,"Saya merasa hancur dan ingin mati saja karena kehilangan hal yang sangat berharga.","hancur, mati"
-Luna Maya,9,Sedang,31,"Ada rasa sakit yang muncul kembali saat saya teringat kejadian pahit di masa lalu.","sakit"
-Irfan Bachdim,7,Rendah,22,"Saya sangat bahagia karena bisa mencetak gol saat jam olahraga tadi pagi.","-"
-Prilly Latuconsina,8,Tinggi,47,"Suasana di kelas membuat saya stress karena suara bising yang memicu trauma saya.","stress, trauma"
-Boy William,9,Sedang,29,"Saya merasa kecewa karena rencana yang sudah saya susun matang ternyata gagal.","kecewa"
-Sule Prikitiw,7,Rendah,17,"Tertawa bersama sahabat adalah hal yang paling menyenangkan dalam hidup saya.","-"
-Andre Taulany,8,Tinggi,55,"Rasa sakit ini membuat saya ingin berteriak kencang agar semua beban ini hilang.","sakit, teriak"
-Rigen Rakelna,9,Sedang,34,"Saya merasa lelah menghadapi semua masalah yang datang secara bertubi-tubi.","lelah"
-Kiky Saputri,7,Rendah,13,"Hari ini saya berhasil membuat guru tertawa dengan cerita narasi saya.","-"
-Raditya Dika,8,Tinggi,51,"Hati saya hancur dan takut melihat situasi yang tidak menentu di dalam rumah.","hancur, takut"
-Ernest Prakasa,9,Sedang,27,"Kadang saya merasa sendiri dan sepi meskipun sedang berkumpul dengan banyak orang.","sendiri"
-Pandji Pragiwaksono,7,Rendah,19,"Saya sangat menyukai suasana pagi yang tenang sebelum kelas dimulai.","-"
-Denny Sumargo,8,Tinggi,54,"Kejadian itu sangat pahit dan membuat saya trauma untuk memulai sesuatu yang baru.","trauma"
-Greysia Polii,9,Sedang,32,"Saya sering merasa gelisah tanpa sebab yang jelas saat sedang menulis narasi.","gelisah"
-Apriyani Rahayu,7,Rendah,16,"Makan siang bersama sahabat hari ini membuat mood saya menjadi sangat baik.","-"
-Jonatan Christie,8,Tinggi,49,"Saya merasa putus asa dan sedih karena tidak bisa memberikan yang terbaik.","putus asa, sedih"
-Anthony Ginting,9,Sedang,35,"Tekanan ini membuat saya stress namun saya mencoba untuk tetap fokus belajar.","stress"
-Kevin Sanjaya,7,Rendah,21,"Saya sangat senang bisa bermain badminton bersama kakak di sore hari.","-"
+Joe Taslim,9,Sedang,30,Hati saya sesak teringat perjuangan berat yang pernah saya lalui di masa kecil.,sesak
+Iko Uwais,7,Rendah,20,Saya baru saja memenangkan pertandingan silat dan merasa sangat bangga.,-
+Agnez Mo,8,Tinggi,52,Saya sering menangis di malam hari karena merasa lelah dengan ekspektasi orang lain.,"menangis, lelah"
+Tulus Rusydi,9,Sedang,33,Pikiran saya sering kosong karena terlalu banyak beban tugas yang menumpuk.,beban
+Raisa Andriana,7,Rendah,12,Hobi saya adalah menulis lirik lagu yang membuat hati saya merasa damai.,-
+Ariel Noah,9,Sedang,26,Kadang saya merasa cemas saat harus tampil di depan orang banyak yang ramai.,cemas
+Bunga Citra Lestari,7,Rendah,11,Pagi ini udara sangat segar dan saya bersemangat untuk pergi ke sekolah.,-
+Gading Marten,8,Tinggi,62,Saya merasa hancur dan ingin mati saja karena kehilangan hal yang sangat berharga.,"hancur, mati"
+Luna Maya,9,Sedang,31,Ada rasa sakit yang muncul kembali saat saya teringat kejadian pahit di masa lalu.,sakit
+Irfan Bachdim,7,Rendah,22,Saya sangat bahagia karena bisa mencetak gol saat jam olahraga tadi pagi.,-
+Prilly Latuconsina,8,Tinggi,47,Suasana di kelas membuat saya stress karena suara bising yang memicu trauma saya.,"stress, trauma"
+Boy William,9,Sedang,29,Saya merasa kecewa karena rencana yang sudah saya susun matang ternyata gagal.,kecewa
+Sule Prikitiw,7,Rendah,17,Tertawa bersama sahabat adalah hal yang paling menyenangkan dalam hidup saya.,-
+Andre Taulany,8,Tinggi,55,Rasa sakit ini membuat saya ingin berteriak kencang agar semua beban ini hilang.,"sakit, teriak"
+Rigen Rakelna,9,Sedang,34,Saya merasa lelah menghadapi semua masalah yang datang secara bertubi-tubi.,lelah
+Kiky Saputri,7,Rendah,13,Hari ini saya berhasil membuat guru tertawa dengan cerita narasi saya.,-
+Raditya Dika,8,Tinggi,51,Hati saya hancur dan takut melihat situasi yang tidak menentu di dalam rumah.,"hancur, takut"
+Ernest Prakasa,9,Sedang,27,Kadang saya merasa sendiri dan sepi meskipun sedang berkumpul dengan banyak orang.,sendiri
+Pandji Pragiwaksono,7,Rendah,19,Saya sangat menyukai suasana pagi yang tenang sebelum kelas dimulai.,-
+Denny Sumargo,8,Tinggi,54,Kejadian itu sangat pahit dan membuat saya trauma untuk memulai sesuatu yang baru.,trauma
+Greysia Polii,9,Sedang,32,Saya sering merasa gelisah tanpa sebab yang jelas saat sedang menulis narasi.,gelisah
+Apriyani Rahayu,7,Rendah,16,Makan siang bersama sahabat hari ini membuat mood saya menjadi sangat baik.,-
+Jonatan Christie,8,Tinggi,49,Saya merasa putus asa dan sedih karena tidak bisa memberikan yang terbaik.,"putus asa, sedih"
+Anthony Ginting,9,Sedang,35,Tekanan ini membuat saya stress namun saya mencoba untuk tetap fokus belajar.,stress
+Kevin Sanjaya,7,Rendah,21,Saya sangat senang bisa bermain badminton bersama kakak di sore hari.,-
 Marcus Gideon,8,Tinggi,60,"Dunia saya terasa hancur dan gelap gulita, saya butuh seseorang untuk mendengar.","hancur, gelap"
-Eko Yuli Irawan,9,Sedang,30,"Saya merasa sedih saat teringat pengorbanan orang tua untuk sekolah saya.","sedih"
-Lalu Zohri,7,Rendah,11,"Berlari di pagi hari membuat pikiran saya menjadi sangat segar dan tenang.","-"
-Sri Mulyani,8,Tinggi,46,"Saya merasa sesak dan pusing memikirkan tanggung jawab yang begitu besar.","sesak, pusing"
-Basuki Hadimuljono,9,Sedang,28,"Hati saya sakit melihat pembangunan yang merusak lingkungan di sekitar saya.","sakit"
-Ridwan Kamil,7,Rendah,23,"Melihat taman yang indah membuat hati saya merasa sangat bahagia hari ini.","-"
-Ganjar Pranowo,8,Tinggi,53,"Saya sering merasa takut dan tertekan oleh keadaan yang sangat gelap ini.","takut, gelap"
-Anies Baswedan,9,Sedang,32,"Beban ini terasa berat namun saya harus tetap teguh menjalankan tugas saya.","beban"
-Prabowo Subianto,7,Rendah,14,"Disiplin di sekolah membuat saya merasa bangga dan memiliki masa depan.","-"
-Susi Pudjiastuti,8,Tinggi,57,"Saya lelah dengan ketidakadilan yang membuat hati saya terasa hancur sekali.","lelah, hancur"
-Butet Kertaradjasa,9,Sedang,31,"Terkadang saya merasa benci pada diri sendiri karena sering merasa gagal.","benci"
-Titiek Puspa,8,Tinggi,50,"Saya merasa hancur karena kehilangan sosok panutan yang selama ini menguatkan.","hancur"
-Tompi Dr,9,Sedang,29,"Pikiran saya kacau dan pusing memikirkan kesehatan anggota keluarga saya.","pusing"
-Glenn Fredly,7,Rendah,15,"Musik adalah pelarian terbaik saat saya merasa butuh ketenangan di sekolah.","-"
-Nike Ardilla,8,Tinggi,59,"Saya trauma dan sangat takut jika kegagalan yang sama terulang kembali.","trauma, takut"
-Rizky Billar,8,Sedang,36,"Kadang saya merasa lelah karena ekspektasi orang-orang di sekitar saya terlalu tinggi.","lelah"
-Putri Delina,9,Sedang,29,"Saya merasa sedih saat teringat momen kebersamaan keluarga yang sekarang mulai berubah.","sedih"
-Atta Halilintar,7,Sedang,38,"Beban pekerjaan sekolah membuat saya sering merasa pusing dan sulit membagi waktu.","beban, pusing"
-Aurel Hermansyah,8,Sedang,31,"Saya merasa cemas jika harus menghadapi ujian yang sangat menentukan masa depan saya.","cemas"
-Verrell Bramasta,9,Sedang,27,"Ada rasa kecewa yang mendalam saat saya gagal memberikan hasil terbaik untuk orang tua.","kecewa"
-Natasha Wilona,7,Sedang,34,"Hati saya sesak teringat perselisihan dengan sahabat baik saya beberapa waktu lalu.","sesak"
-Aliando Syarief,8,Sedang,42,"Pikiran saya sering kosong dan saya merasa gelisah saat malam hari tiba di kamar.","gelisah"
-Prilly Latuconsina,9,Sedang,30,"Tugas menulis narasi ini membuat saya sedikit stress karena harus mengingat masa lalu.","stress"
-Baim Wong,7,Sedang,28,"Kadang saya merasa sendiri meskipun sedang berada di sekolah yang sangat ramai.","sendiri"
-Paula Verhoeven,8,Sedang,33,"Saya merasa lelah secara mental menghadapi tekanan dari teman-teman sekelas saya.","lelah"
-Raffi Ahmad,9,Sedang,40,"Ada beban yang terasa berat di pundak saya setiap kali memikirkan masa depan nanti.","beban"
-Nagita Slavina,7,Sedang,35,"Saya merasa sedih melihat kondisi lingkungan sekolah yang tidak sebersih biasanya.","sedih"
-Zaskia Gotik,8,Sedang,32,"Perasaan saya sedang tidak menentu dan saya merasa butuh waktu untuk menenangkan diri.","-"
-Via Vallen,9,Sedang,37,"Kadang saya merasa pusing jika terlalu lama menatap layar komputer saat mengerjakan tugas.","pusing"
-Nella Kharisma,7,Sedang,26,"Saya merasa kecewa karena rencana liburan bersama teman-teman harus dibatalkan.","kecewa"
-Denny Caknan,8,Sedang,39,"Ada rasa gelisah yang muncul saat saya harus berbicara di depan banyak orang hari ini.","gelisah"
-Happy Asmara,9,Sedang,34,"Hati saya terasa sesak saat teringat lagu-lagu yang penuh dengan kenangan pahit.","sesak"
-Tiara Andini,7,Sedang,29,"Saya merasa cemas menunggu hasil pengumuman lomba menulis yang saya ikuti kemarin.","cemas"
-Lyodra Ginting,8,Sedang,31,"Tugas sekolah yang menumpuk membuat saya merasa sedikit stress dan kurang tidur.","stress"
-Ziva Magnolya,9,Sedang,33,"Kadang saya merasa lelah dengan rutinitas sekolah yang terasa sangat membosankan.","lelah"
-Raffi Ahmad,8,Rendah,15,"Saya sangat senang hari ini bisa bermain bola bersama teman-teman sekolah.","-"
-Nagita Slavina,7,Sedang,35,"Kadang saya merasa lelah karena tugas sekolah yang terlalu banyak menumpuk.","lelah"
-Deddy Corbuzier,9,Tinggi,55,"Saya merasa hancur karena sering dimarahi di rumah tanpa alasan yang jelas.","hancur"
-Maudy Ayunda,7,Rendah,12,"Tadi pagi saya makan bersama keluarga dan rasanya sangat tenang sekali.","-"
-Nicholas Saputra,8,Tinggi,48,"Kejadian itu membuat saya trauma dan takut untuk keluar rumah sendirian lagi.","trauma, takut, sendiri"
-Dian Sastro,9,Sedang,28,"Saya merasa sedih karena kehilangan kucing kesayangan saya minggu lalu.","sedih"
-Reza Rahadian,7,Rendah,15,"Sekolah hari ini sangat seru karena ada pelajaran olahraga di lapangan.","-"
-Pevita Pearce,8,Tinggi,58,"Hidup ini terasa sangat gelap dan saya merasa putus asa dengan keadaan ini.","gelap, putus asa"
-Joe Taslim,9,Sedang,30,"Hati saya sesak teringat kenangan pahit bersama teman lama saya dulu.","sesak"
-Iko Uwais,7,Rendah,20,"Saya baru saja mendapat nilai bagus dan merasa sangat bangga pada diri sendiri.","-"
-Agnez Mo,8,Tinggi,52,"Saya sering menangis di malam hari karena merasa tidak ada yang peduli.","menangis"
-Tulus Rusydi,9,Sedang,33,"Pikiran saya sering kosong dan sulit fokus karena banyak beban di kepala.","beban"
-Raisa Andriana,7,Rendah,14,"Hobi saya adalah menulis cerita pendek yang membuat hati saya tenang.","-"
-Isyana Sarasvati,8,Tinggi,45,"Saya merasa benci pada diri sendiri karena tidak bisa melakukan apapun.","benci"
-Ariel Noah,9,Sedang,26,"Kadang saya merasa cemas jika harus berbicara di depan kelas yang ramai.","cemas"
-Bunga Citra,7,Rendah,10,"Hari ini cerah sekali dan saya merasa sangat bersemangat ke sekolah.","-"
-Gading Marten,8,Tinggi,62,"Saya ingin mati saja karena merasa dunia ini sudah tidak adil bagi saya.","mati"
-Luna Maya,9,Sedang,31,"Ada bagian dalam cerita ini yang membuat saya pusing dan teringat luka lama.","pusing"
-Irfan Bachdim,7,Rendah,22,"Saya senang bisa membantu ibu memasak di dapur tadi sore.","-"
-Prilly Latu,8,Tinggi,47,"Suasana di rumah membuat saya stress dan ingin pergi jauh sejauh mungkin.","stress"
-Boy William,9,Sedang,29,"Saya merasa kecewa karena dikhianati oleh orang yang saya percayai.","kecewa"
-Sule Sutisna,7,Rendah,17,"Belajar bahasa Indonesia hari ini sangat menyenangkan bagi saya.","-"
-Andre Taulany,8,Tinggi,55,"Rasa sakit ini tak tertahankan dan membuat saya ingin berteriak kencang.","sakit, teriak"
-Rigen Rakelna,9,Sedang,34,"Saya merasa lelah secara fisik dan mental menghadapi semua ini.","lelah"
-Kiky Saputri,7,Rendah,13,"Saya baru saja membeli buku baru dan tidak sabar untuk membacanya.","-"
-Raditya Dika,8,Tinggi,51,"Hati saya hancur melihat pertengkaran orang tua setiap hari di rumah.","hancur"
-Ernest Prakasa,9,Sedang,27,"Kadang saya merasa sendiri meskipun berada di tengah keramaian.","sendiri"
-Pandji Pragi,7,Rendah,19,"Saya suka sekali suasana pagi yang tenang sebelum berangkat sekolah.","-"
-Denny Sumargo,8,Tinggi,54,"Kenangan itu sangat pahit dan membuat saya trauma setiap kali teringat.","trauma"
-Greysia Polii,9,Sedang,32,"Saya sering merasa gelisah tanpa alasan yang jelas saat malam tiba.","gelisah"
-Apriyani,7,Rendah,16,"Makan siang hari ini sangat enak dan membuat saya kenyang.","-"
-Jojo Christie,8,Rendah,18,"Saya senang bisa berlatih bulu tangkis sore ini dengan lancar.","-"
-Nindy Ayunda,9,Tinggi,57,"Hati saya hancur dan sesak karena terus teringat kejadian pahit yang membuat saya merasa trauma.","hancur, sesak, trauma"
-Ginting,9,Rendah,21,"Membaca buku di taman membuat hati saya merasa sangat damai.","-"
+Eko Yuli Irawan,9,Sedang,30,Saya merasa sedih saat teringat pengorbanan orang tua untuk sekolah saya.,sedih
+Lalu Zohri,7,Rendah,11,Berlari di pagi hari membuat pikiran saya menjadi sangat segar dan tenang.,-
+Sri Mulyani,8,Tinggi,46,Saya merasa sesak dan pusing memikirkan tanggung jawab yang begitu besar.,"sesak, pusing"
+Basuki Hadimuljono,9,Sedang,28,Hati saya sakit melihat pembangunan yang merusak lingkungan di sekitar saya.,sakit
+Ridwan Kamil,7,Rendah,23,Melihat taman yang indah membuat hati saya merasa sangat bahagia hari ini.,-
+Ganjar Pranowo,8,Tinggi,53,Saya sering merasa takut dan tertekan oleh keadaan yang sangat gelap ini.,"takut, gelap"
+Anies Baswedan,9,Sedang,32,Beban ini terasa berat namun saya harus tetap teguh menjalankan tugas saya.,beban
+Prabowo Subianto,7,Rendah,14,Disiplin di sekolah membuat saya merasa bangga dan memiliki masa depan.,-
+Susi Pudjiastuti,8,Tinggi,57,Saya lelah dengan ketidakadilan yang membuat hati saya terasa hancur sekali.,"lelah, hancur"
+Butet Kertaradjasa,9,Sedang,31,Terkadang saya merasa benci pada diri sendiri karena sering merasa gagal.,benci
+Titiek Puspa,8,Tinggi,50,Saya merasa hancur karena kehilangan sosok panutan yang selama ini menguatkan.,hancur
+Tompi Dr,9,Sedang,29,Pikiran saya kacau dan pusing memikirkan kesehatan anggota keluarga saya.,pusing
+Glenn Fredly,7,Rendah,15,Musik adalah pelarian terbaik saat saya merasa butuh ketenangan di sekolah.,-
+Nike Ardilla,8,Tinggi,59,Saya trauma dan sangat takut jika kegagalan yang sama terulang kembali.,"trauma, takut"
+Rizky Billar,8,Sedang,36,Kadang saya merasa lelah karena ekspektasi orang-orang di sekitar saya terlalu tinggi.,lelah
+Putri Delina,9,Sedang,29,Saya merasa sedih saat teringat momen kebersamaan keluarga yang sekarang mulai berubah.,sedih
+Atta Halilintar,7,Sedang,38,Beban pekerjaan sekolah membuat saya sering merasa pusing dan sulit membagi waktu.,"beban, pusing"
+Aurel Hermansyah,8,Sedang,31,Saya merasa cemas jika harus menghadapi ujian yang sangat menentukan masa depan saya.,cemas
+Verrell Bramasta,9,Sedang,27,Ada rasa kecewa yang mendalam saat saya gagal memberikan hasil terbaik untuk orang tua.,kecewa
+Natasha Wilona,7,Sedang,34,Hati saya sesak teringat perselisihan dengan sahabat baik saya beberapa waktu lalu.,sesak
+Aliando Syarief,8,Sedang,42,Pikiran saya sering kosong dan saya merasa gelisah saat malam hari tiba di kamar.,gelisah
+Prilly Latuconsina,9,Sedang,30,Tugas menulis narasi ini membuat saya sedikit stress karena harus mengingat masa lalu.,stress
+Baim Wong,7,Sedang,28,Kadang saya merasa sendiri meskipun sedang berada di sekolah yang sangat ramai.,sendiri
+Paula Verhoeven,8,Sedang,33,Saya merasa lelah secara mental menghadapi tekanan dari teman-teman sekelas saya.,lelah
+Raffi Ahmad,9,Sedang,40,Ada beban yang terasa berat di pundak saya setiap kali memikirkan masa depan nanti.,beban
+Nagita Slavina,7,Sedang,35,Saya merasa sedih melihat kondisi lingkungan sekolah yang tidak sebersih biasanya.,sedih
+Zaskia Gotik,8,Sedang,32,Perasaan saya sedang tidak menentu dan saya merasa butuh waktu untuk menenangkan diri.,-
+Via Vallen,9,Sedang,37,Kadang saya merasa pusing jika terlalu lama menatap layar komputer saat mengerjakan tugas.,pusing
+Nella Kharisma,7,Sedang,26,Saya merasa kecewa karena rencana liburan bersama teman-teman harus dibatalkan.,kecewa
+Denny Caknan,8,Sedang,39,Ada rasa gelisah yang muncul saat saya harus berbicara di depan banyak orang hari ini.,gelisah
+Happy Asmara,9,Sedang,34,Hati saya terasa sesak saat teringat lagu-lagu yang penuh dengan kenangan pahit.,sesak
+Tiara Andini,7,Sedang,29,Saya merasa cemas menunggu hasil pengumuman lomba menulis yang saya ikuti kemarin.,cemas
+Lyodra Ginting,8,Sedang,31,Tugas sekolah yang menumpuk membuat saya merasa sedikit stress dan kurang tidur.,stress
+Ziva Magnolya,9,Sedang,33,Kadang saya merasa lelah dengan rutinitas sekolah yang terasa sangat membosankan.,lelah
+Raffi Ahmad,8,Rendah,15,Saya sangat senang hari ini bisa bermain bola bersama teman-teman sekolah.,-
+Nagita Slavina,7,Sedang,35,Kadang saya merasa lelah karena tugas sekolah yang terlalu banyak menumpuk.,lelah
+Deddy Corbuzier,9,Tinggi,55,Saya merasa hancur karena sering dimarahi di rumah tanpa alasan yang jelas.,hancur
+Maudy Ayunda,7,Rendah,12,Tadi pagi saya makan bersama keluarga dan rasanya sangat tenang sekali.,-
+Nicholas Saputra,8,Tinggi,48,Kejadian itu membuat saya trauma dan takut untuk keluar rumah sendirian lagi.,"trauma, takut, sendiri"
+Dian Sastro,9,Sedang,28,Saya merasa sedih karena kehilangan kucing kesayangan saya minggu lalu.,sedih
+Reza Rahadian,7,Rendah,15,Sekolah hari ini sangat seru karena ada pelajaran olahraga di lapangan.,-
+Pevita Pearce,8,Tinggi,58,Hidup ini terasa sangat gelap dan saya merasa putus asa dengan keadaan ini.,"gelap, putus asa"
+Joe Taslim,9,Sedang,30,Hati saya sesak teringat kenangan pahit bersama teman lama saya dulu.,sesak
+Iko Uwais,7,Rendah,20,Saya baru saja mendapat nilai bagus dan merasa sangat bangga pada diri sendiri.,-
+Agnez Mo,8,Tinggi,52,Saya sering menangis di malam hari karena merasa tidak ada yang peduli.,menangis
+Tulus Rusydi,9,Sedang,33,Pikiran saya sering kosong dan sulit fokus karena banyak beban di kepala.,beban
+Raisa Andriana,7,Rendah,14,Hobi saya adalah menulis cerita pendek yang membuat hati saya tenang.,-
+Isyana Sarasvati,8,Tinggi,45,Saya merasa benci pada diri sendiri karena tidak bisa melakukan apapun.,benci
+Ariel Noah,9,Sedang,26,Kadang saya merasa cemas jika harus berbicara di depan kelas yang ramai.,cemas
+Bunga Citra,7,Rendah,10,Hari ini cerah sekali dan saya merasa sangat bersemangat ke sekolah.,-
+Gading Marten,8,Tinggi,62,Saya ingin mati saja karena merasa dunia ini sudah tidak adil bagi saya.,mati
+Luna Maya,9,Sedang,31,Ada bagian dalam cerita ini yang membuat saya pusing dan teringat luka lama.,pusing
+Irfan Bachdim,7,Rendah,22,Saya senang bisa membantu ibu memasak di dapur tadi sore.,-
+Prilly Latu,8,Tinggi,47,Suasana di rumah membuat saya stress dan ingin pergi jauh sejauh mungkin.,stress
+Boy William,9,Sedang,29,Saya merasa kecewa karena dikhianati oleh orang yang saya percayai.,kecewa
+Sule Sutisna,7,Rendah,17,Belajar bahasa Indonesia hari ini sangat menyenangkan bagi saya.,-
+Andre Taulany,8,Tinggi,55,Rasa sakit ini tak tertahankan dan membuat saya ingin berteriak kencang.,"sakit, teriak"
+Rigen Rakelna,9,Sedang,34,Saya merasa lelah secara fisik dan mental menghadapi semua ini.,lelah
+Kiky Saputri,7,Rendah,13,Saya baru saja membeli buku baru dan tidak sabar untuk membacanya.,-
+Raditya Dika,8,Tinggi,51,Hati saya hancur melihat pertengkaran orang tua setiap hari di rumah.,hancur
+Ernest Prakasa,9,Sedang,27,Kadang saya merasa sendiri meskipun berada di tengah keramaian.,sendiri
+Pandji Pragi,7,Rendah,19,Saya suka sekali suasana pagi yang tenang sebelum berangkat sekolah.,-
+Denny Sumargo,8,Tinggi,54,Kenangan itu sangat pahit dan membuat saya trauma setiap kali teringat.,trauma
+Greysia Polii,9,Sedang,32,Saya sering merasa gelisah tanpa alasan yang jelas saat malam tiba.,gelisah
+Apriyani,7,Rendah,16,Makan siang hari ini sangat enak dan membuat saya kenyang.,-
+Jojo Christie,8,Rendah,18,Saya senang bisa berlatih bulu tangkis sore ini dengan lancar.,-
+Nindy Ayunda,9,Tinggi,57,Hati saya hancur dan sesak karena terus teringat kejadian pahit yang membuat saya merasa trauma.,"hancur, sesak, trauma"
+Ginting,9,Rendah,21,Membaca buku di taman membuat hati saya merasa sangat damai.,-
 Laura Anna,9,Tinggi,64,"Rasa sakit ini membuat saya hancur dan trauma, saya merasa lelah karena tidak bisa bergerak bebas lagi.","sakit, hancur, trauma, lelah"
-Kevin Sanjaya,7,Rendah,14,"Pelajaran hari ini sangat mudah dipahami oleh saya.","-"
-Fadly Faisal,8,Sedang,38,"Kadang saya merasa cemas saat memikirkan masa depan dan beban tanggung jawab yang mulai terasa berat.","cemas, beban"
-Gideon,8,Rendah,23,"Saya senang sekali karena hari ini tidak ada PR dari sekolah.","-"
-Gisella Anastasia,8,Sedang,37,"Kadang saya merasa cemas dan gelisah karena tekanan dari komentar orang lain yang membuat saya pusing.","cemas, gelisah, pusing"
-Eko Yuli,9,Rendah,12,"Melihat pemandangan hijau membuat hati saya merasa tenang.","-"
+Kevin Sanjaya,7,Rendah,14,Pelajaran hari ini sangat mudah dipahami oleh saya.,-
+Fadly Faisal,8,Sedang,38,Kadang saya merasa cemas saat memikirkan masa depan dan beban tanggung jawab yang mulai terasa berat.,"cemas, beban"
+Gideon,8,Rendah,23,Saya senang sekali karena hari ini tidak ada PR dari sekolah.,-
+Gisella Anastasia,8,Sedang,37,Kadang saya merasa cemas dan gelisah karena tekanan dari komentar orang lain yang membuat saya pusing.,"cemas, gelisah, pusing"
+Eko Yuli,9,Rendah,12,Melihat pemandangan hijau membuat hati saya merasa tenang.,-
 Thariq Halilintar,9,Sedang,39,"Saya sering merasa lelah dan sedikit stress karena jadwal sekolah yang padat, tapi saya masih bisa menahannya.","lelah, stress"
-Sri Mulyani,7,Rendah,20,"Saya bangga bisa menyelesaikan tugas tepat waktu hari ini.","-"
-Basuki,8,Rendah,15,"Bermain bersama adik di rumah adalah hal yang menyenangkan.","-"
-Jerome Polin,7,Rendah,14,"Saya sangat semangat belajar matematika hari ini karena rumusnya sangat menantang.","-"
-Fujianti Utami,9,Sedang,36,"Saya merasa lelah menghadapi tekanan dari luar dan kadang merasa sesak jika terlalu banyak berpikir sendiri.","lelah, sesak, sendiri"
-Greysia Polii,8,Rendah,19,"Berolahraga di pagi hari membuat badan saya terasa segar dan sangat bahagia.","-"
-Lala Karmela,9,Rendah,12,"Menonton film komedi bersama adik adalah cara terbaik saya melepas penat.","-"
-Vanessa Angel,9,Tinggi,58,"Saya merasa sangat putus asa dan hancur karena beban hidup yang terasa sangat gelap setiap hari.","putus asa, hancur, gelap"
-Baim Wong,7,Rendah,16,"Saya senang bisa berbagi makanan dengan teman-teman di kelas saat istirahat.","-"
-Enzy Storia,8,Rendah,11,"Tertawa bersama teman-teman di kantin membuat hari saya terasa sangat ringan.","-"
-Nikita Mirzani,9,Tinggi,60,"Hidup saya hancur dan saya merasa ingin mati karena semua tekanan ini begitu menyakitkan.","hancur, mati, sakit"
-Lesti Kejora,7,Tinggi,55,"Hati saya hancur dan saya trauma setiap kali mendengar suara keras di rumah.","hancur, trauma"
-Rizky Billar,8,Tinggi,52,"Saya merasa putus asa dan sangat benci pada keadaan yang tidak pernah memihak saya.","putus asa, benci"
-Lucinta Luna,9,Tinggi,58,"Rasa sakit ini membuat saya ingin berteriak kencang karena dunia terasa sangat gelap.","sakit, teriak, gelap"
-Ariel Tatum,7,Tinggi,49,"Setiap malam saya menangis sendirian karena merasa lelah dengan luka lama yang sesak.","menangis, sendiri, lelah, sesak"
-Ridwan Kamil,9,Rendah,22,"Saya suka menggambar sketsa bangunan di buku catatan saya.","-"
-Ganjar P,7,Rendah,17,"Udara pagi ini sangat segar membuat saya semangat belajar.","-"
-Fuji An,9,Sedang,32,"Terkadang saya merasa lelah karena harus terus terlihat ceria padahal pikiran saya sedang penuh beban.","lelah, beban"
-Anies B,8,Rendah,19,"Berdiskusi dengan teman sekelas memberikan saya ide baru.","-"
-Fiersa Besari,7,Sedang,31,"Kadang saya merasa sedih saat teringat kenangan lama yang belum sepenuhnya selesai.","sedih"
-Prabowo S,9,Rendah,24,"Disiplin adalah kunci kesuksesan saya dalam belajar.","-"
-Susi P,7,Rendah,13,"Saya sangat suka makan ikan hasil tangkapan nelayan lokal.","-"
-Feby Putri,8,Sedang,35,"Saya merasa sedikit gelisah saat harus menceritakan kembali perasaan saya dalam tulisan ini.","gelisah"
-Hindia Baskara,9,Sedang,33,"Tugas sekolah yang menumpuk membuat pikiran saya sering kosong dan merasa lelah.","beban, lelah"
-Nadin Amizah,8,Sedang,29,"Ada rasa cemas yang muncul saat saya merasa tidak ada orang yang memahami tulisan saya.","cemas"
+Sri Mulyani,7,Rendah,20,Saya bangga bisa menyelesaikan tugas tepat waktu hari ini.,-
+Basuki,8,Rendah,15,Bermain bersama adik di rumah adalah hal yang menyenangkan.,-
+Jerome Polin,7,Rendah,14,Saya sangat semangat belajar matematika hari ini karena rumusnya sangat menantang.,-
+Fujianti Utami,9,Sedang,36,Saya merasa lelah menghadapi tekanan dari luar dan kadang merasa sesak jika terlalu banyak berpikir sendiri.,"lelah, sesak, sendiri"
+Greysia Polii,8,Rendah,19,Berolahraga di pagi hari membuat badan saya terasa segar dan sangat bahagia.,-
+Lala Karmela,9,Rendah,12,Menonton film komedi bersama adik adalah cara terbaik saya melepas penat.,-
+Vanessa Angel,9,Tinggi,58,Saya merasa sangat putus asa dan hancur karena beban hidup yang terasa sangat gelap setiap hari.,"putus asa, hancur, gelap"
+Baim Wong,7,Rendah,16,Saya senang bisa berbagi makanan dengan teman-teman di kelas saat istirahat.,-
+Enzy Storia,8,Rendah,11,Tertawa bersama teman-teman di kantin membuat hari saya terasa sangat ringan.,-
+Nikita Mirzani,9,Tinggi,60,Hidup saya hancur dan saya merasa ingin mati karena semua tekanan ini begitu menyakitkan.,"hancur, mati, sakit"
+Lesti Kejora,7,Tinggi,55,Hati saya hancur dan saya trauma setiap kali mendengar suara keras di rumah.,"hancur, trauma"
+Rizky Billar,8,Tinggi,52,Saya merasa putus asa dan sangat benci pada keadaan yang tidak pernah memihak saya.,"putus asa, benci"
+Lucinta Luna,9,Tinggi,58,Rasa sakit ini membuat saya ingin berteriak kencang karena dunia terasa sangat gelap.,"sakit, teriak, gelap"
+Ariel Tatum,7,Tinggi,49,Setiap malam saya menangis sendirian karena merasa lelah dengan luka lama yang sesak.,"menangis, sendiri, lelah, sesak"
+Ridwan Kamil,9,Rendah,22,Saya suka menggambar sketsa bangunan di buku catatan saya.,-
+Ganjar P,7,Rendah,17,Udara pagi ini sangat segar membuat saya semangat belajar.,-
+Fuji An,9,Sedang,32,Terkadang saya merasa lelah karena harus terus terlihat ceria padahal pikiran saya sedang penuh beban.,"lelah, beban"
+Anies B,8,Rendah,19,Berdiskusi dengan teman sekelas memberikan saya ide baru.,-
+Fiersa Besari,7,Sedang,31,Kadang saya merasa sedih saat teringat kenangan lama yang belum sepenuhnya selesai.,sedih
+Prabowo S,9,Rendah,24,Disiplin adalah kunci kesuksesan saya dalam belajar.,-
+Susi P,7,Rendah,13,Saya sangat suka makan ikan hasil tangkapan nelayan lokal.,-
+Feby Putri,8,Sedang,35,Saya merasa sedikit gelisah saat harus menceritakan kembali perasaan saya dalam tulisan ini.,gelisah
+Hindia Baskara,9,Sedang,33,Tugas sekolah yang menumpuk membuat pikiran saya sering kosong dan merasa lelah.,"beban, lelah"
+Nadin Amizah,8,Sedang,29,Ada rasa cemas yang muncul saat saya merasa tidak ada orang yang memahami tulisan saya.,cemas
 Marshanda,9,Tinggi,63,"Dunia saya terasa hancur dan saya merasa putus asa, rasanya ingin menyerah saja dengan semua ini.","hancur, putus asa"
-Kurnia Meiga,7,Tinggi,56,"Rasa sakit ini membuat saya trauma dan merasa sangat gelap menghadapi masa depan saya.","sakit, trauma, gelap"
-Yulia Baltschun,8,Tinggi,51,"Hati saya sesak dan hancur setiap kali teringat kejadian pahit yang terus menghantui saya.","sesak, hancur"
-Butet K,8,Rendah,21,"Menonton pertunjukan seni membuat saya merasa terinspirasi.","-"
-Cak Lontong,9,Rendah,18,"Teka-teki lucu membuat suasana kelas menjadi lebih ceria.","-"
-Alda Risma,9,Tinggi,61,"Saya merasa sangat hancur dan sesak karena terus dihantui rasa takut yang luar biasa setiap hari.","hancur, sesak, takut"
-Titiek Puspa,7,Rendah,16,"Bernyanyi lagu anak-anak membawa kebahagiaan bagi saya.","-"
+Kurnia Meiga,7,Tinggi,56,Rasa sakit ini membuat saya trauma dan merasa sangat gelap menghadapi masa depan saya.,"sakit, trauma, gelap"
+Yulia Baltschun,8,Tinggi,51,Hati saya sesak dan hancur setiap kali teringat kejadian pahit yang terus menghantui saya.,"sesak, hancur"
+Butet K,8,Rendah,21,Menonton pertunjukan seni membuat saya merasa terinspirasi.,-
+Cak Lontong,9,Rendah,18,Teka-teki lucu membuat suasana kelas menjadi lebih ceria.,-
+Alda Risma,9,Tinggi,61,Saya merasa sangat hancur dan sesak karena terus dihantui rasa takut yang luar biasa setiap hari.,"hancur, sesak, takut"
+Titiek Puspa,7,Rendah,16,Bernyanyi lagu anak-anak membawa kebahagiaan bagi saya.,-
 Pratama Arhan,9,Sedang,34,"Terkadang saya merasa tertekan dengan ekspektasi orang lain, membuat saya sering merasa pusing saat sendirian.","pusing, sendiri"
-Tompi,8,Rendah,14,"Kesehatan adalah hal yang paling berharga dalam hidup ini.","-"
-Rebecca Klopper,9,Sedang,41,"Terkadang saya merasa gelisah dan pusing menghadapi masalah yang datang terus-menerus di sekolah.","gelisah, pusing"
-Glenn Fredly,9,Rendah,20,"Mendengarkan musik romantis membuat hati saya merasa damai.","-"
-Nike Ardilla,7,Rendah,11,"Menulis narasi tentang impian masa depan sangatlah seru.","-"
+Tompi,8,Rendah,14,Kesehatan adalah hal yang paling berharga dalam hidup ini.,-
+Rebecca Klopper,9,Sedang,41,Terkadang saya merasa gelisah dan pusing menghadapi masalah yang datang terus-menerus di sekolah.,"gelisah, pusing"
+Glenn Fredly,9,Rendah,20,Mendengarkan musik romantis membuat hati saya merasa damai.,-
+Nike Ardilla,7,Rendah,11,Menulis narasi tentang impian masa depan sangatlah seru.,-
 Kesha Ratuliu,9,Tinggi,59,"Hati saya terasa sangat hancur dan sesak, rasa trauma ini membuat saya takut untuk mempercayai orang lain lagi.","hancur, sesak, trauma, takut"
-Vina Pandu,8,Rendah,19,"Suara burung di pagi hari terdengar sangat merdu sekali.","-"
-Afgan Syahreza,8,Sedang,35,"Saya merasa sedikit cemas saat harus menuliskan kembali kenangan lama yang kurang menyenangkan.","cemas"
-Rossa Roslaina,9,Sedang,31,"Kadang saya merasa sedih saat melihat foto keluarga lama dan teringat masa-masa sulit dulu.","sedih"
-Vidi Aldiano,7,Sedang,29,"Pikiran saya sering kosong jika terlalu lama mengerjakan tugas narasi yang menguras emosi.","-"
-Bunga Citra Lestari,8,Sedang,38,"Ada rasa gelisah yang muncul tiba-tiba saat suasana kelas menjadi sangat sepi dan sunyi.","gelisah"
-Judika Sihotang,9,Sedang,34,"Saya merasa lelah secara mental karena harus terus berpura-pura baik-baik saja di sekolah.","lelah"
-Tiara Andini,7,Sedang,27,"Hati saya terasa sedikit sesak saat teringat teman dekat yang tiba-tiba menjauh tanpa sebab.","sesak"
-Lyodra Ginting,8,Sedang,32,"Terkadang saya merasa stress menghadapi ujian, tapi saya mencoba tetap fokus belajar.","stress"
-Maudy Ayunda,9,Rendah,15,"Hari ini saya merasa sangat tenang dan fokus belajar karena suasana kelas sangat mendukung.","-"
-Andmesh Kamaleng,9,Sedang,30,"Saya merasa kecewa karena impian saya untuk juara kelas belum tercapai tahun ini.","kecewa"
-Marion Jola,7,Sedang,26,"Kadang saya merasa sendiri meskipun sedang berkumpul dengan teman-teman di kantin.","sendiri"
-Rizky Febian,8,Sedang,33,"Ada beban di kepala saya setiap kali memikirkan masa depan yang masih belum jelas.","beban"
-Mahalini Raharja,9,Sedang,35,"Saya merasa pusing jika harus mengingat kejadian yang membuat saya merasa tidak nyaman.","pusing"
-Keisya Levronka,7,Sedang,28,"Tugas menulis ini membuat saya teringat akan kegagalan saya di masa lalu yang pahit.","-"
-Anggi Marito,8,Sedang,31,"Saya merasa sedikit gelisah saat guru meminta saya bercerita di depan banyak orang.","gelisah"
-Nabila Taqiyyah,9,Sedang,29,"Hati saya sedih saat teringat pertengkaran kecil dengan orang tua tadi pagi.","sedih"
-Vidi Aldiano,8,Rendah,12,"Saya merasa sangat bersyukur dan bahagia hari ini karena bisa berkumpul bersama teman-teman dekat.","-"
-Rony Parulian,7,Sedang,34,"Ada bagian dalam cerita ini yang membuat saya merasa lelah dan ingin berhenti sejenak.","lelah"
-Salma Salsabil,8,Sedang,30,"Saya merasa cemas jika tidak bisa menyelesaikan tugas sekolah tepat pada waktunya.","cemas"
-Nyoman Paul,9,Sedang,32,"Pikiran saya terbagi-bagi dan saya merasa sulit fokus karena banyak beban pikiran.","beban"
-Nadhif Basalamah,7,Sedang,27,"Kadang saya merasa kecewa pada diri sendiri karena sering menunda-nunda pekerjaan.","kecewa"
-Bernadya Ribka,8,Sedang,40,"Ada rasa sakit yang tipis muncul kembali saat saya menulis narasi tentang kehilangan.","sakit"
-Tulus Rusydi,9,Sedang,33,"Saya merasa stress jika suasana rumah sedang tidak harmonis seperti biasanya.","stress"
-Naufal Azka,9,Rendah,14,"Saya merasa sangat tenang dan nyaman mengerjakan tugas hari ini karena suasana rumah yang damai.","-"
+Vina Pandu,8,Rendah,19,Suara burung di pagi hari terdengar sangat merdu sekali.,-
+Afgan Syahreza,8,Sedang,35,Saya merasa sedikit cemas saat harus menuliskan kembali kenangan lama yang kurang menyenangkan.,cemas
+Rossa Roslaina,9,Sedang,31,Kadang saya merasa sedih saat melihat foto keluarga lama dan teringat masa-masa sulit dulu.,sedih
+Vidi Aldiano,7,Sedang,29,Pikiran saya sering kosong jika terlalu lama mengerjakan tugas narasi yang menguras emosi.,-
+Bunga Citra Lestari,8,Sedang,38,Ada rasa gelisah yang muncul tiba-tiba saat suasana kelas menjadi sangat sepi dan sunyi.,gelisah
+Judika Sihotang,9,Sedang,34,Saya merasa lelah secara mental karena harus terus berpura-pura baik-baik saja di sekolah.,lelah
+Tiara Andini,7,Sedang,27,Hati saya terasa sedikit sesak saat teringat teman dekat yang tiba-tiba menjauh tanpa sebab.,sesak
+Lyodra Ginting,8,Sedang,32,"Terkadang saya merasa stress menghadapi ujian, tapi saya mencoba tetap fokus belajar.",stress
+Maudy Ayunda,9,Rendah,15,Hari ini saya merasa sangat tenang dan fokus belajar karena suasana kelas sangat mendukung.,-
+Andmesh Kamaleng,9,Sedang,30,Saya merasa kecewa karena impian saya untuk juara kelas belum tercapai tahun ini.,kecewa
+Marion Jola,7,Sedang,26,Kadang saya merasa sendiri meskipun sedang berkumpul dengan teman-teman di kantin.,sendiri
+Rizky Febian,8,Sedang,33,Ada beban di kepala saya setiap kali memikirkan masa depan yang masih belum jelas.,beban
+Mahalini Raharja,9,Sedang,35,Saya merasa pusing jika harus mengingat kejadian yang membuat saya merasa tidak nyaman.,pusing
+Keisya Levronka,7,Sedang,28,Tugas menulis ini membuat saya teringat akan kegagalan saya di masa lalu yang pahit.,-
+Anggi Marito,8,Sedang,31,Saya merasa sedikit gelisah saat guru meminta saya bercerita di depan banyak orang.,gelisah
+Nabila Taqiyyah,9,Sedang,29,Hati saya sedih saat teringat pertengkaran kecil dengan orang tua tadi pagi.,sedih
+Vidi Aldiano,8,Rendah,12,Saya merasa sangat bersyukur dan bahagia hari ini karena bisa berkumpul bersama teman-teman dekat.,-
+Rony Parulian,7,Sedang,34,Ada bagian dalam cerita ini yang membuat saya merasa lelah dan ingin berhenti sejenak.,lelah
+Salma Salsabil,8,Sedang,30,Saya merasa cemas jika tidak bisa menyelesaikan tugas sekolah tepat pada waktunya.,cemas
+Nyoman Paul,9,Sedang,32,Pikiran saya terbagi-bagi dan saya merasa sulit fokus karena banyak beban pikiran.,beban
+Nadhif Basalamah,7,Sedang,27,Kadang saya merasa kecewa pada diri sendiri karena sering menunda-nunda pekerjaan.,kecewa
+Bernadya Ribka,8,Sedang,40,Ada rasa sakit yang tipis muncul kembali saat saya menulis narasi tentang kehilangan.,sakit
+Tulus Rusydi,9,Sedang,33,Saya merasa stress jika suasana rumah sedang tidak harmonis seperti biasanya.,stress
+Naufal Azka,9,Rendah,14,Saya merasa sangat tenang dan nyaman mengerjakan tugas hari ini karena suasana rumah yang damai.,-
+Andika,8,Tinggi,48,"pernah mengalami kecelakaan yang membuat tubuh saya terluka dan pikiran saya berubah. sejak kejadian itu, saya sering teringat kembali suara benturan dan rasa sakit yang tiba-tiba datang jantung saya berdebar cepat, tangan gemetar, dan saya merasa takut meskipun sebenarnya saya sedang aman perasaan saya campur aduk. ada sedikit lega karena bisa bercerita, tetapi bayangan kecelakaan itu masih sering muncul dan membuat saya sulit tenang. trauma  ketika mengingat kejadian itu, saya menyadari bahwa luka bukan hanya ada di tubuh, tetapi juga di pikiran, dan butuh waktu lama untuk benar-benar merasa aman kembali","sakit, takut, trauma"
