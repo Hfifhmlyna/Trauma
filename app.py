@@ -2,6 +2,8 @@ import streamlit as st
 import pandas as pd
 import os
 import plotly.figure_factory as ff
+from github import Github
+import io
 
 # --- KONFIGURASI HALAMAN ---
 st.set_page_config(page_title="SMLI - Analisis Trauma", page_icon="🛡️", layout="wide")
@@ -169,6 +171,7 @@ elif role == "Guru (Administrator)":
                 st.rerun()
         else:
             st.info("Belum ada data masuk.")
+
 
 
 
