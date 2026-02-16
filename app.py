@@ -130,44 +130,39 @@ if role == "Siswa (Menulis)":
             st.error("Mohon lengkapi Nama, Kelas, dan minimal soal narasi nomor 1.")
 
 # --- LOGIKA TAMPILAN GURU ---
+# --- LOGIKA TAMPILAN GURU ---
 elif role == "Guru (Administrator)":
     st.markdown("<h1 style='color: #117A65;'>🔐 Dashboard Analisis Trauma Siswa</h1>", unsafe_allow_html=True)
     password = st.text_input("Password Admin:", type="password")
     
-    c_log, c_out = st.columns([1, 4])
-    if c_log.button("Buka Dashboard 🔓"):
+    if st.button("Buka Dashboard 🔓"):
         if password == "kelompok4":
             st.session_state['authenticated'] = True
             st.success("Akses Diterima!")
         else:
             st.error("Password salah!")
             st.session_state['authenticated'] = False
-            
-    if c_out.button("Kunci Kembali 🔒"):
-        st.session_state['authenticated'] = False
-        st.rerun()
 
-    st.markdown("---")
-
-    if st.session_state.get('authenticated', False) and password == "kelompok4":
+    if st.session_state.get('authenticated', False):
         try:
+            # Mengambil data langsung dari GitHub
             g = Github(GITHUB_TOKEN)
             repo = g.get_repo(REPO_NAME)
             contents = repo.get_contents(FILE_PATH)
-        
-      
-             df = pd.read_csv(io.StringIO(contents.decoded_content.decode('utf-8')))
-        
-        st.subheader("📊 Rekapitulasi & Statistik (Live dari GitHub)")
-        # ... (lanjutkan dengan kode statistik kalian seperti counts, metrics, dan grafik)
+            df = pd.read_csv(io.StringIO(contents.decoded_content.decode('utf-8')))
+
             # Statistik Utama
-            st.subheader("📊 Rekapitulasi & Statistik")
+            st.subheader("📊 Rekapitulasi & Statistik (Live dari GitHub)")
             counts = df['Level_Trauma'].value_counts()
             m1, m2, m3, m4 = st.columns(4)
             m1.metric("Total Siswa", len(df))
             m2.metric("Tinggi 🔴", counts.get("Tinggi", 0))
             m3.metric("Sedang 🟡", counts.get("Sedang", 0))
             m4.metric("Rendah 🟢", counts.get("Rendah", 0))
+            
+            # --- Tampilkan Grafik dan Tabel (lanjutkan kode kalian ke bawah) ---
+            st.bar_chart(counts)
+            st.dataframe(df, use_container_width=True)
 
             # Grafik
             col_kiri, col_kanan = st.columns(2)
@@ -208,15 +203,13 @@ elif role == "Guru (Administrator)":
                     st.success(f"Data {pilih_siswa} berhasil dihapus!")
                     st.rerun()
 
-            # Download & Reset
+        # --- Fitur Download ---
             st.markdown("---")
-            dl, rs = st.columns(2)
-            dl.download_button("📥 Download Laporan", df.to_csv(index=False).encode('utf-8'), "laporan_trauma.csv", "text/csv")
-            if rs.button("🗑️ Reset Database"):
-                os.remove('data_tugas.csv')
-                st.rerun()
-        else:
-            st.info("Belum ada data masuk.")
+            st.download_button("📥 Download Laporan CSV", df.to_csv(index=False).encode('utf-8'), "laporan_trauma.csv", "text/csv")
+
+    except Exception as e:
+        st.info("Belum ada data masuk di GitHub atau file belum terbentuk.")
+
 
 
 
