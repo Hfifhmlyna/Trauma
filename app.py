@@ -144,13 +144,13 @@ elif role == "Guru (Administrator)":
 
     if st.session_state.get('authenticated', False):
         try:
-            # Mengambil data langsung dari GitHub
+            # 1. Ambil data dari GitHub
             g = Github(GITHUB_TOKEN)
             repo = g.get_repo(REPO_NAME)
             contents = repo.get_contents(FILE_PATH)
             df = pd.read_csv(io.StringIO(contents.decoded_content.decode('utf-8')))
 
-            # Statistik Utama
+            # 2. Statistik Utama
             st.subheader("📊 Rekapitulasi & Statistik (Live dari GitHub)")
             counts = df['Level_Trauma'].value_counts()
             m1, m2, m3, m4 = st.columns(4)
@@ -158,12 +158,8 @@ elif role == "Guru (Administrator)":
             m2.metric("Tinggi 🔴", counts.get("Tinggi", 0))
             m3.metric("Sedang 🟡", counts.get("Sedang", 0))
             m4.metric("Rendah 🟢", counts.get("Rendah", 0))
-            
-            # --- Tampilkan Grafik dan Tabel (lanjutkan kode kalian ke bawah) ---
-            st.bar_chart(counts)
-            st.dataframe(df, use_container_width=True)
 
-            # Grafik
+            # 3. Grafik & Sebaran
             col_kiri, col_kanan = st.columns(2)
             with col_kiri:
                 st.write("**Grafik Batang:**")
@@ -173,53 +169,42 @@ elif role == "Guru (Administrator)":
                 if len(df) > 1:
                     fig = ff.create_distplot([df['Skor']], ['Skor'], bin_size=2, show_hist=False)
                     st.plotly_chart(fig, use_container_width=True)
-            
 
-            # Fitur NLP Word Analysis
+            # 4. Analisis NLP
             if 'Keywords_NLP' in df.columns:
-                st.subheader("🔍 Kata Kunci Dominan (Hasil NLP)")
-                # Menghapus baris kosong dan menggabungkan kata
+                st.subheader("🔍 Kata Kunci Dominan")
                 valid_keywords = df['Keywords_NLP'].dropna()
                 if not valid_keywords.empty:
                     all_keywords = ", ".join(valid_keywords)
-                    st.info(f"Kata-kata emosional yang sering muncul: {all_keywords}")
+                    st.info(f"Kata-kata emosional terdeteksi: {all_keywords}")
 
-            # 4. Tabel Detail
-            st.subheader("🔍 Data Detail Siswa")
+            # 5. Tabel Detail
+            st.subheader("📋 Detail Data")
             st.dataframe(df, use_container_width=True)
 
-            # --- FITUR HAPUS DATA SATU PER SATU (UPDATE UNTUK GITHUB) ---
+            # 6. FITUR HAPUS PERMANEN DARI GITHUB
             st.markdown("---")
-            st.subheader("🗑️ Kelola Data (Hapus Salah Satu)")
+            st.subheader("🗑️ Kelola Data")
             list_siswa = df['Nama'].tolist()
-            pilih_siswa = st.selectbox("Pilih nama siswa yang ingin dihapus:", ["-- Pilih Siswa --"] + list_siswa)
+            pilih_siswa = st.selectbox("Pilih siswa untuk dihapus:", ["-- Pilih Siswa --"] + list_siswa)
 
             if pilih_siswa != "-- Pilih Siswa --":
-                if st.button(f"Konfirmasi Hapus Data: {pilih_siswa} ❌"):
-                    # Hapus dari dataframe
+                if st.button(f"Konfirmasi Hapus: {pilih_siswa} ❌"):
+                    # Hapus dari dataframe lokal
                     df_baru = df[df['Nama'] != pilih_siswa]
-                    
-                    # Simpan kembali ke GitHub agar permanen
+                    # Update file langsung ke GitHub
                     csv_string = df_baru.to_csv(index=False)
-                    repo.update_file(contents.path, f"Hapus data: {pilih_siswa}", csv_string, contents.sha)
-                    
-                    st.success(f"Data {pilih_siswa} berhasil dihapus dari GitHub!")
+                    repo.update_file(contents.path, f"Hapus data {pilih_siswa}", csv_string, contents.sha)
+                    st.success(f"Data {pilih_siswa} berhasil dihapus permanen!")
                     st.rerun()
 
-            # 5. Fitur Download & Reset Total
+            # 7. Download Laporan
             st.markdown("---")
-            dl, rs = st.columns(2)
-            dl.download_button("📥 Download CSV", df.to_csv(index=False).encode('utf-8'), "laporan.csv", "text/csv")
-            
-            if rs.button("⚠️ Reset Seluruh Database"):
-                # Menghapus file dengan cara mengosongkan isinya di GitHub
-                df_empty = pd.DataFrame(columns=["Nama", "Kelas", "Level_Trauma", "Skor", "Narasi", "Keywords_NLP"])
-                repo.update_file(contents.path, "Reset Database", df_empty.to_csv(index=False), contents.sha)
-                st.warning("Database telah dikosongkan!")
-                st.rerun()
+            st.download_button("📥 Download Laporan CSV", df.to_csv(index=False).encode('utf-8'), "laporan_trauma.csv", "text/csv")
 
         except Exception as e:
-            st.info("Belum ada data di GitHub atau file belum dibuat.")
+            st.info("Belum ada data masuk atau terjadi kesalahan koneksi.")
+
 
 
 
