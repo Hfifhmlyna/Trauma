@@ -130,7 +130,6 @@ if role == "Siswa (Menulis)":
             st.error("Mohon lengkapi Nama, Kelas, dan minimal soal narasi nomor 1.")
 
 # --- LOGIKA TAMPILAN GURU ---
-# --- LOGIKA TAMPILAN GURU ---
 elif role == "Guru (Administrator)":
     st.markdown("<h1 style='color: #117A65;'>🔐 Dashboard Analisis Trauma Siswa</h1>", unsafe_allow_html=True)
     password = st.text_input("Password Admin:", type="password")
@@ -185,31 +184,42 @@ elif role == "Guru (Administrator)":
                     all_keywords = ", ".join(valid_keywords)
                     st.info(f"Kata-kata emosional yang sering muncul: {all_keywords}")
 
-            # Tabel Detail
-            st.write("**Data Detail Siswa:**")
+            # 4. Tabel Detail
+            st.subheader("🔍 Data Detail Siswa")
             st.dataframe(df, use_container_width=True)
 
-            # --- FITUR HAPUS DATA SATU PER SATU (NEW) ---
+            # --- FITUR HAPUS DATA SATU PER SATU (UPDATE UNTUK GITHUB) ---
             st.markdown("---")
             st.subheader("🗑️ Kelola Data (Hapus Salah Satu)")
             list_siswa = df['Nama'].tolist()
             pilih_siswa = st.selectbox("Pilih nama siswa yang ingin dihapus:", ["-- Pilih Siswa --"] + list_siswa)
 
             if pilih_siswa != "-- Pilih Siswa --":
-                index_to_drop = df[df['Nama'] == pilih_siswa].index
                 if st.button(f"Konfirmasi Hapus Data: {pilih_siswa} ❌"):
-                    df = df.drop(index_to_drop)
-                    df.to_csv('data_tugas.csv', index=False)
-                    st.success(f"Data {pilih_siswa} berhasil dihapus!")
+                    # Hapus dari dataframe
+                    df_baru = df[df['Nama'] != pilih_siswa]
+                    
+                    # Simpan kembali ke GitHub agar permanen
+                    csv_string = df_baru.to_csv(index=False)
+                    repo.update_file(contents.path, f"Hapus data: {pilih_siswa}", csv_string, contents.sha)
+                    
+                    st.success(f"Data {pilih_siswa} berhasil dihapus dari GitHub!")
                     st.rerun()
 
-        # --- Fitur Download ---
+            # 5. Fitur Download & Reset Total
             st.markdown("---")
-            st.download_button("📥 Download Laporan CSV", df.to_csv(index=False).encode('utf-8'), "laporan_trauma.csv", "text/csv")
+            dl, rs = st.columns(2)
+            dl.download_button("📥 Download CSV", df.to_csv(index=False).encode('utf-8'), "laporan.csv", "text/csv")
+            
+            if rs.button("⚠️ Reset Seluruh Database"):
+                # Menghapus file dengan cara mengosongkan isinya di GitHub
+                df_empty = pd.DataFrame(columns=["Nama", "Kelas", "Level_Trauma", "Skor", "Narasi", "Keywords_NLP"])
+                repo.update_file(contents.path, "Reset Database", df_empty.to_csv(index=False), contents.sha)
+                st.warning("Database telah dikosongkan!")
+                st.rerun()
 
-    except Exception as e:
-        st.info("Belum ada data masuk di GitHub atau file belum terbentuk.")
-
+        except Exception as e:
+            st.info("Belum ada data di GitHub atau file belum dibuat.")
 
 
 
